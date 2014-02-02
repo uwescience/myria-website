@@ -1,4 +1,4 @@
 name: Myria
 markdown: redcarpet
 pygments: true
-baseurl: myria
+baseurl: http://myria.cs.washington.edu
