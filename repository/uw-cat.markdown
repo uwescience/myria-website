@@ -56,14 +56,14 @@ sum all non-null pixel values grouped by x-y
 
 ### Concrete "Sigma-Clipping" Algorithm
 
-```
-1: Input: Relation A(int x, int y, int t, float data, int mask, float var) 
-2: Input: k a constant parameter.
-3: WHILE(some tuples in A are filtered)
-4:    T = SELECT AVG(data) AS avg, STDV(data) AS stdv, x, y FROM A GROUP BY x,y
-5:    S = SELECT A.x, A.y, A.t, A.data, T.stdv, T.avg FROM T join A on T.x = A.x AND T.y=A.y
-6:    A = SELECT S.x, S.y, S.t, S.data FROM S WHERE S.data> S.avg - k*S.stdv AND S.data < S.agv + k*S.stdv
-7: Result = SELECT SUM(data) AS coadd from Filtered GROUP BY x,y 
+```python
+Input: Relation A(int x, int y, int t, float data, int mask, float var) 
+Input: k a constant parameter.
+WHILE(some tuples in A are filtered)
+   T = SELECT AVG(data) AS avg, STDV(data) AS stdv, x, y FROM A GROUP BY x,y
+   S = SELECT A.x, A.y, A.t, A.data, T.stdv, T.avg FROM T join A on T.x = A.x AND T.y=A.y
+   A = SELECT S.x, S.y, S.t, S.data FROM S WHERE S.data> S.avg - k*S.stdv AND S.data < S.agv + k*S.stdv
+Result = SELECT SUM(data) AS coadd from Filtered GROUP BY x,y 
 ```
 
 ## Acknowledgment Request
