@@ -11,7 +11,7 @@
 ## PhD Students
 
 * [Shumo Chu](http://homes.cs.washington.edu/~chushumo/)
-* Eric Gribkoff
+* [Eric Gribkoff](http://homes.cs.washington.edu/~eagribko/)
 * Jeremy Hyrkas
 * [Paris Koutris](http://homes.cs.washington.edu/~pkoutris/)
 * Ryan Maas
