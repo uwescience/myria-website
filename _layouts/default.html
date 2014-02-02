@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{{ page.title }}</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="{{ site.baseurl}}/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{{ site.baseurl}}/css/main.css">
+    </head>
+    <body data-spy="scroll" data-target=".navbar-default">
+      <!-- Fixed navbar -->
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ site.baseurl}}/#">
+              <img src="{{ site.baseurl}}/images/myria-logo.png" alt="myria-logo" class="logo"></img>
+            </a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="{{ site.baseurl}}/#overview" data-target="#overview">Overview</a></li>
+              <li><a href="{{ site.baseurl}}/#people" data-target="#people">People</a></li>
+              <li><a href="{{ site.baseurl}}/#publications" data-target="#publications">Projects & Publications</a></li>
+              <li class="dropdown">
+                <a href="{{ site.baseurl}}/repository/" data-target="#usecases">Use-Case Repository<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="{{ site.baseurl}}/repository/uw-cat.html">CoAddition Testing</a></li>
+                </ul>
+              </li>
+              <li><a href="{{ site.baseurl}}/#ack" data-target="#ack">Acknowledgment</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+
+      <div class="container">
+        {{ content }}
+      </div> <!-- /container -->
+      <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+      <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    </body>
+</html>

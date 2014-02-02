@@ -1,142 +1,72 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Myria</title>
-<style type="text/css">
-<!--
-.style1 {
-	color: #473269;
-	font-family: Verdana, Helvetica, Arial, sans-serif;
-	font-size: 70% ;
-}
+---
+layout: default
+title: Myria - Big Data Management as a Cloud Service
+---
 
-.style_em {
-	color: #39275B;
-	font-family: Verdana, Helvetica, Arial, sans-serif;
-	font-style: italic ;
-	font-size: 70% ;
-}
-body {
-	background-color: #f5f5f5;
-}
-h1 {
-	color: #E8E8E8;
-}
-a {
-  color: #473269;
-}
-.style4 {font-family: Verdana, Arial, Helvetica, sans-serif}
-.style5 {color: #999999}
-.style6 {font-family: Verdana, Arial, Helvetica, sans-serif}
--->
-</style>
-</head>
+<h1 id="overview">Overview</h1>
 
-<body>
-<table width="100%" border="0" cellpadding="2" cellspacing="2">
-  <tr>
-    <td width="15%" rowspan="6" bgcolor="#f5f5f5"></td>
-    <td width="15%" height="82"> <img src="./myria-logo.png" alt="Project logo" width="250" border="0"/></a></td>
-    <td width="60%"><h1>
-		    <br/>
-	<span class="style1">Big Data Management as a Cloud Service</span></h1></td>
-    <td width="15%" rowspan="6" bgcolor="#f5f5f5"></td>
-  </tr>
-  <tr>
-    <td colspan="2"><table width="100%" height="41" border="0" bgcolor="#eee9e9">
-      <tr bgcolor="#eee9e9" class="style4">
-        <td width="105" align="center" valign="middle"><a href="#Overview">Overview</a></td>
-        <td width="126" height="35"><div align="center" class="style5"><a href="#Overview"></a><a href="#People">People</a></div></td>
-        <td width="301"><div align="center" class="style5"><a href="#People"></a><a href="#Projects">Projects, Publications and Software</a></div></td>
-        <td width="182"><div align="center" class="style5"> <a href="#Repository">Use-Case Repository</a></div></td>
-        <td width="168" align="center" valign="middle"><div align="center" class="style5"><a href="#Acks">Acknowledgments</a></div></td>
-      </tr>
-    </table></td>
-  </tr>
-  <tr>
-    <td colspan="2" style="padding: 10px;">
-    <h2 class="style4"><a name="Overview" id="Overview"></a>Overview</h2>
-        <p class="style4">Extracting knowledge out of Big Data today is a high-touch business,  requiring a human expert who deeply understands the application domain  as well as a growing ecosystem of complex distributed systems and  advanced statistical methods. These experts are hired in part for  their statistical expertise, but report that the majority of their time  is spent scaling and optimizing the relatively basic data manipulation  tasks in preparation for the actual statistical analysis or machine  learning step: identifying relevant data, cleaning, filtering, joining,  grouping, transforming, extracting features, and evaluating results.</p>
-        <p class="style4">The Myria project focuses on building a new system called MyriaDB for Big Data Management  that is both fast and flexible, offering this system as a cloud service,  and addressing both the theoretical and systems challenges associated  with Big Data Management as a Cloud service.</p>
-<p class="style4">We also have other projects related to Big Data management. See our <a href="https://www.cs.washington.edu/node/8749/">overview page</a>.</p>
+Extracting knowledge out of Big Data today is a high-touch business,  requiring a human expert who deeply understands the application domain  as well as a growing ecosystem of complex distributed systems and  advanced statistical methods. These experts are hired in part for  their statistical expertise, but report that the majority of their time  is spent scaling and optimizing the relatively basic data manipulation  tasks in preparation for the actual statistical analysis or machine  learning step: identifying relevant data, cleaning, filtering, joining,  grouping, transforming, extracting features, and evaluating results.</p>
 
-<p class="style4">And be sure to see our <a href="http://www.cs.washington.edu/research/bigdata">CSE-wide efforts in Big Data</a>
+<p>The Myria project focuses on building a new system called MyriaDB for Big Data Management  that is both fast and flexible, offering this system as a cloud service,  and addressing both the theoretical and systems challenges associated  with Big Data Management as a Cloud service.</p>
 
-    <h2 class="style4"><a name="People" id="People"></a>People</h2>
-        <p class="style4">Faculty</p>
-      <ul>
-        <li class="style4"><a href="http://www.cs.washington.edu/homes/magda/">Magdalena Balazinska</a></li>
-        <li class="style4"><a href="http://www.cs.washington.edu/homes/billhowe/">Bill Howe</a></li>
-        <li class="style4"><a href="http://www.cs.washington.edu/homes/suciu/">Dan Suciu </a></li>
-      </ul>
-        <p class="style4">Postdocs</p>
-      <ul class="style4">
-        <li >Victor Almeida</li>
-        <li><a href="http://homes.cs.washington.edu/~dhalperi/">Daniel Halperin</a></li>
-        <li>Andrew Whitaker</li>
-      </ul>
-        <p class="style4">PhD Students</p>
-      <ul class="style4">
-        <li><a href="http://homes.cs.washington.edu/~chushumo/">Shumo Chu</a></li>
-        <li>Eric Gribkoff</li>
-        <li>Jeremy Hyrkas</li>
-        <li><a href="http://homes.cs.washington.edu/~pkoutris/">Paris Koutris</a></li>
-        <li>Ryan Maas</li>
-        <li>Dominik Moritz</li>
-        <li>Laurel Orr</li>
-        <li><a href="http://homes.cs.washington.edu/~jortiz16/">Jennifer Ortiz</a></li>
-        <li><a href="http://www.cs.washington.edu/homes/soroush/">Emad Soroush</a> </li>
-        <li>Jingjing Wang</li>
-        <li><a href="http://homes.cs.washington.edu/~slxu/">Shengliang Xu</a></li>
-      </ul>
-        <p class="style4">Undergraduate Students</p>
-      <ul class="style4">
-        <li>Lee Lee Choo </li>
-        <li>Vaspol Ruamviboonsuk</li>
-      </ul>
-      <p>&nbsp;</p>
-    <h2 class="style4"><a name="Projects" id="Projects"></a>Projects, Publications, and Software </h2>
-    <p class="style6">We are tackling several inter-related challenges:</p>
-    <h3 class="style6">Big Data Management Theory</h3>
-<p class="style6">We are studying the theory of efficient Big Data management, which leads to new fundamental results regarding the complexity of various ad hoc data transformations in modern massive-scale systems.</p>
-<p class="style6">Our model of computation is an extension of our recent Massively Parallel (MP) model, where computation is performed by P severs that alternate between computation and re-shuffling steps, and each server is limited to O(n/P) space, where n is the size of the data. We study the time/space complexity of data transformations and extensions to cope with failures. </p>
-<p>&nbsp;</p>
-<h3 class="style6">Big Data Datalog </h3>
-        <p class="style6">A large number of data exploration and analytics queries are iterative. We study advanced optimization techniques for iterative programs on massively parallel systems. In prior work we have explored the fundamental systems architecture needed for iterative data processing, and have investigated some simple optimization techniques. Our research now is developing new, advanced optimizations: using materialized views, dynamic re-optimization, and flattening of nested collections.</p>
-	<p class="style6"></p>
-        <h3 class="style6">Systems-challenges of Efficient Big Data Management</h3>
-        <p class="style6">We are studying a variety of challenges related to building systems for efficient Big Data management. A large fraction of this work is done in the context of the <a href="http://nuage.cs.washington.edu">Nuage project</a>. We are also tackling challenges related to the usability of Big Data systems in the <a href="http://cqms.cs.washington.edu/">CQMS project</a>.</p>
-        <p class="style6">In the specific context of the Myria project, we started to focus on challenges associated with efficient iterative processing. In particular, failures and load imbalances are increasingly common as the size of data processing tasks grows, and exacerbated in iterative programs. In prior work, we have extensively studied both problems for non-iterative computations. For iterative programs, we propose a radically new, extremely lightweight approach, which we call FT/Skew Skip Mechanism: when a server fails, we simply allow the other servers to continue the iteration. The failed computation either re-joins eventually, after recovery; or is abandoned altogether, if the resulting accuracy is still acceptable. We treat skew as a form of failure: servers that are too slow to respond are assumed to have failed. We are studying this approach and other light-weight fault-tolerance and load balance techniques for iterative computations.</p>
-<p class="style6"></p>
-      <h3 class="style6">Big Data Management as a Cloud Service</h3>
-      <p class="style6">An important focus of Myria is not just on managing Big Data but on doing so using a cloud service. We are thus studying various aspects of this problem.
-	  Specifically, we are studying a new type of SLA that will enable Cloud
-	  providers to offer Big Data Management and Analytics as a service with a
-	  more user-friendly and performance-friendly service-level agreement (SLA).</p>
-      <p class="style4">Today's pricing models and SLAs are described at the
-	  level of compute resources (instance-hours or gigabytes processed). They
-	  are also different from one service to the next. Both conditions make it
-	  difficult for users to select a service, pick a configuration, and predict
-	  the actual analysis cost. To address this challenge, we propose a new
-	  abstraction, called a Personalized Service Level Agreement (PSLA), where
-	  users are presented with what they can do with their data in terms of
-	  query capabilities, guaranteed query performance and fixed hourly prices.</p>
-	<p class="style4">Ortiz, J., Almeida, V. T., Balazinska, M.,
-	<a href="publications/PSLA2013.pdf">A Vision for Personalized Service Level
-	Agreements in the Cloud</a>, Workshop on Data Analytics in the Cloud with
-	SIGMOD 2013, June 2013.</p>
-	<p class="style4"></p>
-      <h3 class="style4"><span class="style6">MyriaDB System and Service</span></h3>
-      <p class="style4">All the above ideas are brought together in a new Big Data management system called MyriaDB that we are currently building as a cloud service.</p>
-	<p class="style4"></p>
-      <h2 class="style4"><a name="Repository" id="Projects2"></a>Use-Case Repository      </h2>
-      <p class="style4">To drive our research, we base our experiments and feature requirements on real use-cases from a variety of domains, primarily various domain sciences. To help the community, we are making these use-cases publicly available <a href="./repository/">here</a>.</p>
-      <p class="style4">&nbsp;</p>
-<h2 class="style4"><a name="Acks" id="Acks"></a>Acknowledgments</h2>
-        <p><span class="style4">The Myria project is partially supported by the National Science Foundation through <a href="http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=1247469">NSF grant IIS-</a><a title="View Status for Proposal Number 1247469" href="https://www.fastlane.nsf.gov/researchadmin/viewProposalStatusDetails.do?propId=1247469&amp;performOrg=U of Washington">1247469</a>, gifts from <a href="http://www.emc.com">EMC</a>, and the <a href="http://istc-bigdata.org">Intel Science and Technology Center for Big Data</a>. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the funding agencies. </span><br />
-      </p></td>
-  </tr>
-</table>
-</body>
-</html>
+<p>We also have other projects related to Big Data management. See our <a href="https://www.cs.washington.edu/node/8749/">overview page</a>.</p>
+
+<p>And be sure to see our <a href="http://www.cs.washington.edu/research/bigdata">CSE-wide efforts in Big Data</a>
+
+
+<h1 id="people">People</h1>
+
+{% capture people %}{% include people.markdown %}{% endcapture %}
+{{ people | markdownify }}
+
+<h1 id="publications"></a>Projects, Publications, and Software</h1>
+We are tackling several inter-related challenges:</p>
+
+<h2>Big Data Management Theory</h2>
+
+<p>We are studying the theory of efficient Big Data management, which leads to new fundamental results regarding the complexity of various ad hoc data transformations in modern massive-scale systems.</p>
+
+<p>Our model of computation is an extension of our recent Massively Parallel (MP) model, where computation is performed by P severs that alternate between computation and re-shuffling steps, and each server is limited to O(n/P) space, where n is the size of the data. We study the time/space complexity of data transformations and extensions to cope with failures. </p>
+
+<h2>Big Data Query languages</h2>
+
+{% capture languages %}{% include languages.markdown %}{% endcapture %}
+{{ languages | markdownify }}
+
+<h2>Systems-challenges of Efficient Big Data Management</h2>
+
+<p>We are studying a variety of challenges related to building systems for efficient Big Data management. A large fraction of this work is done in the context of the <a href="http://nuage.cs.washington.edu">Nuage project</a>. We are also tackling challenges related to the usability of Big Data systems in the <a href="http://cqms.cs.washington.edu/">CQMS project</a>.</p>
+
+<p>In the specific context of the Myria project, we started to focus on challenges associated with efficient iterative processing. In particular, failures and load imbalances are increasingly common as the size of data processing tasks grows, and exacerbated in iterative programs. In prior work, we have extensively studied both problems for non-iterative computations. For iterative programs, we propose a radically new, extremely lightweight approach, which we call FT/Skew Skip Mechanism: when a server fails, we simply allow the other servers to continue the iteration. The failed computation either re-joins eventually, after recovery; or is abandoned altogether, if the resulting accuracy is still acceptable. We treat skew as a form of failure: servers that are too slow to respond are assumed to have failed. We are studying this approach and other light-weight fault-tolerance and load balance techniques for iterative computations.</p>
+
+<h2>Big Data Management as a Cloud Service</h2>
+
+<p>An important focus of Myria is not just on managing Big Data but on doing so using a cloud service. We are thus studying various aspects of this problem.
+
+Specifically, we are studying a new type of SLA that will enable Cloud providers to offer Big Data Management and Analytics as a service with a more user-friendly and performance-friendly service-level agreement (SLA).</p>
+
+<p>Today's pricing models and SLAs are described at the level of compute resources (instance-hours or gigabytes processed). They are also different from one service to the next. Both conditions make it difficult for users to select a service, pick a configuration, and predict the actual analysis cost. To address this challenge, we propose a new abstraction, called a Personalized Service Level Agreement (PSLA), where users are presented with what they can do with their data in terms of query capabilities, guaranteed query performance and fixed hourly prices.</p>
+
+<p>Ortiz, J., Almeida, V. T., Balazinska, M.,<a href="publications/PSLA2013.pdf">A Vision for Personalized Service Level Agreements in the Cloud</a>, Workshop on Data Analytics in the Cloud with SIGMOD 2013, June 2013.</p>
+
+<h2><span>MyriaDB System and Service</span></h2>
+
+<p>All the above ideas are brought together in a new Big Data management system called MyriaDB that we are currently building as a cloud service.</p>
+
+
+<h1 id="usecases">Use-Case Repository</h1>
+
+<p>In order to facilitate Big Data research in academia and research labs, we are assembling a variety of real uses-cases and known benchmarks and base our experiments and feature requirements on real use-cases from a variety of domains, primarily various domain sciences. To help the community, we are making these use-cases publicly available. Each use-case comprises data and examples of the processing to be done on that data.</p>
+
+<p>This effort is part of our <a href="http://myria.cs.washington.edu">Myria project</a> and is brought to you by the University of Washington <a href="http://db.cs.washington.edu">database group</a>, <a href="http://db.cs.washington.edu/astrodb/">AstroDB team</a>, <a href="http://ssg.astro.washington.edu/home_ssg.shtml">Survey Science group,</a><a href="http://www-hpcc.astro.washington.edu/"> N-body Shop</a>, <a href="http://escience.washington.edu/">eScience Institute</a>, and the <a href="http://bigdata.cs.washington.edu">Big Data </a>group.</p>
+
+<p>We also have an older <a href="http://nuage.cs.washington.edu/repository.php">repository of Hadoop applications</a> as part of our earlier <a href="http://nuage.cs.washington.edu">Nuage project</a>.</p>
+
+<a class="btn btn-primary" href="{{ site.baseurl}}/repository/">Open use-case repository...</a>
+
+<h1 id="ack">Acknowledgments</h1>
+
+<p>The Myria project is partially supported by the National Science Foundation through <a href="http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=1247469">NSF grant IIS-</a><a title="View Status for Proposal Number 1247469" href="https://www.fastlane.nsf.gov/researchadmin/viewProposalStatusDetails.do?propId=1247469&amp;performOrg=U of Washington">1247469</a>, gifts from <a href="http://www.emc.com">EMC</a>, and the <a href="http://istc-bigdata.org">Intel Science and Technology Center for Big Data</a>. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the funding agencies.</p>
+
+<div style="height: 100px">
+</div>

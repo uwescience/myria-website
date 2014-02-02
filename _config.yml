@@ -1,0 +1,4 @@
+name: Myria
+markdown: redcarpet
+pygments: true
+baseurl: myria

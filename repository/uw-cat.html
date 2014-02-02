@@ -1,137 +1,78 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Myria</title>
-<style type="text/css">
-<!--
-.style1 {
-	color: #000080;
-	font-family: Verdana, Helvetica, Arial, sans-serif;
-}
+---
+layout: default
+title: Myria - UW-CAT CoAddition Testing Use-Case
+---
 
-.style_em {
-	color: #000080;
-	font-family: Verdana, Helvetica, Arial, sans-serif;
-	font-style: italic ;
-	font-size: 70% ;	
-}
-body {
-	background-color: #f5f5f5;
-}
-h1 {
-	color: #E8E8E8;
-}
-a {
-  color: #473269;
-}
-.style4 {font-family: Verdana, Arial, Helvetica, sans-serif}
-.style5 {color: #999999}
-.style6 {font-family: Verdana, Arial, Helvetica, sans-serif; color: #473269; }
--->
-</style>
-<script type="text/javascript">
+<h1>UW-CAT: University of Washington CoAddition Testing Use-Case</h1>
 
-  var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-41536762-1']);
-      _gaq.push(['_trackPageview']);
+<p><strong>Requests</strong>: If you have any questions about this use-case, please contact <a href="http://homes.cs.washington.edu/~soroush/">Emad Soroush</a>.</p>
 
-        (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		      })();
+<h2>Overview of Application Domain</h2>
+      <p>The <a href="http://www.lsst.org/lsst/">Large Synoptic Survey Telescope (LSST)</a> is a large-scale, multi-organization initiative to build a new telescope and use it to continuously survey the entire visible sky. The LSST will generate tens of TB of telescope images every night. The planned survey will cover more sky with more visits than any survey before. The novelty of the project means that no current dataset can exercise the full complexity of the data expected from the LSST. For this reason, before the telescope produces its first images in a few years, astronomers are testing their data analysis pipelines, storage techniques, and data exploration using realistic but simulated images. More information on the simulation process can be found in <a href="http://spie.org/x648.html?product_id=857819">this</a> paper.</p>
+        <p>This use-case provides a set of such simulated LSST images (approximately 1TB in binary format) and presents a simple but fundamental type of processing that needs to be performed on these images.</p>
+        <p>Please visit this page often as we plan to expand the type of analysis described in this use-case!</p>
 
-		      </script>
-</head>
-
-<body>
-<table width="100%" border="0" cellpadding="2" cellspacing="2">
-  <tr>
-    <!--<td width="13%" rowspan="6" background="cloud.jpg" bgcolor="#CCCCCC">&nbsp; </td>-->
-    <td width="13%" rowspan="7" bgcolor="#f5f5f5">&nbsp;</td>
-    <td width="69%" height="82"><h1><span class="style6">UW-CAT: University of Washington CoAddition Testing Use-Case</span></h1>
-    <p>&nbsp;</p></td>
-    <td width="18%" rowspan="7" bgcolor="#f5f5f5">&nbsp;</td>
-  </tr>
-  <tr>
-    <td><table width="100%" height="41" border="0" bgcolor="#eee9e9">
-      <tr bgcolor="#eee9e9">
-        <td width="201" height="35" align="center" class="style4"><a href="http://myria.cs.washington.edu/repository/">Back to Myria Use-Case Repository</a></td>
-      </tr>
-    </table></td>
-  </tr>
-  <tr>
-    <td style="border-left: 2px; padding: 10px;"><p class="style4"><strong>Requests</strong>: If you have any questions about this use-case, please contact <a href="http://homes.cs.washington.edu/~soroush/">Emad Soroush</a>.</p>
-      <p class="style4">&nbsp;</p>
-      <h2 class="style4">Overview of Application Domain
-      </h2>
-      <p class="style4">The <a href="http://www.lsst.org/lsst/">Large Synoptic Survey Telescope (LSST)</a> is a large-scale, multi-organization initiative to build a new telescope and use it to continuously survey the entire visible sky. The LSST will generate tens of TB of telescope images every night. The planned survey will cover more sky with more visits than any survey before. The novelty of the project means that no current dataset can exercise the full complexity of the data expected from the LSST. For this reason, before the telescope produces its first images in a few years, astronomers are testing their data analysis pipelines, storage techniques, and data exploration using realistic but simulated images. More information on the simulation process can be found in <a href="http://spie.org/x648.html?product_id=857819">this</a> paper.</p>
-        <p class="style4">This use-case provides a set of such simulated LSST images (approximately 1TB in binary format) and presents a simple but fundamental type of processing that needs to be performed on these images.</p>
-        <p class="style4">Please visit this page often as we plan to expand the type of analysis described in this use-case!</p>
-        <p class="style4">&nbsp;</p>
-<h2 class="style4">Dataset </h2>
-    <p class="style4">As the telescope operates, it continuously scans the sky through a series of &quot;visits&quot; to individual, possibly overlapping locations, which are called <em>patches</em>. Each visit is one exposure on the sky. The dataset in this use-case comprises <i>25 exposures</i>. </p>
-    <p class="style4">The dataset is organized hierarchically: The root directory contains all the patches (e.g. 69,71/). Each patch directory contains a subset of visits (e.g. v865833781-fr/). These are the visits that overlapped this patch. Each visit contains a subset of raft directories (e.g. R01). Finally, each raft holds individual 2D ccd images. A sample directory structure is: &quot;69,71/v865833781-fr/R01/S00&quot;. Each ccd image is a 2D array of pixels stored in a binary file (compatible with the <a href="http://scidb.org/">SciDB</a> array processing engine). The ccd images were originally represented in the <a href="http://en.wikipedia.org/wiki/FITS">FITS</a> format. Fits files are available upon request. We do not post them because they are much bigger in size due to null values.</p>
-    <p class="style4">The total number of pixels is approximately 44 billion and the total size of all the binary files is approximately one terabyte.</p>
+<h2>Dataset </h2>
+    <p>As the telescope operates, it continuously scans the sky through a series of &quot;visits&quot; to individual, possibly overlapping locations, which are called <em>patches</em>. Each visit is one exposure on the sky. The dataset in this use-case comprises <i>25 exposures</i>. </p>
+    <p>The dataset is organized hierarchically: The root directory contains all the patches (e.g. 69,71/). Each patch directory contains a subset of visits (e.g. v865833781-fr/). These are the visits that overlapped this patch. Each visit contains a subset of raft directories (e.g. R01). Finally, each raft holds individual 2D ccd images. A sample directory structure is: &quot;69,71/v865833781-fr/R01/S00&quot;. Each ccd image is a 2D array of pixels stored in a binary file (compatible with the <a href="http://scidb.org/">SciDB</a> array processing engine). The ccd images were originally represented in the <a href="http://en.wikipedia.org/wiki/FITS">FITS</a> format. Fits files are available upon request. We do not post them because they are much bigger in size due to null values.</p>
+    <p>The total number of pixels is approximately 44 billion and the total size of all the binary files is approximately one terabyte.</p>
     <ul class="ul1">
-      <li class="style4">Each binary file comprises a list of tuples of the form: (int64 x, int64 y, int64 t, float data, int16 mask, float variance). Each tuple represents a pixel in (x,y,t) coordinates and consists of three measurements. In this use-case, we only use the first measurement, called &quot;data&quot;:</li>
+      <li>Each binary file comprises a list of tuples of the form: (int64 x, int64 y, int64 t, float data, int16 mask, float variance). Each tuple represents a pixel in (x,y,t) coordinates and consists of three measurements. In this use-case, we only use the first measurement, called &quot;data&quot;:</li>
       <ol class="ol1">
-        <li class="style4"><i>data</i>: This is the flux information recorded by the detector with some corrections for systematic issues.</li>
-        <li class="style4"><i>mask</i>: This value is a bitmask encoded as an integer and related to pixel quality&nbsp;(e.g. was this pixel saturated, interpolated, marked as bad, etc.)</li>
-        <li class="style4"><i>variance</i>: This value encodes the measurement error for each pixel. &nbsp;</li>
+        <li><i>data</i>: This is the flux information recorded by the detector with some corrections for systematic issues.</li>
+        <li><i>mask</i>: This value is a bitmask encoded as an integer and related to pixel quality&nbsp;(e.g. was this pixel saturated, interpolated, marked as bad, etc.)</li>
+        <li><i>variance</i>: This value encodes the measurement error for each pixel. &nbsp;</li>
       </ol>
     </ul>
-    <p class="style4">The format of each tuple in the binary output file is as follows: 8 bytes (big-endian) for &quot;x&quot; att + 8 bytes for &quot;y&quot; att + 8 bytes for &quot;t&quot; att +&nbsp;1 byte purge + 4 bytes for &quot;data&quot; att + 1 byte purge + 2 bytes for &quot;mask&quot; att + 1 byte purge + 4 bytes for &quot;variance&quot; att.&nbsp; The &quot;purge&quot; bytes indicate whether the following value is NULL or not. It is a SciDB-specific encoding. </p>
+    <p>The format of each tuple in the binary output file is as follows: 8 bytes (big-endian) for &quot;x&quot; att + 8 bytes for &quot;y&quot; att + 8 bytes for &quot;t&quot; att +&nbsp;1 byte purge + 4 bytes for &quot;data&quot; att + 1 byte purge + 2 bytes for &quot;mask&quot; att + 1 byte purge + 4 bytes for &quot;variance&quot; att.&nbsp; The &quot;purge&quot; bytes indicate whether the following value is NULL or not. It is a SciDB-specific encoding. </p>
     <h2 class="p6"></h2>
-    <p class="style4"><b>Link to the data: </b><a href="http://lsst-data-washington.s3.amazonaws.com/">http://lsst-data-washington.s3.amazonaws.com/</a></p>
-    <p class="style4"><strong>Link to tech report with details about the data and analysis</strong>: <a href="http://scidb.cs.washington.edu/paper/p807-soroush.pdf">The Image Co-Addition Benchmark for Big Data Research</a> (full reference at the bottom of this page).</p>
+    <p><b>Link to the data: </b><a href="http://lsst-data-washington.s3.amazonaws.com/">http://lsst-data-washington.s3.amazonaws.com/</a></p>
+    <p><strong>Link to tech report with details about the data and analysis</strong>: <a href="http://scidb.cs.washington.edu/paper/p807-soroush.pdf">The Image Co-Addition Benchmark for Big Data Research</a> (full reference at the bottom of this page).</p>
     <p></p>
-    <h2 class="style6"><span class="style4">Analysis</span></h2>
-    <p class="style4">In Astronomy, some sources are too faint to be detected in one telescope image but can be detected by stacking multiple images from the same location of the sky. The pixel value (flux value) summation over all images is called image co-addition. Before performing the co-addition, astronomers often run a &ldquo;sigma-clipping&rdquo; noise-reduction algorithm. The analysis in this use-case thus has two steps: (1) outlier filtering with &quot;sigma-clipping&quot; and then (2) image co-addition.</p>
-<p class="style4">The input is the relation AllImages(int x, int y, int t, float data, int mask, float var) comprising the pixels from all the x-y images over time t.</p>
-<p class="style4"><b>*********** pseudocode &nbsp; *********</b></p>
-<pre class="style4">//Part 1: Iterative &ldquo;sigma-clipping&rdquo;</pre>
-<pre class="style4">&nbsp;while (some pixels changes)</pre>
-<pre class="style4">&nbsp; &nbsp; &nbsp;for each (x,y) location</pre>
-<pre class="style4">
+    <h2 class="style6"><span>Analysis</span></h2>
+    <p>In Astronomy, some sources are too faint to be detected in one telescope image but can be detected by stacking multiple images from the same location of the sky. The pixel value (flux value) summation over all images is called image co-addition. Before performing the co-addition, astronomers often run a &ldquo;sigma-clipping&rdquo; noise-reduction algorithm. The analysis in this use-case thus has two steps: (1) outlier filtering with &quot;sigma-clipping&quot; and then (2) image co-addition.</p>
+<p>The input is the relation AllImages(int x, int y, int t, float data, int mask, float var) comprising the pixels from all the x-y images over time t.</p>
+<p><b>*********** pseudocode &nbsp; *********</b></p>
+<pre>//Part 1: Iterative &ldquo;sigma-clipping&rdquo;</pre>
+<pre>&nbsp;while (some pixels changes)</pre>
+<pre>&nbsp; &nbsp; &nbsp;for each (x,y) location</pre>
+<pre>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   compute mean/stddev of all pixel values at that location
 
    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;filter any pixel value that is k standard deviations away from the mean &nbsp;</pre>
-<pre class="style4">// Part 2: Image co-addition</pre>
-<pre class="style4">sum all non-null pixel values grouped by x-y</pre>
-<p class="style4"><b>*****************************************</b></p>
-<p class="style4"><br />
+<pre>// Part 2: Image co-addition</pre>
+<pre>sum all non-null pixel values grouped by x-y</pre>
+<p><b>*****************************************</b></p>
+<p><br />
 </p>
-<p class="style4"><b>********* Concrete &quot;Sigma-Clipping&quot; Algorithm ***********</b><br />
+<p><b>********* Concrete &quot;Sigma-Clipping&quot; Algorithm ***********</b><br />
 </p>
-<pre class="style4">1: Input: Relation A(int x, int y, int t, float data, int mask, float var) 
+<pre>1: Input: Relation A(int x, int y, int t, float data, int mask, float var) 
 2: Input: k a constant parameter.</pre>
-<pre class="style4">3: WHILE(some tuples in A are filtered)</pre>
-<pre class="style4">4: &nbsp; &nbsp;T = SELECT AVG(data) AS avg, STDV(data) AS stdv, x, y FROM A GROUP BY x,y</pre>
-<pre class="style4">5: &nbsp; &nbsp;S = SELECT A.x, A.y, A.t, A.data, T.stdv, T.avg FROM T&nbsp;join&nbsp;A on T.x = A.x AND T.y=A.y</pre>
-<pre class="style4">6: &nbsp; &nbsp;A = SELECT S.x, S.y, S.t, S.data FROM S WHERE S.data&gt; S.avg - k*S.stdv AND S.data &lt; S.agv + k*S.stdv</pre>
-<pre class="style4">7: Result = SELECT SUM(data) AS coadd from Filtered GROUP BY x,y&nbsp;</pre>
-<p class="style4"><b>*****************************************************************************</b></p>
-<p class="style4">&nbsp;</p>
-<h2 class="style4">Acknowledgment Request</h2>
-      <p class="style4">If you use this use-case in your paper, we ask you to please:</p>
+<pre>3: WHILE(some tuples in A are filtered)</pre>
+<pre>4: &nbsp; &nbsp;T = SELECT AVG(data) AS avg, STDV(data) AS stdv, x, y FROM A GROUP BY x,y</pre>
+<pre>5: &nbsp; &nbsp;S = SELECT A.x, A.y, A.t, A.data, T.stdv, T.avg FROM T&nbsp;join&nbsp;A on T.x = A.x AND T.y=A.y</pre>
+<pre>6: &nbsp; &nbsp;A = SELECT S.x, S.y, S.t, S.data FROM S WHERE S.data&gt; S.avg - k*S.stdv AND S.data &lt; S.agv + k*S.stdv</pre>
+<pre>7: Result = SELECT SUM(data) AS coadd from Filtered GROUP BY x,y&nbsp;</pre>
+<p><b>*****************************************************************************</b></p>
+<p>&nbsp;</p>
+<h2>Acknowledgment Request</h2>
+      <p>If you use this use-case in your paper, we ask you to please:</p>
       <ol>
-        <li class="style4">Add the following statement to your acknowledgments section: &quot;<strong>We thank the AstroDB group from the U. of Washington for the&nbsp;UW-CAT use-case and dataset [cite tech report below].</strong>&quot;</li>
-        <li class="style4">Please cite the following tech report, which contains the full-length description of the use-case and the expanded acknowledgments:      </li>
+        <li>Add the following statement to your acknowledgments section: &quot;<strong>We thank the AstroDB group from the U. of Washington for the&nbsp;UW-CAT use-case and dataset [cite tech report below].</strong>&quot;</li>
+        <li>Please cite the following tech report, which contains the full-length description of the use-case and the expanded acknowledgments:      </li>
       </ol>
-      <p class="style4">Emad Soroush, Simon Krughoff, Matthew Moyers, Jake Vanderplas<br />
+      <p>Emad Soroush, Simon Krughoff, Matthew Moyers, Jake Vanderplas<br />
         Magdalena Balazinska, Andrew Connolly, and Bill Howe<br/>
         <!-- uw-cat-tech-report2013.pdf -->
 	<a href="http://scidb.cs.washington.edu/paper/p807-soroush.pdf">The Image Co-Addition Benchmark for Big Data Research</a><br />
       Technical Report. University of Washington. April 2013 </span></p>
       <ol start="3">
-        <li class="style4">Please let us know when your paper gets published and we will add a link to it from this page.</li>
+        <li>Please let us know when your paper gets published and we will add a link to it from this page.</li>
       </ol>
-      <h2 class="style4">Acknowledgments</h2>
+      <h2>Acknowledgments</h2>
       
-      
-      <p><span class="style4">LSST project activities are supported in part by the National Science
+      <p><span>LSST project activities are supported in part by the National Science
       Foundation through Governing Cooperative Agreement 0809409 managed by the
       Association of Universities for Research in Astronomy (AURA), and the
       Department of Energy under contract DE-AC02-76-SFO0515 with the SLAC
@@ -140,16 +81,7 @@ a {
       Members.
       </span>
 
-      <p span class="style4">This use-case was developed as part of a project supported in part by NSF grant IIS-1110370 and the Intel Science and Technology Center for Big Data. 
+      <p span>This use-case was developed as part of a project supported in part by NSF grant IIS-1110370 and the Intel Science and Technology Center for Big Data. 
       </span>
       <p><br />
-    </span></p></td>
-  </tr>
-  <tr>
-    <td style="border-left: 2px; padding: 10px;">&nbsp;</td>
-  </tr>
-</table>
-<p>&nbsp;</p>
-<h2 class="style4">&nbsp;</h2>
-</body>
-</html>
+    </span></p>
