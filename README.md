@@ -8,3 +8,5 @@ See the site in action at [uwescience.github.io/myria-website/](http://uwescienc
 
 * install [jekyll](http://jekyllrb.com/)
 * run jekyll `jekyll serve --watch --baseurl ''`
+
+If jekyll throws a version error, you may need to `gem install json` before serving.
