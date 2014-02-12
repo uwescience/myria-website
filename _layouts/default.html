@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="{{ site.baseurl}}/css/main.css">
     </head>
-    <body data-spy="scroll" data-target=".navbar-default">
+    <body data-spy="scroll" data-offset="70" data-target=".navbar-default">
       <!-- Fixed navbar -->
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
@@ -58,5 +58,13 @@
 
       <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
       <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+      <script type="text/javascript">
+        var offset = 69;
+        $('.navbar li a').click(function(event) {
+            event.preventDefault();
+            $($(this).attr('data-target'))[0].scrollIntoView();
+            scrollBy(0, -offset);
+        });
+      </script>
     </body>
 </html>
