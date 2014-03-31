@@ -1,9 +1,17 @@
 ---
 layout: default
-title: Myria - Use-Case Repository
+title: Use-Case Repository
+group: "navigation"
+rank: 3
 ---
 
-# <span id="usecases">Use-Case Repository</span>
+# Use-Case Repository
+
+In order to facilitate Big Data research in academia and research labs, we are assembling a variety of real uses-cases and known benchmarks and base our experiments and feature requirements on real use-cases from a variety of domains, primarily various domain sciences. To help the community, we are making these use-cases publicly available. Each use-case comprises data and examples of the processing to be done on that data.
+
+This effort is brought to you by the University of Washington [database group](http://db.cs.washington.edu), [AstroDB team](http://db.cs.washington.edu/astrodb/), [Survey Science group,](http://ssg.astro.washington.edu/home_ssg.shtml)[ N-body Shop](http://www-hpcc.astro.washington.edu/), [eScience Institute](http://escience.washington.edu/), and the [Big Data ](http://bigdata.cs.washington.edu)group.
+
+We also have an older [repository of Hadoop applications](http://nuage.cs.washington.edu/repository.php) as part of our earlier [Nuage project](http://nuage.cs.washington.edu).
 
 ## UW-CAT: University of Washington CoAddition Testing Use-Case
 
