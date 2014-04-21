@@ -53,7 +53,7 @@ An important focus of Myria is not just on managing Big Data but on doing so usi
 
 Today's pricing models and SLAs are described at the level of compute resources (instance-hours or gigabytes processed). They are also different from one service to the next. Both conditions make it difficult for users to select a service, pick a configuration, and predict the actual analysis cost. To address this challenge, we propose a new abstraction, called a Personalized Service Level Agreement (PSLA), where users are presented with what they can do with their data in terms of query capabilities, guaranteed query performance and fixed hourly prices.
 
-*Ortiz, J., Almeida, V. T., Balazinska, M.,[A Vision for Personalized Service Level Agreements in the Cloud](publications/PSLA2013.pdf), Workshop on Data Analytics in the Cloud with SIGMOD 2013, June 2013*
+*Ortiz, J., Almeida, V. T., Balazinska, M.,[A Vision for Personalized Service Level Agreements in the Cloud](publications/Ortiz_PSLA_2013.pdf), Workshop on Data Analytics in the Cloud with SIGMOD 2013, June 2013*
 
 
 ## MyriaDB System and Service
