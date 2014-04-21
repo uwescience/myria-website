@@ -56,6 +56,11 @@ Today's pricing models and SLAs are described at the level of compute resources 
 *J. Ortiz, V.T. Almeida, M. Balazinska.* [A Vision for Personalized Service Level Agreements in the Cloud](publications/Ortiz_PSLA_2013.pdf), Workshop on Data Analytics in the Cloud (DanaC), with SIGMOD/PODS 2013.
 
 
-## MyriaDB System and Service
+## Myria System and Service
 
-All the above ideas are brought together in a new Big Data management system called MyriaDB that we are currently building as a cloud service.
+All the above ideas are brought together in a new Big Data management system called Myria that we are currently building as a cloud service.
+
+We will be presenting a demo of Myria at SIGMOD 2014:
+
+*D. Halperin, V. T. Almeida, L. L. Choo, S. Chu, P. Koutris, D. Moritz, J. Ortiz, V. Ruamviboonsuk, J. Wang, A. Whitaker, S. Xu, M. Balazinska, B. Howe, and D. Suciu.*
+[Demonstration of the Myria Big Data Management Service](publications/Halperin_Myria_demo_SIGMOD_2014.pdf), SIGMOD 2014.
