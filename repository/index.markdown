@@ -13,6 +13,15 @@ This effort is brought to you by the University of Washington [database group](h
 
 We also have an older [repository of Hadoop applications](http://nuage.cs.washington.edu/repository.php) as part of our earlier [Nuage project](http://nuage.cs.washington.edu).
 
+## Merger tree usecase
+
+coming soon...
+
+<iframe width="560" height="315" src="//www.youtube.com/embed/RMEKp_BUcfQ" frameborder="0" allowfullscreen></iframe>
+
+[Link to the My Merger Tree poster pdf]({{ site.baseurl}}/repository/MyMergerTree/MyMergerTreePoster.pdf)
+
+
 ## UW-CAT: University of Washington CoAddition Testing Use-Case
 
 * **Name**: Please refer to this dataset/use-case as the **UW-CAT** dataset/use-case.
@@ -32,6 +41,3 @@ coming soon...
 
 coming soon...
 
-## Merger tree usecase
-
-coming soon...
