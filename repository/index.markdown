@@ -17,7 +17,7 @@ We also have an older [repository of Hadoop applications](http://nuage.cs.washin
 
 coming soon...
 
-<iframe width="560" height="315" src="//www.youtube.com/embed/RMEKp_BUcfQ" frameborder="0" allowfullscreen></iframe>
+<iframe width="853" height="480" src="//www.youtube.com/embed/RMEKp_BUcfQ" frameborder="0" allowfullscreen></iframe>
 
 [Link to the My Merger Tree poster pdf]({{ site.baseurl}}/repository/MyMergerTree/MyMergerTreePoster.pdf)
 
