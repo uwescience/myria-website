@@ -13,14 +13,11 @@ This effort is brought to you by the University of Washington [database group](h
 
 We also have an older [repository of Hadoop applications](http://nuage.cs.washington.edu/repository.php) as part of our earlier [Nuage project](http://nuage.cs.washington.edu).
 
-## Merger tree usecase
+## MyMergerTree Use-Case
 
-coming soon...
+MyMergerTree is a vertical service built on top of Myria to facilitate the study of the formation of galaxies through the visualization of galactic merger trees. By utilizing Myria's REST API to compute these trees, we can provide astronomers with interactive visualizations to dramatically improve the speed and efficiency of their data analysis. You can find our paper presented at the DanaC Workshop at SIGMOD 2014 [here]({{site.baseurl}}/repository/MyMergerTree/MyMergerTree_DanaC_2014.pdf). Additionally, below is the MyMergerTree demo (part of the Myria demo at SIGMOD 2014) with a link to the poster [here]({{site.baseurl}}/repository/MyMergerTree/MyMergerTreePoster.pdf).
 
 <iframe width="853" height="480" src="//www.youtube.com/embed/RMEKp_BUcfQ" frameborder="0" allowfullscreen></iframe>
-
-[Link to the My Merger Tree poster pdf]({{ site.baseurl}}/repository/MyMergerTree/MyMergerTreePoster.pdf)
-
 
 ## UW-CAT: University of Washington CoAddition Testing Use-Case
 
