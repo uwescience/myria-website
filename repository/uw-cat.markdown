@@ -71,8 +71,10 @@ Result = SELECT SUM(data) AS coadd from Filtered GROUP BY x,y
 If you use this use-case in your paper, we ask you to please:
 
 1.  Add the following statement to your acknowledgments section: "**We thank the AstroDB group from the U. of Washington for the&nbsp;UW-CAT use-case and dataset [cite tech report below].**"
-2.  Please cite the following tech report, which contains the full-length description of the use-case and the expanded acknowledgments:
- * Emad Soroush, Simon Krughoff, Matthew Moyers, Jake Vanderplas, Magdalena Balazinska, Andrew Connolly, and Bill Howe [The Image Co-Addition Benchmark for Big Data Research](http://scidb.cs.washington.edu/paper/p807-soroush.pdf) Technical Report. University of Washington. April 2013
+2.  Please cite the following demonstration paper:
+ * [A Demonstration of Iterative Parallel Array Processing in Support of Telescope Image Analysis](http://scidb.cs.washington.edu/paper/p807-soroush.pdf)  
+Matthew Moyers, Emad Soroush, Spencer C Wallace, Simon Krughoff, Jake Vanderplas, Magdalena Balazinska, and Andrew Connolly.  
+VLDB 2013 Demonstration
 
 1.  Please let us know when your paper gets published and we will add a link to it from this page.
 
