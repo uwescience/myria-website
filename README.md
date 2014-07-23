@@ -2,7 +2,7 @@
 
 Website for the UW myria project.
 
-See the site in action at [uwescience.github.io/myria-website/](http://uwescience.github.io/myria-website/).
+See the site in action at [myria.cs.washington.edu](http://myria.cs.washington.edu/).
 
 ## How to make changes
 
