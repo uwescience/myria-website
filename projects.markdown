@@ -46,6 +46,14 @@ We are studying a variety of challenges related to building systems for efficien
 
 In the specific context of the Myria project, we started to focus on challenges associated with efficient iterative processing. In particular, failures and load imbalances are increasingly common as the size of data processing tasks grows, and exacerbated in iterative programs. In prior work, we have extensively studied both problems for non-iterative computations. For iterative programs, we propose a radically new, extremely lightweight approach, which we call FT/Skew Skip Mechanism: when a server fails, we simply allow the other servers to continue the iteration. The failed computation either re-joins eventually, after recovery; or is abandoned altogether, if the resulting accuracy is still acceptable. We treat skew as a form of failure: servers that are too slow to respond are assumed to have failed. We are studying this approach and other light-weight fault-tolerance and load balance techniques for iterative computations.
 
+## MyMergerTree Use-Case
+
+MyMergerTree is a vertical service built on top of Myria to facilitate the study of the formation of galaxies through the visualization of galactic merger trees. By utilizing Myria's REST API to compute these trees, we can provide astronomers with interactive visualizations to dramatically improve the speed and efficiency of their data analysis. Below are the MyMergerTree demo, part of the Myria demo at SIGMOD 2014, and links to the demo's poster and to the MyMergerTree paper presented at the DanaC Workshop at SIGMOD 2014.
+
+* [MyMergerTree Service: Creating Galactic Merger Trees using Myria]({{site.baseurl}}/repository/MyMergerTree/MyMergerTreePoster.pdf). Presented by Laurel Orr, Sarah Loebman, Jennifer Ortiz, and Daniel Halperin. Demo poster at *SIGMOD 2014*.
+* [Big-Data Management Use-Case: A Cloud Service for Creating and Analyzing Galactic Merger Trees]({{site.baseurl}}/repository/MyMergerTree/MyMergerTree_DanaC_2014.pdf). Sarah Loebman, Jennifer Ortiz, Lee Lee Choo, Laurel Orr, Lauren Anderson, Daniel Halperin, Magdalena Balazinska, Thomas Quinn, and Fabio Governato. *SIGMOD Workshop on Data Analytics in the Cloud (DanaC) 2014*.
+
+<iframe width="853" height="480" src="//www.youtube.com/embed/RMEKp_BUcfQ" frameborder="0" allowfullscreen></iframe>
 
 ## Big Data Management as a Cloud Service
 
