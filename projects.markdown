@@ -57,11 +57,13 @@ MyMergerTree is a vertical service built on top of Myria to facilitate the study
 
 ## Big Data Management as a Cloud Service
 
-An important focus of Myria is not just on managing Big Data but on doing so using a cloud service. We are thus studying various aspects of this problem. Specifically, we are studying a new type of SLA that will enable Cloud providers to offer Big Data Management and Analytics as a service with a more user-friendly and performance-friendly service-level agreement (SLA).
+An important focus of Myria is not just on managing Big Data but on doing so using a Cloud service. We are thus studying various aspects of this problem. Specifically, we are studying a new type of SLA that will enable Cloud providers to offer Big Data Management and Analytics as a service with a more user-friendly and performance-friendly service-level agreement (SLA).
 
 Today's pricing models and SLAs are described at the level of compute resources (instance-hours or gigabytes processed). They are also different from one service to the next. Both conditions make it difficult for users to select a service, pick a configuration, and predict the actual analysis cost. To address this challenge, we propose a new abstraction, called a Personalized Service Level Agreement (PSLA), where users are presented with what they can do with their data in terms of query capabilities, guaranteed query performance and fixed hourly prices.
 
-*J. Ortiz, V.T. Almeida, M. Balazinska.* [A Vision for Personalized Service Level Agreements in the Cloud](publications/Ortiz_PSLA_2013.pdf), Workshop on Data Analytics in the Cloud (DanaC), with SIGMOD/PODS 2013.
+* [A Vision for Personalized Service Level Agreements in the Cloud](publications/Ortiz_PSLA_2013.pdf). Jennifer Ortiz, Victor T. Almeida, Magda Balazinska. *SIGMOD Workshop on Data Analytics in the Cloud (DanaC) 2013*.
+
+<iframe width="853" height="480" src="//www.youtube.com/embed/f1dJfQXyT7A" frameborder="0" allowfullscreen></iframe>
 
 
 ## Myria System and Service
