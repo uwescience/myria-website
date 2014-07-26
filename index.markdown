@@ -9,7 +9,7 @@ rank: 0
 	<h1>Myria <small>Big Data as a Service</small></h1>
 
 	<p class="lead">
-		Myria is a distributed, shared-nothing Big Data management system and Cloud service from the <a href="http://eee.uw.edu">University of Washington</a>.
+		Myria is a distributed, shared-nothing Big Data management system and Cloud service from the <a href="http://eee.uw.edu">University of Washington</a>. We derive requirements from real users and complex workflows, especially in science.
 	</p>
 
 </div>
