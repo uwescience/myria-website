@@ -39,6 +39,7 @@ DO
 WHILE [*COUNTALL(Delta) > 0];
 ```
 
+<iframe width="420" height="315" src="//www.youtube.com/embed/v1ZNf1EgG4o" frameborder="0" allowfullscreen></iframe>
 
 ## Systems-challenges of Efficient Big Data Management
 
