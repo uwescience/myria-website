@@ -27,6 +27,7 @@ rank: 1
 * [Paris Koutris](http://homes.cs.washington.edu/~pkoutris/)
 * Ryan Maas
 * [Dominik Moritz](https://domoritz.github.io)
+* [Brandon Myers](http://homes.cs.washington.edu/~bdmyers/)
 * Laurel Orr
 * [Jennifer Ortiz](http://homes.cs.washington.edu/~jortiz16/)
 * [Emad Soroush](http://www.cs.washington.edu/homes/soroush/)
