@@ -30,5 +30,6 @@ Myria is open source: <span class="btn-group">
 	<a class="btn btn-default btn-sm" href="https://github.com/uwescience/raco">**R**elational **A**lgebra **CO**mpiler</a>
 </span>
 
+Myria is developed and operated by the [database group](http://db.cs.washington.edu/) and the [eScience institute](http://escience.washington.edu/) at the University of Washington.
 
 We also have other projects related to Big Data management. See our [overview page](https://www.cs.washington.edu/node/8749/). And be sure to see our [CSE-wide efforts in Big Data](http://www.cs.washington.edu/research/bigdata)
