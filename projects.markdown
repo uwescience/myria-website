@@ -47,6 +47,10 @@ We are studying a variety of challenges related to building systems for efficien
 
 In the specific context of the Myria project, we started to focus on challenges associated with efficient iterative processing. In particular, failures and load imbalances are increasingly common as the size of data processing tasks grows, and exacerbated in iterative programs. In prior work, we have extensively studied both problems for non-iterative computations. For iterative programs, we propose a radically new, extremely lightweight approach, which we call FT/Skew Skip Mechanism: when a server fails, we simply allow the other servers to continue the iteration. The failed computation either re-joins eventually, after recovery; or is abandoned altogether, if the resulting accuracy is still acceptable. We treat skew as a form of failure: servers that are too slow to respond are assumed to have failed. We are studying this approach and other light-weight fault-tolerance and load balance techniques for iterative computations.
 
+## Query profiling and visualization
+
+<iframe width="853" height="480" src="//www.youtube.com/embed/ac_XOUneSQo" frameborder="0" allowfullscreen></iframe>
+
 ## Big Data Management as a Cloud Service
 
 An important focus of Myria is not just on managing Big Data but on doing so using a Cloud service. We are thus studying various aspects of this problem. Specifically, we are studying a new type of SLA that will enable Cloud providers to offer Big Data Management and Analytics as a service with a more user-friendly and performance-friendly service-level agreement (SLA).
@@ -62,7 +66,7 @@ Today's pricing models and SLAs are described at the level of compute resources 
 
 All the above ideas are brought together in a new Big Data management system called Myria that we are currently building as a cloud service.
 
-We will be presenting a demo of Myria at SIGMOD 2014:
+We presented a demo of Myria at SIGMOD 2014:
 
 *D. Halperin, V. T. Almeida, L. L. Choo, S. Chu, P. Koutris, D. Moritz, J. Ortiz, V. Ruamviboonsuk, J. Wang, A. Whitaker, S. Xu, M. Balazinska, B. Howe, and D. Suciu.*
 [Demonstration of the Myria Big Data Management Service](publications/Halperin_Myria_demo_SIGMOD_2014.pdf), SIGMOD 2014.
