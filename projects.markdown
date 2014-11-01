@@ -12,10 +12,13 @@ We are tackling several inter-related challenges:
 
 ## Big Data Management Theory
 
-We are studying the theory of efficient Big Data management, which leads to new fundamental results regarding the complexity of various ad hoc data transformations in modern massive-scale systems.
+We are studying the foundations of efficient Big Data management, which leads to new fundamental results regarding the complexity of various ad hoc data transformations in modern massive-scale parallel systems.
 
-Our model of computation is an extension of our recent Massively Parallel (MP) model, where computation is performed by P severs that alternate between computation and re-shuffling steps, and each server is limited to O(n/P) space, where n is the size of the data. We study the time/space complexity of data transformations and extensions to cope with failures.
+Our model of computation is an extension of the Massively Parallel (MPC) model, where computation is performed by p severs that alternate between local computation and re-shuffling steps, and each server is limited to O(n/p) space, where n is the size of the data. We study the time/space complexity of data transformations and extensions to cope with failures.
 
+* [Skew in Parallel Query Processing](http://homes.cs.washington.edu/~pkoutris/papers/skew.pdf). Paul Beame, Paraschos Koutris, Dan Suciu. *PODS 2014*.
+* [Communication steps for parallel query processing](http://homes.cs.washington.edu/~pkoutris/papers/parallel_steps.pdf). Paul Beame, Paraschos Koutris, Dan Suciu. *PODS 2013*.
+* [Parallel Evaluation of Conjunctive Queries](http://homes.cs.washington.edu/~pkoutris/papers/pods11.pdf). Paraschos Koutris, Dan Suciu. *PODS 2011*.
 
 ## Big Data Query languages
 
