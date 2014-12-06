@@ -50,7 +50,7 @@ We are studying a variety of challenges related to building systems for efficien
 
 In the specific context of the Myria project, we started to focus on challenges associated with efficient iterative processing. In particular, failures and load imbalances are increasingly common as the size of data processing tasks grows, and exacerbated in iterative programs. In prior work, we have extensively studied both problems for non-iterative computations. For iterative programs, we propose a radically new, extremely lightweight approach, which we call FT/Skew Skip Mechanism: when a server fails, we simply allow the other servers to continue the iteration. The failed computation either re-joins eventually, after recovery; or is abandoned altogether, if the resulting accuracy is still acceptable. We treat skew as a form of failure: servers that are too slow to respond are assumed to have failed. We are studying this approach and other light-weight fault-tolerance and load balance techniques for iterative computations.
 
-## Query profiling and visualization
+<!-- ## Query profiling and visualization
 
 <iframe width="853" height="480" src="//www.youtube.com/embed/ac_XOUneSQo" frameborder="0" allowfullscreen></iframe>
 
@@ -63,7 +63,7 @@ Today's pricing models and SLAs are described at the level of compute resources 
 * [A Vision for Personalized Service Level Agreements in the Cloud](publications/Ortiz_PSLA_2013.pdf). Jennifer Ortiz, Victor T. Almeida, Magda Balazinska. *SIGMOD Workshop on Data Analytics in the Cloud (DanaC) 2013*.
 
 <iframe width="853" height="480" src="//www.youtube.com/embed/f1dJfQXyT7A" frameborder="0" allowfullscreen></iframe>
-
+ -->
 
 ## Myria System and Service
 
