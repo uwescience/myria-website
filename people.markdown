@@ -33,6 +33,7 @@ rank: 1
 * [Emad Soroush](http://www.cs.washington.edu/homes/soroush/)
 * Jingjing Wang
 * [Shengliang Xu](http://homes.cs.washington.edu/~slxu/)
+* [Brandon Haynes](http://homes.cs.washington.edu/~bhaynes/)
 
 ## Undergraduate Students
 
