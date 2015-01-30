@@ -13,11 +13,13 @@ rank: 1
 * [Bill Howe](http://www.cs.washington.edu/homes/billhowe/)
 * [Dan Suciu](http://www.cs.washington.edu/homes/suciu/)
 * [Daniel Halperin](http://homes.cs.washington.edu/~dhalperi/)
-* 
+
 ## Postdocs
+
 * Victor Almeida (alum)
 
 ## Staff
+
 * Andrew Whitaker (alum)
 
 ## PhD Students
