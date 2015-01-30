@@ -12,12 +12,13 @@ rank: 1
 * [Magdalena Balazinska](http://www.cs.washington.edu/homes/magda/)
 * [Bill Howe](http://www.cs.washington.edu/homes/billhowe/)
 * [Dan Suciu](http://www.cs.washington.edu/homes/suciu/)
-
-## Postdocs
-
-* Victor Almeida
 * [Daniel Halperin](http://homes.cs.washington.edu/~dhalperi/)
-* Andrew Whitaker
+* 
+## Postdocs
+* Victor Almeida (alum)
+
+## Staff
+* Andrew Whitaker (alum)
 
 ## PhD Students
 
