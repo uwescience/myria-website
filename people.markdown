@@ -26,19 +26,19 @@ rank: 1
 
 * [Shumo Chu](http://homes.cs.washington.edu/~chushumo/)
 * [Eric Gribkoff](http://homes.cs.washington.edu/~eagribko/)
+* Brandon Haynes
 * Jeremy Hyrkas
 * [Paris Koutris](http://homes.cs.washington.edu/~pkoutris/)
 * Ryan Maas
-* [Dominik Moritz](https://domoritz.github.io)
+* [Dominik Moritz](http://homes.cs.washington.edu/~domoritz/)
 * [Brandon Myers](http://homes.cs.washington.edu/~bdmyers/)
 * Laurel Orr
 * [Jennifer Ortiz](http://homes.cs.washington.edu/~jortiz16/)
-* [Emad Soroush](http://www.cs.washington.edu/homes/soroush/)
+* [Emad Soroush](http://www.cs.washington.edu/homes/soroush/) (alum)
 * Jingjing Wang
 * [Shengliang Xu](http://homes.cs.washington.edu/~slxu/)
-* [Brandon Haynes](http://homes.cs.washington.edu/~bhaynes/)
 
 ## Undergraduate Students
 
-* Lee Lee Choo
-* Vaspol Ruamviboonsuk
+* Lee Lee Choo (alum)
+* Vaspol Ruamviboonsuk (alum)
