@@ -1,8 +1,7 @@
 ---
 layout: default
-title: Acknowledgments
 group: "navigation"
-rank: 10
+id: ack
 ---
 
 # Acknowledgments

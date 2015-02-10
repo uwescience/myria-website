@@ -2,7 +2,7 @@
 layout: default
 title: Projects & Publications
 group: "navigation"
-rank: 2
+id: "projects"
 ---
 
 # Projects, Publications, and Software

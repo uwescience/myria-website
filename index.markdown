@@ -2,7 +2,7 @@
 layout: default
 title: Overview
 group: "navigation"
-rank: 0
+id: home
 ---
 
 <div class="jumbotron">

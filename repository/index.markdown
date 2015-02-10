@@ -2,7 +2,7 @@
 layout: default
 title: Use-Case Repository
 group: "navigation"
-rank: 3
+id: "cases"
 ---
 
 # Use-Case Repository
