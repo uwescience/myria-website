@@ -20,3 +20,7 @@
 <li {% if page.id == 'ack' %}class="active"{% endif %}>
   <a href="{{ site.baseurl }}/acknowledgments.html">Acknowledgments</a>
 </li>
+
+<li {% if page.id == 'demo' %}class="active"{% endif %}>
+  <a href="http://demo.myria.cs.washington.edu">Demo</a>
+</li>
