@@ -17,7 +17,7 @@ id: home
 Extracting knowledge out of Big Data today is a high-touch business,  requiring a human expert who deeply understands the application domain  as well as a growing ecosystem of complex distributed systems and  advanced statistical methods. These experts are hired in part for  their statistical expertise, but report that the majority of their time  is spent scaling and optimizing the relatively basic data manipulation  tasks in preparation for the actual statistical analysis or machine  learning step: identifying relevant data, cleaning, filtering, joining,  grouping, transforming, extracting features, and evaluating results.
 
 <div class="with-caption">
-	<img src="images/web-interface-screenshot.png" class="img-responsive" alt="Screenshot of the Myria web interface">
+	<a href='demo.myria.cs.washington.edu'><img src="images/web-interface-screenshot.png" class="img-responsive" alt="Screenshot of the Myria web interface"></a>
 	<p class="text-center text-muted">Screenshot of the Myria web interface</p>
 </div>
 
