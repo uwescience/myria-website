@@ -62,6 +62,8 @@ Today's pricing models and SLAs are described at the level of compute resources 
 
 * [A Vision for Personalized Service Level Agreements in the Cloud](publications/Ortiz_PSLA_2013.pdf). Jennifer Ortiz, Victor T. Almeida, Magda Balazinska. *SIGMOD Workshop on Data Analytics in the Cloud (DanaC) 2013*.
 
+* [Changing the Face of Database Cloud Services with Personalized Service Level Agreements](publications/Ortiz_PSLA_CIDR_2015.pdf). Jennifer Ortiz, Victor T. Almeida, Magda Balazinska. *CIDR 2015*.
+
 <iframe width="853" height="480" src="//www.youtube.com/embed/f1dJfQXyT7A" frameborder="0" allowfullscreen></iframe>
 
 
