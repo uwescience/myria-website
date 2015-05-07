@@ -67,7 +67,7 @@ We developed a tool to interactively explore query execution. This allows users 
 
 * [Perfopticon: Visual Query Analysis for Distributed Databases](https://idl.cs.washington.edu/files/2015-Perfopticon-EuroVis.pdf). Dominik Moritz, Daniel Halperin, Bill Howe, Jeffrey Heer *Computer Graphics Forum (Proc. EuroVis)* 2015.
 
-<iframe src="https://player.vimeo.com/video/127110709" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/127110709">Perfopticon: Visual Query Analysis for Distributed Databases</a> from <a href="https://vimeo.com/uwdata">UW Interactive Data Lab</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+<iframe src="https://player.vimeo.com/video/127110709" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 
 ## Big Data Management as a Cloud Service
