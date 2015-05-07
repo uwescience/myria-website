@@ -8,6 +8,7 @@ id: "projects"
 # Projects, Publications, and Software
 
 Myria is a new stack for big data management and analytics:
+
 * Myria is a new big data management and analytics system
 * It is available open source [Myria stack on Github] (https://github.com/uwescience/myria-stack)
 * It runs in shared-nothing clusters (Amazon EC2)
