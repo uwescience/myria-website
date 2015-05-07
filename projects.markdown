@@ -53,7 +53,7 @@ DO
 WHILE [*COUNTALL(Delta) > 0];
 ```
 
-<iframe width="853" height="480" src="//www.youtube.com/embed/v1ZNf1EgG4o" frameborder="0" allowfullscreen></iframe>
+<iframe width="500" height="281" src="//www.youtube.com/embed/v1ZNf1EgG4o" frameborder="0" allowfullscreen></iframe>
 
 ## Systems-challenges of Efficient Big Data Management
 
@@ -63,7 +63,12 @@ In the specific context of the Myria project, we started to focus on challenges 
 
 ## Query profiling and visualization
 
-<iframe width="853" height="480" src="//www.youtube.com/embed/ac_XOUneSQo" frameborder="0" allowfullscreen></iframe>
+We developed a tool to interactively explore query execution. This allows users to profile and debug queries.
+
+* [Perfopticon: Visual Query Analysis for Distributed Databases](https://idl.cs.washington.edu/files/2015-Perfopticon-EuroVis.pdf). Dominik Moritz, Daniel Halperin, Bill Howe, Jeffrey Heer *Computer Graphics Forum (Proc. EuroVis)* 2015.
+
+<iframe src="https://player.vimeo.com/video/127110709" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/127110709">Perfopticon: Visual Query Analysis for Distributed Databases</a> from <a href="https://vimeo.com/uwdata">UW Interactive Data Lab</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+
 
 ## Big Data Management as a Cloud Service
 
@@ -75,7 +80,7 @@ Today's pricing models and SLAs are described at the level of compute resources 
 
 * [Changing the Face of Database Cloud Services with Personalized Service Level Agreements](publications/Ortiz_PSLA_CIDR_2015.pdf). Jennifer Ortiz, Victor T. Almeida, Magda Balazinska. *CIDR 2015*.
 
-<iframe width="853" height="480" src="//www.youtube.com/embed/f1dJfQXyT7A" frameborder="0" allowfullscreen></iframe>
+<iframe width="500" height="281" src="//www.youtube.com/embed/f1dJfQXyT7A" frameborder="0" allowfullscreen></iframe>
 
 
 ## Myria System and Service
@@ -94,4 +99,4 @@ MyMergerTree is a vertical service built on top of Myria to facilitate the study
 * [MyMergerTree Service: Creating Galactic Merger Trees using Myria](http://db.cs.washington.edu/posters/MyMergerTree.pdf). Presented by Laurel Orr, Sarah Loebman, Jennifer Ortiz, and Daniel Halperin. Demo poster at *SIGMOD 2014* (in the context of the [group Myria demo]({{site.baseurl}}/publications/Halperin_Myria_demo_SIGMOD_2014.pdf)).
 * [Big-Data Management Use-Case: A Cloud Service for Creating and Analyzing Galactic Merger Trees]({{site.baseurl}}/publications/MyMergerTree_DanaC_2014.pdf). Sarah Loebman, Jennifer Ortiz, Lee Lee Choo, Laurel Orr, Lauren Anderson, Daniel Halperin, Magdalena Balazinska, Thomas Quinn, and Fabio Governato. *SIGMOD Workshop on Data Analytics in the Cloud (DanaC) 2014*.
 
-<iframe width="853" height="480" src="//www.youtube.com/embed/RMEKp_BUcfQ" frameborder="0" allowfullscreen></iframe>
+<iframe width="500" height="281" src="//www.youtube.com/embed/RMEKp_BUcfQ" frameborder="0" allowfullscreen></iframe>
