@@ -100,3 +100,5 @@ MyMergerTree is a vertical service built on top of Myria to facilitate the study
 * [Big-Data Management Use-Case: A Cloud Service for Creating and Analyzing Galactic Merger Trees]({{site.baseurl}}/publications/MyMergerTree_DanaC_2014.pdf). Sarah Loebman, Jennifer Ortiz, Lee Lee Choo, Laurel Orr, Lauren Anderson, Daniel Halperin, Magdalena Balazinska, Thomas Quinn, and Fabio Governato. *SIGMOD Workshop on Data Analytics in the Cloud (DanaC) 2014*.
 
 <iframe width="500" height="281" src="//www.youtube.com/embed/RMEKp_BUcfQ" frameborder="0" allowfullscreen></iframe>
+
+<iframe width="500" height="281" src="//www.youtube.com/embed/Xe4O207izi0" frameborder="0" allowfullscreen></iframe>
