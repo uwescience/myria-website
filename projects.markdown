@@ -61,7 +61,7 @@ In the specific context of the Myria project, we started to focus on challenges 
 
 We study computing complex join queries efficiently, including queries with cyclic joins, on a massively parallel architecture. We pushed two independent lines of theoretical work for multi-join query evaluation into practice: a communication-optimal algorithm for distributed evaluation, and a worst-case optimal algorithm for sequential evaluation. As a result, our system is able to efficiently handle complex queries from novel applications such as social network analytics and knowledge discovery on knowledge base up to order of magnitute faster compared with traditional systems.
 
-*[From Theory to Practice: Efficient Join Query Evaluation in a Parallel Database System](https://homes.cs.washington.edu/~chushumo/files/sigmod_15_join.pdf). Shumo Chu, Magda Balazinska and Dan Suciu *SIGMOD 2015*
+* [From Theory to Practice: Efficient Join Query Evaluation in a Parallel Database System](https://homes.cs.washington.edu/~chushumo/files/sigmod_15_join.pdf). Shumo Chu, Magda Balazinska and Dan Suciu *SIGMOD 2015*
 
 ## Query profiling and visualization
 
