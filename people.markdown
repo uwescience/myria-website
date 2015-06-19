@@ -20,6 +20,7 @@ id: "people"
 
 ## Staff
 
+* Tobin Baker
 * Andrew Whitaker (alum)
 
 ## PhD Students
