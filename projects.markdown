@@ -59,6 +59,10 @@ WHILE [*COUNTALL(Delta) > 0];
 
 In the specific context of the Myria project, we started to focus on challenges associated with efficient iterative processing and complex analytic queries. In particular, failures and load imbalances are increasingly common as the size of data processing tasks grows, and exacerbated in iterative programs. In prior work, we have extensively studied both problems for non-iterative computations. For iterative programs, we propose a radically new, extremely lightweight approach, which we call FT/Skew Skip Mechanism: when a server fails, we simply allow the other servers to continue the iteration. The failed computation either re-joins eventually, after recovery; or is abandoned altogether, if the resulting accuracy is still acceptable. We treat skew as a form of failure: servers that are too slow to respond are assumed to have failed. We are studying this approach and other light-weight fault-tolerance and load balance techniques for iterative computations.
 
+* [Asynchronous and Fault-Tolerant Recursive Datalog Evaluation in Shared-Nothing Engines]
+(https://homes.cs.washington.edu/~jwang/papers/p2317-wang.pdf). 
+Jingjing Wang, Magdalena Balazinska, and Daniel Halperin *VLDB 2015*
+
 We study computing complex join queries efficiently, including queries with cyclic joins, on a massively parallel architecture. We pushed two independent lines of theoretical work for multi-join query evaluation into practice: a communication-optimal algorithm for distributed evaluation, and a worst-case optimal algorithm for sequential evaluation. As a result, our system is able to efficiently handle complex queries from novel applications such as social network analytics and knowledge discovery on knowledge base up to order of magnitute faster compared with traditional systems.
 
 * [From Theory to Practice: Efficient Join Query Evaluation in a Parallel Database System](https://homes.cs.washington.edu/~chushumo/files/sigmod_15_join.pdf). Shumo Chu, Magda Balazinska and Dan Suciu *SIGMOD 2015*
