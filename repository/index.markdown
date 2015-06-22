@@ -32,3 +32,12 @@ coming soon...
 
 coming soon...
 
+## Music Information Retrieval over the Million Song Dataset
+
+* **Data** : [The Original Dataset](http://labrosa.ee.columbia.edu/millionsong/)
+* **Analysis** : [2012 Nature Paper](http://www.nature.com/srep/2012/120726/srep00521/full/srep00521.html)
+* **Tags**: Why is this use-case interesting? It requires: (1) large aggregation queries (2) graph analysis (3) statistical methods, (4) time-series analysis, and (5) novel database operators and language features.
+
+**Short description**: This use-case involves making the Million Song Dataset available in an easily queryable form, and implementing some common methods used in Music Information Retrieval so domain experts can conveniently analyze the data set. Many of these methods are drawn from a 2012 Nature paper analyzing the data set, linked above. We plan to reproduce many of the results in that paper by implementing new features in the underlying database and adding language features to MyriaL.
+
+**Long description** : coming soon
