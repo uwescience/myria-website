@@ -33,3 +33,24 @@ The tasks we examine will include:
 Fully solving these tasks involves a combination of distributed database techniques, linear algebra operations and time-series analysis.
 We also hope to make new language features that make it easy for new users to easily explore the data set.
 
+## Example queries:
+
+Here's an example that's not from the Nature paper, but a blog post titled
+[How To Process a Million Songs in 20 Minutes](http://musicmachinery.com/2011/09/04/how-to-process-a-million-songs-in-20-minutes/),
+which demonstrates a basic analysis on the MSD in Hadoop. The blog gives an example of using 100 small AWS nodes and a simple Hadoop function to compute the density of all million songs in roughly 20 minutes.
+
+Here's the SQL version of that program, running on the production Myria cluster with 72 workers:
+
+    segments = scan(Jeremy:MSD:SegmentsTable);
+    songs = scan(Jeremy:MSD:SongsTable);
+
+    seg_count = select song_id, count(segment_number) as c from segments;
+    density = select songs.song_id, (seg_count.c / songs.duration) as density from songs, seg_count where songs.song_id = seg_count.song_id;
+    store(density, public:adhoc:song_density);
+    
+
+This queries computes the same answer in roughly 30 seconds.
+
+(Note: these numbers are directly comparable by any means, but it gives us some motivation as to why we think processing this data set in a system like Myria is a better idea than using Hadoop or other MapReduce-style systems).
+
+* Queries from the Nature paper upcoming...
