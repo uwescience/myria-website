@@ -40,4 +40,4 @@ coming soon...
 
 **Short description**: This use-case involves making the Million Song Dataset available in an easily queryable form, and implementing some common methods used in Music Information Retrieval so domain experts can conveniently analyze the data set. Many of these methods are drawn from a 2012 Nature paper analyzing the data set, linked above. We plan to reproduce many of the results in that paper by implementing new features in the underlying database and adding language features to MyriaL.
 
-**Long description** : coming soon
+**Long description** : [Link to data and detailed description.]({{ site.baseurl}}/repository/msd.html)
