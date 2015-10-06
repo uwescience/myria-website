@@ -1,32 +1,17 @@
 #!/bin/bash
 # This is a subtree updater for myria-website.
-# We chose this solution because Github pages does not allw symlinks, making submodules infeasible.
+# We chose this solution because Github pages does not allow symlinks, making submodules infeasible.
 # Inspired by #3 of an answer at
 # https://stackoverflow.com/questions/23937436/add-subdirectory-of-remote-repo-with-git-subtree
 
+# safety settings that stop execution if something goes wrong
 set -e #command fail -> script fail
 set -u #unset variable reference causes script fail
 
-# format: thisSubdir^gitUrl^gitBranch^gitSubdir
-rstrs="docs/myria/^git@github.com:uwescience/myria.git^add_myriax_doc^docs/ "
-
-for rstr in $rstrs
+while read thisSubfolder gitUrl gitBranch gitSubdir
 do
-    if [[ "${rstr}" != *"^"* ]]; then echo "bad rstr: $rstr"; return; fi
-    thisSubfolder="${rstr%%^*}" # strip longest match of ^* from end
-    rstr="${rstr#*^}"           # strip shortest match of *^ from beginning
-    if [[ "${rstr}" != *"^"* ]]; then echo "bad rstr: $rstr"; return; fi
-    gitUrl="${rstr%%^*}"
     gitName="${gitUrl%\.git}"
     gitName="${gitName##*/}"
-    if [[ "${gitName}" == "" ]]; then echo "bad gitUrl: $gitUrl"; return; fi
-    rstr="${rstr#*^}"
-    if [[ "${rstr}" != *"^"* ]]; then echo "bad rstr: $rstr"; return; fi
-    gitBranch="${rstr%%^*}"
-    rstr="${rstr#*^}"
-    if [[ "${rstr}" == *"^"* ]]; then echo "bad rstr: $rstr"; return; fi # no ^
-    gitSubdir="${rstr}"
-    rstr=""
 
     origBranch="$(git branch --no-column | grep \*)"
     origBranch="${origBranch:2}"
@@ -60,7 +45,13 @@ do
 	git subtree merge -P "${thisSubfolder}" "${tempBranch}"
     fi
     # cleanup
+    # Delete temp branch because the --rejoin optimization does not appear to be working
     git branch -D "${tempBranch}"
-    git remote remove "${gitName}"
-done
+    # Better to keep the remote to prevent needless re-downloading
+    #git remote remove "${gitName}"
+
+    echo "Successfully updated ${thisSubfolder} from ${gitUrl}@${gitBranch}@${gitSubdir}"
+
+done < <(grep -v "^\W*#" subtree.config)
+
 
