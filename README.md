@@ -6,9 +6,21 @@ See the site in action at [myria.cs.washington.edu](http://myria.cs.washington.e
 
 ## How to make changes
 
+**Warning: do not edit the subfolders in docs/.../** <br/>
+`docs/index.md` is okay to edit.
+
 * clone this repo
-* `git submodule init` and `git submodule update`
 * install [jekyll](http://jekyllrb.com/)
-* run jekyll `jekyll serve --watch --baseurl ''`
+* run jekyll `jekyll serve --watch --baseurl ''` to see your changes on your local machine
+* submit changes to go on the Myria website
+  by submitting a pull request by committing and pushing your changes 
 
 If jekyll throws a version error, you may need to `gem install json` before serving.
+
+### Updating subfolders of `docs/`
+
+These subfolders are copied from the docs inside the Myria stack's repos.
+You can update them by running the script: `./subtree-pull.sh`.
+Please make sure you have no uncommitted changes to files before runnning the script.
+
+To add docs from a new repository, please follow the format inside `subtree.config`.
