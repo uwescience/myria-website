@@ -10,12 +10,14 @@ See the site in action at [myria.cs.washington.edu](http://myria.cs.washington.e
 `docs/index.md` is okay to edit.
 
 * clone this repo
-* install [jekyll](http://jekyllrb.com/)
+* install [jekyll](http://jekyllrb.com/).
+  Don't forget to install a javascript engine, e.g. `sudo apt-get install nodejs`.
 * run jekyll `jekyll serve --watch --baseurl ''` to see your changes on your local machine
 * submit changes to go on the Myria website
   by submitting a pull request by committing and pushing your changes 
 
 If jekyll throws a version error, you may need to `gem install json` before serving.
+
 
 ### Updating subfolders of `docs/`
 
