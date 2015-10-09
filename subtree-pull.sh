@@ -34,6 +34,7 @@ do
     else 
 	git remote add -f -t "${gitBranch}" --no-tags "${gitName}" "${gitUrl}"
     fi
+    git fetch ${gitName}
     git checkout "${gitName}/${gitBranch}"
     # --rejoin does not appear to speed up the subtree split.
     # See https://stackoverflow.com/questions/14865305/extract-a-subtree-using-branch-incrementally
