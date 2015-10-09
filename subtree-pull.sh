@@ -29,18 +29,17 @@ do
     # Motivation: Use subtree split to put the docs/ directory of myria repo into a temp branch.
     # Then subtree merge that temp branch into a different directory. Profit.
 
-    if git remote | grep -q "^${gitName}\$"; then 
-	:
-    else 
+    if git remote | grep -q "^${gitName}\$"; then
+	git fetch ${gitName}
+    else
 	git remote add -f -t "${gitBranch}" --no-tags "${gitName}" "${gitUrl}"
     fi
-    git fetch ${gitName}
     git checkout "${gitName}/${gitBranch}"
     # --rejoin does not appear to speed up the subtree split.
     # See https://stackoverflow.com/questions/14865305/extract-a-subtree-using-branch-incrementally
     git subtree split --rejoin -P "${gitSubdir}" -b "${tempBranch}"
     git checkout "${origBranch}"
-    if [ ! -d "${thisSubfolder}" ]; then 
+    if [ ! -d "${thisSubfolder}" ]; then
 	git subtree add -P "${thisSubfolder}" "${tempBranch}"
     else
 	git subtree merge -P "${thisSubfolder}" "${tempBranch}"
