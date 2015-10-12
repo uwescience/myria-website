@@ -12,7 +12,7 @@ id: "people"
 * [Magdalena Balazinska](http://www.cs.washington.edu/homes/magda/)
 * [Bill Howe](http://www.cs.washington.edu/homes/billhowe/)
 * [Dan Suciu](http://www.cs.washington.edu/homes/suciu/)
-* [Daniel Halperin](http://homes.cs.washington.edu/~dhalperi/)
+* Daniel Halperin (alum)
 
 ## Postdocs
 
@@ -28,7 +28,7 @@ id: "people"
 * [Shumo Chu](http://homes.cs.washington.edu/~chushumo/)
 * [Eric Gribkoff](http://homes.cs.washington.edu/~eagribko/)
 * Brandon Haynes
-* Jeremy Hyrkas
+* [Jeremy Hyrkas](http://homes.cs.washington.edu/~maas/)
 * [Paris Koutris](http://homes.cs.washington.edu/~pkoutris/)
 * Ryan Maas
 * [Dominik Moritz](http://homes.cs.washington.edu/~domoritz/)
