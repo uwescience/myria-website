@@ -28,9 +28,9 @@ id: "people"
 * [Shumo Chu](http://homes.cs.washington.edu/~chushumo/)
 * [Eric Gribkoff](http://homes.cs.washington.edu/~eagribko/)
 * Brandon Haynes
-* [Jeremy Hyrkas](http://homes.cs.washington.edu/~maas/)
+* Jeremy Hyrkas
 * [Paris Koutris](http://homes.cs.washington.edu/~pkoutris/)
-* Ryan Maas
+* [Ryan Maas](http://homes.cs.washington.edu/~maas/)
 * [Dominik Moritz](http://homes.cs.washington.edu/~domoritz/)
 * [Brandon Myers](http://homes.cs.washington.edu/~bdmyers/)
 * Laurel Orr
