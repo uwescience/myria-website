@@ -1,3 +1,10 @@
+---
+layout: default
+title: Raco query frontend and middleware
+group: "unsorted"
+weight: 0
+---
+
 # Raco query frontend and middleware
 
 (This document is still a WIP)

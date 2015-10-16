@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Myria N-body Use Case
-group: "extra"
+group: "unsorted"
 weight: 0
 ---
 
