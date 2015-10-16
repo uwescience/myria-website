@@ -38,8 +38,17 @@ do
     # Motivation: Use subtree split to put the docs/ directory of myria repo into a temp branch.
     # Then subtree merge that temp branch into a different directory. Profit.
 
+    # if a remote called gitName exists...
     if git remote | grep -q "^${gitName}\$"; then
-	git fetch ${gitName}
+	# careful if remote branch changes. also if remote url changes
+	tmp1=$(git config --get "remote.${gitName}.fetch")
+	tmp2=$(git config --get "remote.${gitName}.url")
+	if [ "${tmp1: -${#gitBranch}}" != "${gitBranch}" -o "${tmp2}" != "${gitUrl}" ]; then
+	    git remote remove "${gitName}"
+	    git remote add -f -t "${gitBranch}" --no-tags "${gitName}" "${gitUrl}"
+	else
+	    git fetch "${gitName}"
+	fi
     else
 	git remote add -f -t "${gitBranch}" --no-tags "${gitName}" "${gitUrl}"
     fi
