@@ -18,6 +18,15 @@ do
     if [[ "${origBranch}" == *" "* ]]; then echo "You appear to be in a detached branch: $origBranch"; return; fi
     tempBranch="subtree-${gitName}-${gitBranch}-temp"
 
+    # Ensure subfolders do NOT have a trailing slash
+    # git subtree is sensitive to this
+    if [ "${thisSubfolder:$((${#thisSubfolder}-1)):1}" == '/' ]; then
+	thisSubfolder="${thisSubfolder:0:$((${#thisSubfolder}-1))}"
+    fi
+    if [ "${gitSubdir:$((${#gitSubdir}-1)):1}" == '/' ]; then
+	gitSubdir="${gitSubdir:0:$((${#gitSubdir}-1))}"
+    fi
+    
     echo "thisSubfolder: ${thisSubfolder}"
     echo "gitUrl       : ${gitUrl}"
     echo "gitName      : ${gitName}"
