@@ -4,3 +4,12 @@ highlighter: pygments
 baseurl: http://myria.cs.washington.edu
 
 include: ['myria-docs']
+
+defaults:
+  -
+    scope:
+      path: "docs/myriax/"
+      type: "pages"
+    values:
+      group: "myriax"
+
