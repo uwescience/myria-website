@@ -38,6 +38,7 @@ id: "people"
 * [Emad Soroush](http://www.cs.washington.edu/homes/soroush/) (alum)
 * Jingjing Wang
 * [Shengliang Xu](http://homes.cs.washington.edu/~slxu/)
+* [Dylan Hutchison](https://www.linkedin.com/in/dylanhutchison)
 
 ## Undergraduate Students
 
