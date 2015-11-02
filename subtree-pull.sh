@@ -1,4 +1,8 @@
 #!/bin/bash
+# PARAMETERS:
+# (optional) A name of a single child repository to update.
+#   Updates all child repositories if not provided.
+
 # This is a subtree updater for myria-website.
 # We chose this solution because Github pages does not allow symlinks, making submodules infeasible.
 # Inspired by #3 of an answer at
@@ -12,6 +16,13 @@ while read thisSubfolder gitUrl gitBranch gitSubdir
 do
     gitName="${gitUrl%\.git}"
     gitName="${gitName##*/}"
+
+    # command line parameter filters if provided
+    if [ "$#" -ge "1" ] && [ -n "$1" ]; then
+	if [ "$1" != "$gitName" ]; then
+	    continue
+	fi
+    fi
 
     origBranch="$(git branch --no-column | grep \*)"
     origBranch="${origBranch:2}"
