@@ -17,17 +17,6 @@
   </ul>
 </li>
 
-{% assign unsrted = (site.pages | where: "group" , "unsorted" | sort:"weight") %}
-
-<li class="{% if page.group == 'unsorted' %}active{% endif %} dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Unsorted <span class="caret"></span></a>
-  <ul class="dropdown-menu" role="menu">
-    {% for page in unsrted %}
-      <li><a href="{{ site.baseurl }}{{page.url}}">{{page.title}}</a></li>
-    {% endfor %}
-  </ul>
-</li>
-
 <li {% if page.id == 'ack' %}class="active"{% endif %}>
   <a href="{{ site.baseurl }}/acknowledgments.html">Acknowledgments</a>
 </li>

@@ -1,13 +1,12 @@
 ---
 layout: default
 title: Myria Development
-group: "extra"
 weight: 5
 ---
 
 # Myria Development
 
-This page explains how to get started with Myria development using GitHub, Git, 
+This page explains how to get started with Myria development using GitHub, Git,
 and either Eclipse or IntelliJ.
 
 ## 1) GitHub setup
@@ -105,8 +104,8 @@ You can download the most recent version of IntelliJ from <https://www.jetbrains
 ## 5) Install IDE Plugins
 We use two plugins that help us find bugs and other problems in our code:
 
-* FindBugs, from the PL group at the University of Maryland. 
-* Checkstyle is an open source tool that helps us write good code. 
+* FindBugs, from the PL group at the University of Maryland.
+* Checkstyle is an open source tool that helps us write good code.
 
 Here are their download links, including instructions on how to install plugins:
 
@@ -136,7 +135,7 @@ Then use `gradlew` to make the Eclipse `.classpath` file ( `gradlew` is a `gradl
 
     Total time: 12.401 secs
 
-Then in Eclipse, click through the menu 
+Then in Eclipse, click through the menu
 `File > Import > Existing projects into workspace`
 to open the Myria project.
 
@@ -145,14 +144,14 @@ to open the Myria project.
 Goto "import project" in IntelliJ and open the "build.gradle" file in the `myria/` folder.
 IntelliJ will recognize the project as a Gradle project and set it up automatically.
 
-There is a Gradle menu at the right-hand side of the screen, 
-from which you can run the Gradle build, test and other actions. 
+There is a Gradle menu at the right-hand side of the screen,
+from which you can run the Gradle build, test and other actions.
 
 ## 7) Troubleshooting
 
 If you are experiencing erratic behaviour or Eclipse with many errors, try the following:
 
-### 1. Refresh the whole project. 
+### 1. Refresh the whole project.
 
 In Eclipse, click on the project `myria` and press `F5`.
 

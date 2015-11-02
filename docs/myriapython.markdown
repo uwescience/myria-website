@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Myria Python
-group: "extra"
 weight: 4
 ---
 
@@ -59,7 +58,7 @@ print data
 ```
 
 ## Using Python with your own Myria Deployment
-For the examples below, we used localhost as the hostname example. This can be changed depending on where you are hosting Myria. 
+For the examples below, we used localhost as the hostname example. This can be changed depending on where you are hosting Myria.
 
 ### Part 1: Uploading Data
 ```
@@ -105,11 +104,10 @@ connection = MyriaConnection(hostname='demo.myria.cs.washington.edu', port=8753)
 schema = MyriaSchema({"columnTypes" : ["LONG_TYPE", "LONG_TYPE"], "columnNames" : ["follower", "followee"]})
 relation = MyriaRelation('public:adhoc:parallelLoadTest', connection=connection, schema=schema)
 
-work = [(1, 'https://s3-us-west-2.amazonaws.com/uwdb/sampleData/smallTable'), 
+work = [(1, 'https://s3-us-west-2.amazonaws.com/uwdb/sampleData/smallTable'),
         (2, 'https://s3-us-west-2.amazonaws.com/uwdb/sampleData/smallTable'),
         (3, 'https://s3-us-west-2.amazonaws.com/uwdb/sampleData/smallTable'),
         (4, 'https://s3-us-west-2.amazonaws.com/uwdb/sampleData/smallTable')]
 
 queryImport = MyriaQuery.parallel_import(relation=relation, work=work)
 ```
-

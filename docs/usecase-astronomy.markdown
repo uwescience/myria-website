@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Myria N-body Use Case
-group: "unsorted"
 weight: 0
 ---
 
@@ -15,7 +14,7 @@ To ingest simulation data into Myria, you can either upload data in Tipsy or NCh
 	* Also run ```pip install myria-python```
 
 * Tipsy
-	* First, upload your files to vega@cs.washington.edu. Please contact the myria-users mailing list at myria-users@cs.washington.edu to reqest access. 
+	* First, upload your files to vega@cs.washington.edu. Please contact the myria-users mailing list at myria-users@cs.washington.edu to reqest access.
 	* From the repository, navigate to ```/MyMergerTree/ingest/ingest_tipsy```. Here, you will find a file called ```generate_ingest_template.sh```. In this file, replace lines 4-10 with information about your dataset. Below we describe each parameter:
 		- DATA_PATH: location of the tipsy files in vega
 		- IORD: name of the file extension for iord files

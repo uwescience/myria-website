@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Raco query frontend and middleware
-group: "unsorted"
 weight: 0
 ---
 
@@ -45,7 +44,7 @@ scripts/myrial -j example/join.myl
 
 ## Rule-based optimization
 The (non-experimental) optimization of query plans is done with a heuristic rule-based planner.
-Raco provides many useful rules in `raco/rules.py`. `Rule` is the super class of all rules. 
+Raco provides many useful rules in `raco/rules.py`. `Rule` is the super class of all rules.
 
 ### How optimization works
 A physical algebra provides an implementation of `opt_rules`, which just returns an ordered list

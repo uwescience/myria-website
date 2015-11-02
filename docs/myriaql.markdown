@@ -1,7 +1,6 @@
 ---
 layout: default
 title: MyriaQL
-group: "extra"
 weight: 3
 ---
 
