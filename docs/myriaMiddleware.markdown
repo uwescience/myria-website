@@ -24,7 +24,7 @@ Motivated by these ideas, we are working to expand the University of Washington 
 Myria is a hosted Big Data management and analytics service consisting of three components:
 
 * [MyriaX](https://github.com/uwescience/myria): A big-data execution engine emphasizing asynchronous iterative processing.
-* [MyriaMiddleware](https://github.com/uwescience/raco): A language translation layer, shared optimizer, and query execution coordinator supporting a) multiple input languages and b) multiple back-end systems, of which MyriaX is one.   We emphasize a new imperative, iterative,  language called [MyriaQL](myriaql.html).
+* [MyriaMiddleware](https://github.com/uwescience/raco): A language translation layer, shared optimizer, and query execution coordinator supporting a) multiple input languages and b) multiple back-end systems, of which MyriaX is one.   We emphasize a new imperative, iterative,  language called [MyriaL](myrial.html).
 * [MyriaWeb](https://github.com/uwescience/myria-web): A web-based editor and IDE designed for direct use by analysts, with support for collaborative editing through a shared workspace, visual performance analysis and debugging, and interactive algorithms.
 
 To register a system with MyriaMiddleware, the sytem designer provides four components by extending appropriate classes in the MyriaMiddleware Python library (currently called RACO):
