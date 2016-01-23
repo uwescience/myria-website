@@ -67,6 +67,10 @@ We study computing complex join queries efficiently, including queries with cycl
 
 * [From Theory to Practice: Efficient Join Query Evaluation in a Parallel Database System](https://homes.cs.washington.edu/~chushumo/files/sigmod_15_join.pdf). Shumo Chu, Magda Balazinska and Dan Suciu *SIGMOD 2015*
 
+Gaussian Mixture Modeling (GMM) is a common type of analysis applied to increasingly large datasets. In working with scientists at the University of Washington, we encounter use case for GMM in astronomy. We implement this algorithm in the Myria shared-nothing relational data management system, which performs the computation in memory. We study resulting memory utilization challenges and implement several optimizations that yield an efficient and scalable solution. Empirical evaluations on large astronomy and oceanography datasets confirm that our Myria approach scales well and performs up to an order of magnitude faster than Hadoop.
+
+*[Gaussian Mixture Models Use-Case: In-Memory Analysis with Myria](http://homes.cs.washington.edu/~maas/papers/maas-myriagmm.pdf). Ryan Maas, Jeremy Hyrkas, Olivia Grace Telford, Magdalena Balazinska, Andrew Connolly, and Bill Howe. *IMDM 2015 (at VLDB)*
+
 ## Query profiling and visualization
 
 We developed a tool to interactively explore query execution. This allows users to profile and debug queries.
