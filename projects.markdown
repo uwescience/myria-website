@@ -27,6 +27,7 @@ We are studying the foundations of efficient Big Data management, which leads to
 
 Our model of computation is an extension of the Massively Parallel (MPC) model, where computation is performed by p severs that alternate between local computation and re-shuffling steps, and each server is limited to O(n/p) space, where n is the size of the data. We study the time/space complexity of data transformations and extensions to cope with failures.
 
+* [Worst-Case Optimal Algorithms for Parallel Query Processing]({{site.baseurl}}/publications/worstcase-beame.pdf). Paul Beame, Paraschos Koutris, Dan Suciu. *ICDT 2016*.
 * [Skew in Parallel Query Processing]({{site.baseurl}}/publications/skew-beame.pdf). Paul Beame, Paraschos Koutris, Dan Suciu. *PODS 2014*.
 * [Communication steps for parallel query processing]({{site.baseurl}}/publications/communication-beame.pdf). Paul Beame, Paraschos Koutris, Dan Suciu. *PODS 2013*.
 * [Parallel Evaluation of Conjunctive Queries]({{site.baseurl}}/publications/parallel-koutris.pdf). Paraschos Koutris, Dan Suciu. *PODS 2011*.
