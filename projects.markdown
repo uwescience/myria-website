@@ -37,7 +37,7 @@ Our model of computation is an extension of the Massively Parallel (MPC) model, 
 
 A large number of data exploration and analytics queries are iterative. We study advanced optimization techniques for iterative programs on massively parallel systems. In prior work we have explored the fundamental systems architecture needed for iterative data processing, and have investigated some simple optimization techniques. Our research now is developing new, advanced optimizations: using materialized views and dynamic re-optimization.
 
-Myria accepts queries written in SQL, Datalog, or a new Pig Latin-like language we call *MyriaL*. Based on our experience with [SQLShare](https://sqlshare.escience.washington.edu/), we believe that science users can write data analysis tasks in SQL. We expect Datalog’s declarative style to have similar appeal, especially for recursive queries. Myria’s Datalog compiler has support for stratified negation and a variety of simple aggregates. Myria uses semi-naive evaluation to efficiently compute recursive results, using asynchronous computation when possible.
+Myria accepts queries written in SQL, Datalog, or a new Pig Latin-like language we call *MyriaL*. Based on our experience with [SQLShare](https://uwescience.github.io/sqlshare/), we believe that science users can write data analysis tasks in SQL. We expect Datalog’s declarative style to have similar appeal, especially for recursive queries. Myria’s Datalog compiler has support for stratified negation and a variety of simple aggregates. Myria uses semi-naive evaluation to efficiently compute recursive results, using asynchronous computation when possible.
 
 MyriaL is a hybrid imperative/declarative language, similar to [Pig Latin](http://infolab.stanford.edu/~usriv/papers/pig-latin.pdf) extended with iteration. We developed MyriaL in a way that lets users express efficient execution strategies in a declarative way which the query execution engine optimize easier than Datalog. MyriaL also supports functions and complex operations for importing, transforming and operating on data.
 
@@ -122,3 +122,12 @@ MyMergerTree is a vertical service built on top of Myria to facilitate the study
 Perfopticon demontrated that we can build visualization applications on top of Myria. We are exploring how big data systems can enable interactive visualizations of large datasets. 
 
 * [Dynamic Client-Server Optimization for Scalable Interactive Visualization on the Web](http://www.interactive-analysis.org/papers/2015/moritz.pdf). Dominik Moritz, Jeffrey Heer, and Bill Howe.
+
+## SQLShare Service
+
+SQLShare is a database service aimed at removing the obstacles to using relational databases: installation, configuration, schema design, tuning, data ingest, and even application design. You simply upload your data and immediately start querying it. One of the main lessons from SQLShare is that a relatively minor set of changes to how existing database technology is packaged and delivered is sufficient to convince science and data science users to adopt SQL in their day-to-day data manipulation and analysis tasks, potentially displacing script-and-file based approaches.
+We analyzed the handwritten SQL queries and found that the features of SQLShare were instrumental in attracting new kinds of ad hoc queries and that the SQLShare workload is demonstrably more diverse than a comparable public workload in science, and that users are writing very complex queries by hand. 
+
+* [SQLShare: Results from a Multi-Year SQL-as-a-Service Experiment](https://www.dropbox.com/s/835qvwhbclfuacw/paper.pdf?dl=0), Shrainik Jain, Dominik Moritz, Daniel Halperin, Bill Howe, Ed Lazowska. *SIGMOD 2016*.
+
+The query log can be downloaded from [SQLShare data release page](https://uwescience.github.io/sqlshare/data_release.html).
