@@ -116,3 +116,9 @@ MyMergerTree is a vertical service built on top of Myria to facilitate the study
 <iframe width="500" height="281" src="//www.youtube.com/embed/RMEKp_BUcfQ" frameborder="0" allowfullscreen></iframe>
 
 <iframe width="500" height="281" src="//www.youtube.com/embed/Xe4O207izi0" frameborder="0" allowfullscreen></iframe>
+
+## Large scale visualization
+
+Perfopticon demontrated that we can build visualization applications on top of Myria. We are exploring how big data systems can enable interactive visualizations of large datasets. 
+
+* [Dynamic Client-Server Optimization for Scalable Interactive Visualization on the Web](http://www.interactive-analysis.org/papers/2015/moritz.pdf). Dominik Moritz, Jeffrey Heer, and Bill Howe.
