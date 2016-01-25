@@ -6,7 +6,7 @@ weight: 3
 MyriaL Language Reference
 =========================
 
-**\*This is work in progress\***
+**\*This is work in progress***
 
 ##Reading Data and Storing in Myria
  
