@@ -110,14 +110,14 @@ to deliver high performance. It should be thought of as an experimental
 or debug mode. 
 
 - Run MyriaX in an existing cluster.
-  The instructions to run MyriaX either locally or in an existing cluster are here:  [Running the MyriaX engine](myriaX.html). 
+  The instructions to run MyriaX either locally or in an existing cluster are here:  [Running the MyriaX engine](myriax/index.html). 
 
 - Run MyriaX in a public cloud.
   If you already have an AWS account, this is the recommended way to deploy a new Myria environment. The instructions to deploy MyriaX on Amazon EC2 are here: [Running Myria on Amazon EC2](https://github.com/uwescience/myria-ec2-ansible/blob/reef/README.md). Short version: download the `myria-deploy` script [here](https://raw.githubusercontent.com/uwescience/myria-ec2-ansible/reef/myria-deploy) and run it (use the `--help` option to see all options). The script will tell you how to install any missing dependencies. It does not require root privileges to run (although some of the dependencies require root privileges to install). When the script is done, you will have a working MyriaWeb instance that you can point your browser to and start running queries.
 
 ### Part 2: Running queries on the service
 
-After you set up MyriaX, you can upload data and run queries through the [Python API](myria-python/index.html) under the "Using Python with your own Myria Deployment" section. An alternative way to run queries is via the [MyriaWeb](myriaweb.html) interface. Again, if you deploy to EC2 using the `myria-deploy` script, MyriaWeb will be set up for you.
+After you set up MyriaX, you can upload data and run queries through the [Python API](myria-python/index.html) under the "Using Python with your own Myria Deployment" section. An alternative way to run queries is via the [MyriaWeb](myria-web/index.html) interface. Again, if you deploy to EC2 using the `myria-deploy` script, MyriaWeb will be set up for you.
 
 ## MyriaL Reference
 
