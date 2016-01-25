@@ -8,7 +8,7 @@ weight: 0
 # Getting Started with Myria
 This page covers the following topics:
 
-* How to use the Myria demonstration service hosted by UW, from either the web front-end, the Python API, or an IPython notebook.
+* How to use the Myria demonstration service hosted by UW, from either the MyriaWeb front-end, the Python API, or an IPython notebook.
 * How to set up your own Myria service, either on a local laptop, on-site cluster, or Amazon EC2. 
 
 Developers, please see our [Myria Developer](developer.html) page.
@@ -81,7 +81,7 @@ see the "Profiling results". Click on it. It wil show you profiling information
 about the way the query executed. Explore the output of the profiler.
 
 
-### Using the Myria Service from Python
+### Using the Myria service from Python
 
 For more complex analysis, it may be useful to interact with Myria using Python.
 
@@ -93,9 +93,9 @@ To upload data, this can be done through the [Python API](myria-python/index.htm
 To start building queries once the data is uploaded, you can either write your queries directly through our [Myria Web Frontend](https://demo.myria.cs.washington.edu/editor) as demonstrated above, [Python](myria-python/index.html), or [IPython Notebook](https://github.com/uwescience/myria-python/blob/master/ipnb%20examples/myria%20examples.ipynb). To learn more about the Myria query language, check out the [MyriaL](myrial.html) page.
 
 
-### Using your own Myria service 
+## Using your own Myria service 
 
-#### Part 1: Setting up the service
+### Part 1: Setting up the service
 Myria's relational execution engine, MyriaX, is designed to run in a shared-nothing cluster. It consists of
 a coordinator process and a set of worker processes. The coordinator receives query
 plans in JSON through a REST API and has the workers execute these query plans.
@@ -114,10 +114,14 @@ The instructions to run MyriaX either locally or in an existing cluster are here
 
 If you already have an AWS account, this is the recommended way to deploy a new Myria environment. The instructions to deploy MyriaX on Amazon EC2 are here: [Running Myria on Amazon EC2](https://github.com/uwescience/myria-ec2-ansible/blob/reef/README.md). Short version: download the `myria-deploy` script [here](https://raw.githubusercontent.com/uwescience/myria-ec2-ansible/reef/myria-deploy) and run it (use the `--help` option to see all options). The script will tell you how to install any missing dependencies. It does not require root privileges to run (although some of the dependencies require root privileges to install). When the script is done, you will have a working MyriaWeb instance that you can point your browser to and start running queries.
 
-#### Part 2: Running queries on the service
+### Part 2: Running queries on the service
 After you set up the engine, you can upload data and run queries through the [Python API](myria-python/index.html) under the "Using Python with your own Myria Deployment" section. An alternative way to run queries is via the [Myria Web](myriaweb.html) interface. Again, if you deploy to EC2 using the `myria-deploy` script, MyriaWeb will be set up for you.
 
-### Myria Use Cases
+## MyriaL Reference
+
+The Myria query language, MyriaL, is documented [here](http://myria.cs.washington.edu/docs/myrial.html).
+
+## Myria Use Cases
 In addition to the [Python tutorial doc](myria-python/index.html) referenced above,
 we are developing example real-world use cases here: 
 
