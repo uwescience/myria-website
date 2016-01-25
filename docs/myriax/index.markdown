@@ -101,6 +101,10 @@ following key/value pair to the `[deployment]` section of your Myria deployment 
 
 #### Setup the working directories and catalogs
 
+The following commands are located in the `myriadeploy` directory:
+
+    cd myriadeploy
+
 Before we can launch the cluster and run queries, we need to setup the catalog and
 the working directories. These initialization steps are automated and executed by the `setup_cluster.py` script.
 
@@ -136,11 +140,11 @@ If everything is okay, it will start the workers:
 
 - Query which workers the master knows about. 
 
-    curl -i localhost:8753/workers
+    `curl -i localhost:8753/workers`
 
 - Query which workers are alive. They better match what's in `deployment.cfg.local`!
 
-    curl -i localhost:8753/workers/alive
+    `curl -i localhost:8753/workers/alive`
 
 ### 4. Using the cluster
 
@@ -211,19 +215,9 @@ This will go to all the nodes, find the master/worker processes under your usern
 
 ## Using a shared-nothing cluster
 
-To use a shared-nothing cluster to run MyriaX instead of your local
-machine, specify the cluster configuration, including the machine names,
-port numbers, working directories, database names, etc, in your
-`deployment.cfg` file.
-See `deployment.cfg.sample` for an example.
-
-Similar to local installation, make sure you have: Java 7,
-passwordless SSH from the master machine(s) to all the worker
-machine(s), Postgres users and databases created on your worker
-machine(s) on your cluster.
-
+To deploy a shared-nothing cluster to run MyriaX on Amazon EC2, download the `myria-deploy` script [here](https://raw.githubusercontent.com/uwescience/myria-ec2-ansible/reef/myria-deploy) and run it from a machine with the AWS CLI installed and configured to use the AWS identity you will use to deploy the cluster on EC2. (Additionally, this will install a `myria-web` instance on your cluster.) To see all options, run `myria-deploy --help`. For complete documentation of the script and the install process, see the `myria-ec2-ansible` [repository](https://github.com/uwescience/myria-ec2-ansible/blob/reef/README.md).
 
 ## Questions, issues, problems
 
-Welcome to check our [GitHub issues page](https://github.com/uwescience/myria/issues) and post your problems there. We will take care of them!
+You are welcome to check our [GitHub issues page](https://github.com/uwescience/myria/issues) and post your problems there. We will take care of them!
 
