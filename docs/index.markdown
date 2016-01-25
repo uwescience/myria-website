@@ -8,8 +8,8 @@ weight: 0
 # Getting Started with Myria
 This page covers the following topics:
 
-* How to use the Myria demonstration and production services hosted by UW, from either the web front-end, the Python API or an IPython notebook.
-* How to setup your own Myria service, either on a local laptop, cluster or Amazon EC2 instance. 
+* How to use the Myria demonstration service hosted by UW, from either the web front-end, the Python API, or an IPython notebook.
+* How to set up your own Myria service, either on a local laptop, on-site cluster, or Amazon EC2. 
 
 Developers, please see our [Myria Developer](developer.html) page.
 
@@ -25,26 +25,20 @@ The [Myria Middleware doc page](myriaMiddleware.html) has an excellent overview 
 
 ## Using Myria services hosted by UW
 
-We are hosting two Myria services:
-
-- Demonstration service: <http://demo.myria.cs.washington.edu>
+We are hosting a demonstration Myria service: <http://demo.myria.cs.washington.edu>
 The demo service runs on Amazon EC2 and is a small version of Myria running on only four instances.
 The demo service is there to make it easy to get a sense of what Myria is about but don't use it to do any actual work
 nor test anything at scale.
 
-- Production service: Please email <myria-users@cs.washington.edu> to request access.
-The production service is a 72 instance deployment and it runs in the private cluster of the University of Washington
-Database Group. 
-
-See the following section for how to spin up a myria instance on your local computer, cluster or Amazon EC2 instance.
+See the following section for how to spin up a Myria instance on your local computer or Amazon EC2.
 
 
 ### Using the Myria demonstration service through the browser
 
 
-Open your browser, preferably Chrome, and point it at: [http://demo.myria.cs.washington.edu](http://demo.myria.cs.washington.edu)
+Open your browser (preferably Chrome), and point it at: [http://demo.myria.cs.washington.edu](http://demo.myria.cs.washington.edu)
 
-You will see a window that will enable you to write MyriaL or SQL queries and execute them with Myria. 
+You will see an editor where you can write MyriaL or SQL queries and execute them with Myria. 
 
 Here is a quick tour of the interface:
 
@@ -55,9 +49,9 @@ including the schema.  Click on "JSON", "CSV", or "TSV" to download the dataset 
 specified format.
 
 - Now click on the "Queries" tab. This is where you can see all the queries that yourself
-and others have been running. Observe the keyword search window. Type, for example, 
-the word "Books" to see all queries executed on the "Brandon:Demo:Books" relation
-in Myria.
+and others have been running. Observe the keyword search window. After you have run the example
+query below, for example, type the word "Twitter" to see all queries executed on the
+`public:adhoc:Twitter` relation.
 
 - Finally, click on the "Editor" tab. This is where you can write and execute queries.
 You can start from one of the examples on the right. Click on the example and the
@@ -65,50 +59,27 @@ query will appear in the editor window. Queries can be written in SQL or MyriaL.
 recommend MyriaL because, in that mode, you can inter-twine SQL and MyriaL in your
 script.
 
-Try the following query, which scans the Brandon:Demo:Books relation,
-filters some elements, and computes an aggregate that it stores in a relation
-called "public:adhoc:AggregatedBooks":
+Try the following query, which ingests a dataset from S3, stores it in the relation `public:adhoc:Twitter`,
+and computes an aggregate that it stores in a relation called `public:adhoc:Followers`:
 
+    Twitter = LOAD("https://s3-us-west-2.amazonaws.com/myria/public-adhoc-TwitterK.csv", csv(schema(column0:int, column1:int), skip=1));
+    STORE(Twitter, public:adhoc:Twitter, [$0]);
+    Twitter = SCAN(public:adhoc:Twitter);
+    Followers = SELECT $0, COUNT($1) FROM Twitter;
+    STORE(Followers, public:adhoc:Followers, [$0]);
 
-    T1 = scan(Brandon:Demo:Books);
-
-    Filtered = SELECT * FROM T1 WHERE pages > 10;
-
-    AggregatedBooks = SELECT count(*) FROM Filtered;
-
-    Store(AggregatedBooks, AggregatedBooks);
-
+(The extra argument in the `STORE` statement means to hash-partition the data on the
+first attribute and store it hash-partitioned across all worker instances.)
 
 First click on "Parse". This will show you the query plan that Myria will
 execute. Then click on "Execute Query". This will execute the query and
-produce a link to the output. 
+produce a link to the output.
 
 Now select  the "Profile Query" option below the query window and
 re-execute the query with the option ON.  Below the result, you will
 see the "Profiling results". Click on it. It wil show you profiling information
 about the way the query executed. Explore the output of the profiler.
 
-Now let's execute a query that reads new data from S3. This query
-reads the data and stores it in relation "public:adhoc:smallTable". The
-extra argument in the Store statement means to hash-partition the
-data on the first attribute and store it hash-partitioned across all
-four worker instances. It is informative to first see the query plane (click on "Parse")
-and then to execute the query.
-
-    smallTable = load("https://s3-us-west-2.amazonaws.com/uwdb/sampleData/smallTable", csv(schema(column0:int, column1:int), skip=0));
-
-    Store(smallTable, smallTable, [$0]);
-
-
-Now, we can execute queries on the newly ingested data:
-
-    t = scan(public:adhoc:smallTable);
-
-    smallTableAggregated = select count(*) from t;
-
-    Store(smallTableAggregated, smallTableAggregated);
-
-  
 
 ### Using the Myria Service from Python
 
@@ -122,58 +93,29 @@ To upload data, this can be done through the [Python API](myria-python/index.htm
 To start building queries once the data is uploaded, you can either write your queries directly through our [Myria Web Frontend](https://demo.myria.cs.washington.edu/editor) as demonstrated above, [Python](myria-python/index.html), or [IPython Notebook](https://github.com/uwescience/myria-python/blob/master/ipnb%20examples/myria%20examples.ipynb). To learn more about the Myria query language, check out the [MyriaL](myrial.html) page.
 
 
-## Using your own Myria stack
+### Using your own Myria service 
 
-For many users at the University of Washington, you do not need to download
-the source code or start your own stack. 
-You can instead use the Myria production service (see above for requesting access).
-
-### Getting source code for the whole Myria stack
-
-Unless you are only interested in a specific component, the best place to 
-start is with the [Myria Stack Repository](https://github.com/uwescience/myria-stack).
-
-The Myria Stack repository is the umbrella repository that contains all the
-components of the Myria stack as modules. To get all the source code, you
-need to run the following commands:
-
-    git clone https://github.com/uwescience/myria-stack.git
-
-    cd myria-stack
-
-    git submodule init
-
-    git submodule update --recursive
-
-Now you should see the Myria source code on your machine.
-
-
-
-### Running the MyriaX execution engine part of the Myria stack
-
-#### Part 1: Setting up the Myria service
-MyriaX is designed to run in a shared-nothing cluster. It consists of
+#### Part 1: Setting up the service
+Myria's relational execution engine, MyriaX, is designed to run in a shared-nothing cluster. It consists of
 a coordinator process and a set of worker processes. The coordinator receives query
-plans in JSON through a REST api and gets the workers to
-execute these query plans.
+plans in JSON through a REST API and has the workers execute these query plans.
 
 There are three ways to run MyriaX:
 
 - Run MyriaX locally on a laptop or desktop. This is the easiest
 way to experiment with MyriaX if you don't want to deploy on the public cloud. This setup is not designed
-to deliver high-performance. It should be thought of as an experimental
+to deliver high performance. It should be thought of as an experimental
 or debug mode. 
 
 - Run MyriaX in an existing cluster.
 
 The instructions to run MyriaX either locally or in an existing cluster are here:  [Running the MyriaX engine](myriaX.html). 
-
 - Run MyriaX in a public cloud.
 
 If you already have an AWS account, this is the recommended way to deploy a new Myria environment. The instructions to deploy MyriaX on Amazon EC2 are here: [Running Myria on Amazon EC2](https://github.com/uwescience/myria-ec2-ansible/blob/reef/README.md). Short version: download the `myria-deploy` script [here](https://raw.githubusercontent.com/uwescience/myria-ec2-ansible/reef/myria-deploy) and run it (use the `--help` option to see all options). The script will tell you how to install any missing dependencies. It does not require root privileges to run (although some of the dependencies require root privileges to install). When the script is done, you will have a working MyriaWeb instance that you can point your browser to and start running queries.
 
 #### Part 2: Running queries on the service
-After you setup the engine, you can upload data and run queries through the [Python API](myria-python/index.html) under the "Using Python with your own Myria Deployment" section. An alternative way to run queries is via the [Myria Web](myriaweb.html) interface.
+After you set up the engine, you can upload data and run queries through the [Python API](myria-python/index.html) under the "Using Python with your own Myria Deployment" section. An alternative way to run queries is via the [Myria Web](myriaweb.html) interface. Again, if you deploy to EC2 using the `myria-deploy` script, MyriaWeb will be set up for you.
 
 ### Myria Use Cases
 In addition to the [Python tutorial doc](myria-python/index.html) referenced above,
