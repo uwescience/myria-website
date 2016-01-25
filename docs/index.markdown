@@ -23,17 +23,17 @@ Check out the overview slides from the demonstration we gave in the eScience Com
 
 The [Myria Middleware doc page](myriaMiddleware.html) has an excellent overview of how Myria's three components are designed and fit together: MyriaX, MyriaMiddleware and MyriaWeb.
 
-## Using Myria services hosted by UW
+## Using the Myria demonstration service
 
-We are hosting a demonstration Myria service: <http://demo.myria.cs.washington.edu>.
+The UW Database Group hosts a demonstration Myria service: <http://demo.myria.cs.washington.edu>.
 The demo service runs on Amazon EC2 and is a small version of Myria running on only four instances.
-The demo service is there to make it easy to get a sense of what Myria is about but don't use it to do any actual work
-nor test anything at scale.
+The demo service is there to make it easy to get a sense of what Myria is about, but don't use it to do any actual work
+or test anything at scale.
 
-See the following section for how to spin up a Myria instance on your local computer or Amazon EC2.
+See the following section for how to host an instance of the Myria service on your local computer or Amazon EC2.
 
 
-### Using the Myria demonstration service through the browser
+### Using the Myria service through the browser
 
 
 Open your browser (preferably Chrome), and point it at [http://demo.myria.cs.washington.edu](http://demo.myria.cs.washington.edu).
@@ -104,16 +104,18 @@ plans in JSON through a REST API and has the workers execute these query plans.
 
 There are three ways to run MyriaX:
 
-- Run MyriaX locally on a laptop or desktop. This is the easiest
+- Run MyriaX in a public cloud (_recommended_).
+  If you already have an AWS account, this is the recommended way to deploy a new Myria environment. The instructions to deploy MyriaX on Amazon EC2 are here: [Running Myria on Amazon EC2](https://github.com/uwescience/myria-ec2-ansible/blob/reef/README.md). Short version: download the `myria-deploy` script [here](https://raw.githubusercontent.com/uwescience/myria-ec2-ansible/reef/myria-deploy) and run it (use the `--help` option to see all options). The script will tell you how to install any missing dependencies. It does not require root privileges to run (although some of the dependencies require root privileges to install). When the script is done, you will have a working MyriaWeb instance that you can point your browser to and start running queries.
+
+- Run MyriaX locally on a laptop or desktop.
+  This is the easiest
 way to experiment with MyriaX if you don't want to deploy on the public cloud. This setup is not designed
 to deliver high performance. It should be thought of as an experimental
-or debug mode. 
+or debug mode. Instructions are here: [Running the MyriaX engine](myriax/index.html)
 
 - Run MyriaX in an existing cluster.
-  The instructions to run MyriaX either locally or in an existing cluster are here:  [Running the MyriaX engine](myriax/index.html). 
+  The instructions to run MyriaX on an existing cluster are here:  [Running the MyriaX engine](myriax/index.html). 
 
-- Run MyriaX in a public cloud.
-  If you already have an AWS account, this is the recommended way to deploy a new Myria environment. The instructions to deploy MyriaX on Amazon EC2 are here: [Running Myria on Amazon EC2](https://github.com/uwescience/myria-ec2-ansible/blob/reef/README.md). Short version: download the `myria-deploy` script [here](https://raw.githubusercontent.com/uwescience/myria-ec2-ansible/reef/myria-deploy) and run it (use the `--help` option to see all options). The script will tell you how to install any missing dependencies. It does not require root privileges to run (although some of the dependencies require root privileges to install). When the script is done, you will have a working MyriaWeb instance that you can point your browser to and start running queries.
 
 ### Part 2: Running queries on the service
 
