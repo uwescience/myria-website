@@ -5,60 +5,36 @@ group: "docs"
 weight: 0
 section: 2
 ---
+# myria-ec2-ansible
+Ansible playbook to deploy Myria on EC2
+## How to set up a Myria cluster on EC2
 
-# Deploying Myria on the Amazon EC2 Cloud
+Ansible is a configuration management tool that manages machines via the SSH protocol. Ansible does not require a database or any background processes to function on the control machine, and installs no software on the managed machines. You only need to install it on a single "control machine" (which could easily be a laptop) and it can manage an entire fleet of remote machines from that central point.
+For the purpose of setting up Myria on EC2, we assume you are using your laptop as the control machine. You could also use an EC2 instance as a control machine. Any modern Unix should work as the control machine, although only Ubuntu and Mac OS X have been tested. Windows is not supported, since Ansible does not support it.
 
-Myria supports automatically deploying Myria to a cluster through the Amazon EC2 service. To do this, you must have an [Amazon EC2](http://aws.amazon.com/ec2/) account.
+### __(Optional) Set up Ansible on a control machine__
+You do not need to install Ansible before running the `myria-deploy` script, since the script will install it for you, but in case you have issues with the script's Ansible installation, you can install it yourself and the script will use your installation.
+Follow the Ansible installation [instructions]( http://docs.ansible.com/ansible/intro_installation.html#installing-the-control-machine, "Installation").
+If your control machine is a Mac, the preferred method of installation is via `pip` ([instructions]( http://docs.ansible.com/ansible/intro_installation.html#latest-releases-via-pip )). You can also use your native package manager (e.g., `brew` on a Mac, `apt-get` on Debian/Ubuntu, `yum` on Red Hat/CentOS) to install Ansible. (Note that El Capitan users have reported that `sudo pip install` with the system Python installation fails with filesystem permission errors, so using a package manager like Homebrew is recommended on El Capitan.)
 
-## Installation
+### __Configure AWS account information__
+Ansible provides a number of core modules for AWS, which we use to deploy Myria on EC2. These modules require your AWS credentials ("Access Key ID" and "Secret Key") to be configured on the control machine. Here is a [link to AWS documentation](http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) on how to obtain an AWS access key ID and secret key. Once you have these values, you can use them to configure the AWS CLI. (Note that an IAM user account must have the following permissions to install Myria: `ec2:CreateKeyPair`, `ec2:DescribeKeyPairs`, `ec2:RunInstances`, `ec2:DescribeInstances`, `ec2:DescribeInstanceStatus`.)
 
-Ansible is a configuration management tool that manages machines over the SSH protocol.  Once Ansible is installed, it will not add a database, and there will be no daemons to start or keep running. You only need to install it on one machine (which could easily be a laptop) and it can manage an entire fleet of remote machines from that central point.
-For the purposes of setting up MyriaX on EC2, we assume you are using your laptop as the 'Control Machine'. You could set it up on a EC2 instance for managing your EC2 deployed cluster as well.
+### __Install the AWS CLI__
+The `myria-deploy` script that you'll be running to deploy Myria on EC2 requires the AWS CLI to be installed. Follow the instructions in the [AWS CLI documentation](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) to install the CLI and configure it with the AWS credentials you obtained in the previous step.
 
-*  __Setting up Ansible on Control Machine__
-   Ansible documentation provided details on [installation]( http://docs.ansible.com/ansible/intro_installation.html#installing-     the-control-machine, "Installation").
-   If your control machine is a Mac, the preferred way of installation is via pip. [Install via pip]( http://docs.ansible.com/ansible/intro_installation.html#latest-releases-via-pip).
-
-*  __AWS account information__
-   Ansible provides a number of core modules for AWS. We use several of these modules to setup MyriaX on AWS. The requirements for this are minimal.
-   Authentication with the AWS-related modules is handled by either specifying your access and secret key as ENV variables or module arguments. You need access key ID and secret for AWS. Here is a [link to AWS documentation](http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html), on how to get the access key and secret. Once you have these values, set them up as ENV variables:
-
-    ```
-    export AWS_ACCESS_KEY_ID='AK123'
-    export AWS_SECRET_ACCESS_KEY='abc123'
-    ```
-
-*  __AWS keypair__
-   You will need a keypair to provision EC2 instances. If you do not have a keypair, [create one now](http://docs.aws.amazon.com/gettingstarted/latest/wah/getting-started-prereq.html#create-a-key-pair).  Download the `.pem` file to your control machine. Using an SSH agent is the best way to authenticate with your end nodes, as this alleviates the need to copy your `.pem` files around. You can ssh-add your ec2 keypair with the following command:
-
-    ```ssh-add ~/.ssh/keypair.pem```
-
-
-*  __Get the Ansible Playbook__
-   Get the ansible scripts from git by cloning `https://github.com/parmitam/myria-ec2-ansible.git`
-
-*  __Deploy__
-   Run the ansibleplaybook with the following command:
-   ```
-   ansible-playbook myria.yml "-e KEY_NAME=__<your keypair name>__"
-   ```
-
-
-#### Ansible Inventory Error
-
-In case Ansible complains that there is no inventory/hosts file, follow these steps (tested on Linux Arch):
-
-- Download the two files at:
-  - https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.py
-  - https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.ini
-- Place them in the ansible configuration folder (`/etc/ansible`).
-- Make the python script executable (`chmod +x ec2.py`)
-- When deploying the Ansible playbook add `-i /etc/ansible/ec2.py` to the launch command:
+### __Deploy your Myria cluster__
+Run the wrapper script `myria-deploy`, which will check for missing dependencies, launch EC2 instances using your AWS credentials, and deploy Myria on the instances:
 
 ```
-ansible-playbook nmyria.yml "-e KEY_NAME=__your keypair name__" -i /etc/ansible/ec2.py
+./myria-deploy --verbose
 ```
 
-## Terminating the cluster
+To see a list of all options, run
 
-To terminate the cluster go to the AWS Management Console. Make sure you select the region where the instances launched. Click on the running instances, click on "Actions", hover over "Instance State" and select "Terminate". 
+```
+./myria-deploy --help
+```
+When the `myria-deploy` script has successfully deployed Myria, it will print the URL of the `myria-web` instance running on the cluster to the console. You can point your browser to this URL to compose and run queries in the query editor (with syntax highlighting), view query plans in graphical and JSON form, profile running queries, and browse datasets and historical queries. You can read more about `myria-web` [here](http://myria.cs.washington.edu/docs/myria-web/index.html).
+
+Note that the `myria-deploy` script can be run in isolation, without cloning this repo (it will clone the repo to a temporary location if it's not already present). The script itself can be directly downloaded [here](https://raw.githubusercontent.com/uwescience/myria-ec2-ansible/reef/myria-deploy).
