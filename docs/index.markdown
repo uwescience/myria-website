@@ -2,7 +2,7 @@
 layout: default
 title: Start Here
 group: "docs"
-weight: 2
+weight: 1
 section: 1
 ---
 
