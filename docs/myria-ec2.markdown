@@ -20,7 +20,7 @@ For the purposes of setting up MyriaX on EC2, we assume you are using your lapto
    If your control machine is a Mac, the preferred way of installation is via pip. [Install via pip]( http://docs.ansible.com/ansible/intro_installation.html#latest-releases-via-pip).
 
 *  __AWS account information__
-   Ansible provides a number of core modules for AWS. We use several of these modules to setup MyriaX on AWS. The requirments for this are minimal.
+   Ansible provides a number of core modules for AWS. We use several of these modules to setup MyriaX on AWS. The requirements for this are minimal.
    Authentication with the AWS-related modules is handled by either specifying your access and secret key as ENV variables or module arguments. You need access key ID and secret for AWS. Here is a [link to AWS documentation](http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html), on how to get the access key and secret. Once you have these values, set them up as ENV variables:
 
     ```
@@ -29,9 +29,9 @@ For the purposes of setting up MyriaX on EC2, we assume you are using your lapto
     ```
 
 *  __AWS keypair__
-   You will need a keypair to provision EC2 instances. If you do not have a keypair, [create one now](http://docs.aws.amazon.com/gettingstarted/latest/wah/getting-started-prereq.html#create-a-key-pair).  Download the `.pem` file to your control machine. Using an SSH agent is the best way to authenticate with your end nodes, as this alleviates the need to copy your `.pem` files around. ssh-add your ec2 keypair.
+   You will need a keypair to provision EC2 instances. If you do not have a keypair, [create one now](http://docs.aws.amazon.com/gettingstarted/latest/wah/getting-started-prereq.html#create-a-key-pair).  Download the `.pem` file to your control machine. Using an SSH agent is the best way to authenticate with your end nodes, as this alleviates the need to copy your `.pem` files around. You can ssh-add your ec2 keypair with the following command:
 
-    `ssh-add ~/.ssh/keypair.pem`
+    ```ssh-add ~/.ssh/keypair.pem```
 
 
 *  __Get the Ansible Playbook__
@@ -46,14 +46,13 @@ For the purposes of setting up MyriaX on EC2, we assume you are using your lapto
 
 #### Ansible Inventory Error
 
-In case ansible complains that there is no inventory/hosts file, follow
-these steps (tested on Linux Arch).
+In case Ansible complains that there is no inventory/hosts file, follow these steps (tested on Linux Arch):
 * Download the two files at:
   * https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.py
   * https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.ini
 * Place them in the ansible configuration folder (`/etc/ansible`).
 * Make the python script executable (`chmod +x ec2.py`)
-* When deploying the ansible playbook add `-i /etc/ansible/ec2.py` to the launch command:
+* When deploying the Ansible playbook add `-i /etc/ansible/ec2.py` to the launch command:
 
 ```
 ansible-playbook nmyria.yml "-e KEY_NAME=__your keypair name__" -i /etc/ansible/ec2.py
@@ -61,4 +60,4 @@ ansible-playbook nmyria.yml "-e KEY_NAME=__your keypair name__" -i /etc/ansible/
 
 ## Terminating the cluster
 
-...
+\* Coming Soon * 
