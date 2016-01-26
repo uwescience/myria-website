@@ -2,7 +2,7 @@
 layout: default
 title: Amazon Cloud Deployment
 group: "docs"
-weight: 1
+weight: 0
 section: 2
 ---
 
