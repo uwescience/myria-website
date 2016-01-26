@@ -15,7 +15,7 @@ The language began as a ``whiteboard language'' for reasoning about the semantic
 MyriaL is imperative: Each program is a sequence of assignment statements.  However, it is also declarative, in two ways: First, the optimizer is free to reorder blocks of code and apply other transformations as needed prior to execution, meaning that the programmer need not write the ``perfect'' program for decent performance.  Second, the right-hand-side of each assignment statement may itself be a declarative expression; programs may mix and match SQL and set comprehensions, for example. We find this combination of features to strike a useful balance between programmer control and programmer convenience.
 
 ##Reading Data and Storing in Myria
- 
+
 ###Load and Store
 Myria can read and store a CSV file from S3 via the load command:
 
@@ -32,7 +32,7 @@ Myria can read and store a CSV file from S3 via the load command:
                          y:float,
                          z:float), skip=0));
               STORE(T2, points, [x,y,z]);
-    
+
 *MyriaL needs explicit partition attribute specified for a relation uploaded via load operator, once this issue is fixed, partition attribute will not need to be specifed. For now, storing requires the following: STORE(sourceRelation, DestinationRelation, optional[PartitionAttribute])*
 
 ##Transforming Data
@@ -43,26 +43,26 @@ Myria can read and store a CSV file from S3 via the load command:
 --Create an empty relation with a particular schema
 
     newRelation = empty(x:float, y:float, z:float);
-    
+
 ###Scan a Relation
 
     T1 = SCAN(relationName);
      T1 = SCAN(TwitterK);
-    
+
 ###Aggregation
 
-    T1 = SCAN(TwitterK); 
+    T1 = SCAN(TwitterK);
      Groups = [FROM T1 EMIT COUNT(a) AS cnt, T1.a AS id];
      STORE(Groups, OUTPUT, [$1]);
 
-###Join 
+###Join
 
     T1 = SCAN(TwitterK);
      T2 = SCAN(TwitterK);
      Joined = [FROM T1, T2
               WHERE T1.$1 = T2.$0
               EMIT T1.$0 AS src, T1.$1 AS link, T2.$1 AS dst];
-          
+
     STORE(Joined, TwoHopsInTwitter);
 
 ###Union
@@ -109,9 +109,9 @@ __User-defined function to calculate modulo operation__
     T1 = [from scan(TwitterK) as t emit mod($0, $1)];
     STORE(T1, udf_result);
 
- 
+
  __User-defined aggregate function__
- 
+
     apply RunningMean(value) {
       -- initialize the custom state, set cnt = 0 and summ = 0
       [0 as cnt, 0 as running_sum];
@@ -134,7 +134,7 @@ __User-defined function to calculate modulo operation__
     T1 = SCAN(TwitterK);
     T2 = [FROM T1 EMIT $0, counter()];
     STORE (T2, K);
-    
+
 ##Comments
 The Myria Catalog is case sensitive, so please make sure to Scan the correct relation name.
 
@@ -145,3 +145,4 @@ The Myria Catalog is case sensitive, so please make sure to Scan the correct rel
 * [Sigma Clipping in MyriaL](https://github.com/uwescience/raco/blob/master/examples/sigma-clipping.myl)
 * [Connected Components in MyriaL](https://github.com/uwescience/raco/blob/master/examples/connected_components.myl)
 * [Coordinate Matching in MyriaL](https://github.com/uwescience/raco/blob/master/examples/crossmatch_2d.myl)
+* [Pairwise Distance Computation](https://github.com/uwescience/raco/blob/master/examples/pairwise_distances.myl)
