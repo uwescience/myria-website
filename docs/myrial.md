@@ -1,7 +1,9 @@
 ---
 layout: default
-title: MyriaL
+title: MyriaL Language Reference
+group: "docs"
 weight: 3
+section: 4
 ---
 
 # MyriaL
