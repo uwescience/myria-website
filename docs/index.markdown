@@ -22,7 +22,7 @@ For a short overview of Myria as a cloud service and a big data management syste
 
 Check out the overview slides from the demonstration we gave in the eScience Community Seminar in May 2015:  [overview slides](./myria-overview-may2015.pdf).
 
-The [Myria Middleware doc page](myriaMiddleware.html) has an excellent overview of how Myria's three components are designed and fit together: MyriaX, MyriaMiddleware and MyriaWeb.
+The [Myria Middleware doc page](myriaMiddleware.html) has an excellent overview of how Myria's three components are designed and fit together: MyriaX, Myria Middleware and MyriaWeb.
 
 ## Using the Myria demonstration service
 
@@ -50,9 +50,8 @@ including the schema.  Click on "JSON", "CSV", or "TSV" to download the dataset 
 specified format.
 
 - Now click on the "Queries" tab. This is where you can see all the queries that yourself
-and others have been running. Observe the keyword search window. After you have run the example
-query below, for example, type the word "Twitter" to see all queries executed on the
-`public:adhoc:Twitter` relation.
+and others have been running. Observe the keyword search window. After you run the example
+query below, type the word "Twitter" to see all queries executed on the `public:adhoc:Twitter` relation.
 
 - Finally, click on the "Editor" tab. This is where you can write and execute queries.
 You can start from one of the examples on the right. Click on the example and the
@@ -92,7 +91,7 @@ To upload data, this can be done through the [Python API](myria-python/index.htm
 
 #### Part 2: Running Queries on the Service
 
-To start building queries once the data is uploaded, you can either write your queries directly through our [Myria Web Frontend](https://demo.myria.cs.washington.edu/editor) as demonstrated above, [Python](myria-python/index.html), or [IPython Notebook](https://github.com/uwescience/myria-python/blob/master/ipnb%20examples/myria%20examples.ipynb). To learn more about the Myria query language, check out the [MyriaL](myrial.html) page.
+To start building queries once the data is uploaded, you can either write your queries directly through our [Myria Web Frontend](http://demo.myria.cs.washington.edu/editor) as demonstrated above, [Python](myria-python/index.html), or [IPython Notebook](https://github.com/uwescience/myria-python/blob/master/ipnb%20examples/myria%20examples.ipynb). To learn more about the Myria query language, check out the [MyriaL](myrial.html) page.
 
 
 ## Hosting your own Myria service
@@ -106,7 +105,7 @@ plans in JSON through a REST API and has the workers execute these query plans.
 There are three ways to run MyriaX:
 
 #### Run MyriaX in a public cloud (_recommended_)
-  If you already have an AWS account, this is the recommended way to deploy a new Myria environment. The instructions to deploy MyriaX on Amazon EC2 are here: [Running Myria on Amazon EC2](https://github.com/uwescience/myria-ec2-ansible/blob/reef/README.md). Short version: download the `myria-deploy` script [here](https://raw.githubusercontent.com/uwescience/myria-ec2-ansible/reef/myria-deploy) and run it (use the `--help` option to see all options). The script will tell you how to install any missing dependencies. It does not require root privileges to run (although some of the dependencies require root privileges to install). When the script is done, you will have a working MyriaWeb instance that you can point your browser to and start running queries.
+  If you already have an AWS account, this is the recommended way to deploy a new Myria environment. The instructions to deploy MyriaX on Amazon EC2 are here: [Deploying Myria on the Amazon EC2 Cloud](http://myria.cs.washington.edu/docs/myria-ec2.html). Short version: download the `myria-deploy` script [here](https://raw.githubusercontent.com/uwescience/myria-ec2-ansible/reef/myria-deploy) and run it (use the `--help` option to see all options). The script will tell you how to install any missing dependencies. It does not require root privileges to run (although some of the dependencies require root privileges to install). When the script is done, you will have a working MyriaWeb instance that you can point your browser to and start running queries.
 
 #### Run MyriaX locally on a laptop or desktop
   This is the easiest
@@ -128,7 +127,7 @@ The Myria query language, MyriaL, is documented [here](http://myria.cs.washingto
 
 ## Myria Use Cases
 
-In addition to the [Python tutorial doc](myria-python/index.html) referenced above,
+In addition to the [Python API](myria-python/index.html) referenced above,
 we are developing example real-world use cases here:
 
 * [N-body](usecase-astronomy.html)
