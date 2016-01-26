@@ -1,19 +1,20 @@
 ---
 layout: default
-title: Start Here 
+title: Start Here
 group: "docs"
 weight: 0
+section: 1
 ---
 
 # Getting Started with Myria
 This page covers the following topics:
 
 * How to use the Myria demonstration service hosted by UW, from either the MyriaWeb front-end, the Python API, or an IPython notebook.
-* How to set up your own Myria service, either on a local laptop, on-site cluster, or Amazon EC2. 
+* How to set up your own Myria service, either on a local laptop, on-site cluster, or Amazon EC2.
 
 Developers, please see our [Myria Developer](developer.html) page.
 
-Questions? See our [FAQ](faq.html). 
+Questions? See our [FAQ](faq.html).
 
 ## Learning about the Myria stack
 
@@ -38,7 +39,7 @@ See the following section for how to host an instance of the Myria service on yo
 
 Open your browser (preferably Chrome), and point it at [http://demo.myria.cs.washington.edu](http://demo.myria.cs.washington.edu).
 
-You will see an editor where you can write MyriaL or SQL queries and execute them with Myria. 
+You will see an editor where you can write MyriaL or SQL queries and execute them with Myria.
 
 Here is a quick tour of the interface:
 
@@ -94,7 +95,7 @@ To upload data, this can be done through the [Python API](myria-python/index.htm
 To start building queries once the data is uploaded, you can either write your queries directly through our [Myria Web Frontend](https://demo.myria.cs.washington.edu/editor) as demonstrated above, [Python](myria-python/index.html), or [IPython Notebook](https://github.com/uwescience/myria-python/blob/master/ipnb%20examples/myria%20examples.ipynb). To learn more about the Myria query language, check out the [MyriaL](myrial.html) page.
 
 
-## Hosting your own Myria service 
+## Hosting your own Myria service
 
 ### Part 1: Setting up the service
 
@@ -114,7 +115,7 @@ to deliver high performance. It should be thought of as an experimental
 or debug mode. Instructions are here: [Running the MyriaX engine](myriax/index.html)
 
 - Run MyriaX in an existing cluster.
-  The instructions to run MyriaX on an existing cluster are here:  [Running the MyriaX engine](myriax/index.html). 
+  The instructions to run MyriaX on an existing cluster are here:  [Running the MyriaX engine](myriax/index.html).
 
 
 ### Part 2: Running queries on the service
@@ -128,7 +129,7 @@ The Myria query language, MyriaL, is documented [here](http://myria.cs.washingto
 ## Myria Use Cases
 
 In addition to the [Python tutorial doc](myria-python/index.html) referenced above,
-we are developing example real-world use cases here: 
+we are developing example real-world use cases here:
 
 * [N-body](usecase-astronomy.html)
 

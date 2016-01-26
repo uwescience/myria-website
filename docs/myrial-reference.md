@@ -1,7 +1,9 @@
 ---
 layout: default
 title: MyriaL Language Reference
+group: "docs"
 weight: 3
+section: 1
 ---
 MyriaL Language Reference
 =========================
@@ -9,7 +11,7 @@ MyriaL Language Reference
 **\*This is work in progress***
 
 ##Reading Data and Storing in Myria
- 
+
 ###Load and Store
 Myria can read and store a CSV file from S3 via the load command:
 
@@ -26,7 +28,7 @@ Myria can read and store a CSV file from S3 via the load command:
                          y:float,
                          z:float), skip=0));
               STORE(T2, points, [x,y,z]);
-    
+
 *MyriaL needs explicit partition attribute specified for a relation uploaded via load operator, once this issue is fixed, partition attribute will not need to be specifed. For now, storing requires the following: STORE(sourceRelation, DestinationRelation, optional[PartitionAttribute])*
 
 ##Transforming Data
@@ -37,26 +39,26 @@ Myria can read and store a CSV file from S3 via the load command:
 --Create an empty relation with a particular schema
 
     newRelation = empty(x:float, y:float, z:float);
-    
+
 ###Scan a Relation
 
     T1 = SCAN(relationName);
      T1 = SCAN(TwitterK);
-    
+
 ###Aggregation
 
-    T1 = SCAN(TwitterK); 
+    T1 = SCAN(TwitterK);
      Groups = [FROM T1 EMIT COUNT(a) AS cnt, T1.a AS id];
      STORE(Groups, OUTPUT, [$1]);
 
-###Join 
+###Join
 
     T1 = SCAN(TwitterK);
      T2 = SCAN(TwitterK);
      Joined = [FROM T1, T2
               WHERE T1.$1 = T2.$0
               EMIT T1.$0 AS src, T1.$1 AS link, T2.$1 AS dst];
-          
+
     STORE(Joined, TwoHopsInTwitter);
 
 ###Union
@@ -102,9 +104,9 @@ __User-defined function to calculate modulo operation__
     T1 = [from scan(TwitterK) as t emit mod($0, $1)];
     STORE(T1, udf_result);
 
- 
+
  __User-defined aggregate function__
- 
+
     apply RunningMean(value) {
       -- initialize the custom state, set cnt = 0 and summ = 0
       [0 as cnt, 0 as running_sum];
@@ -127,7 +129,7 @@ __User-defined function to calculate modulo operation__
     T1 = SCAN(TwitterK);
     T2 = [FROM T1 EMIT $0, counter()];
     STORE (T2, K);
-    
+
 ##Comments
 The Myria Catalog is case sensitive, so please make sure to Scan the correct relation name.
 
