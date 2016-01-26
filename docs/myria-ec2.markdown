@@ -61,4 +61,4 @@ ansible-playbook nmyria.yml "-e KEY_NAME=__your keypair name__" -i /etc/ansible/
 
 ## Terminating the cluster
 
-\* Coming Soon * 
+To terminate the cluster go to the AWS Management Console. Make sure you select the region where the instances launched. Click on the running instances, click on "Actions", hover over "Instance State" and select "Terminate". 
