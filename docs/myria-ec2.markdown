@@ -47,12 +47,13 @@ For the purposes of setting up MyriaX on EC2, we assume you are using your lapto
 #### Ansible Inventory Error
 
 In case Ansible complains that there is no inventory/hosts file, follow these steps (tested on Linux Arch):
-* Download the two files at:
-  * https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.py
-  * https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.ini
-* Place them in the ansible configuration folder (`/etc/ansible`).
-* Make the python script executable (`chmod +x ec2.py`)
-* When deploying the Ansible playbook add `-i /etc/ansible/ec2.py` to the launch command:
+
+- Download the two files at:
+  - https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.py
+  - https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.ini
+- Place them in the ansible configuration folder (`/etc/ansible`).
+- Make the python script executable (`chmod +x ec2.py`)
+- When deploying the Ansible playbook add `-i /etc/ansible/ec2.py` to the launch command:
 
 ```
 ansible-playbook nmyria.yml "-e KEY_NAME=__your keypair name__" -i /etc/ansible/ec2.py
