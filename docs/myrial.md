@@ -144,3 +144,4 @@ The Myria Catalog is case sensitive, so please make sure to Scan the correct rel
 * [K-Means in MyriaL](https://github.com/uwescience/raco/blob/master/examples/kmeans.myl)
 * [Sigma Clipping in MyriaL](https://github.com/uwescience/raco/blob/master/examples/sigma-clipping.myl)
 * [Connected Components in MyriaL](https://github.com/uwescience/raco/blob/master/examples/connected_components.myl)
+* [Coordinate Matching in MyriaL](https://github.com/uwescience/raco/blob/master/examples/crossmatch_2d.myl)
