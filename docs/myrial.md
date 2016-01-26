@@ -110,3 +110,4 @@ Store(Groups, OUTPUT, [$1]);
 * [PageRank in MyriaL](https://github.com/uwescience/raco/blob/master/examples/pagerank.myl)
 * [K-Means in MyriaL](https://github.com/uwescience/raco/blob/master/examples/kmeans.myl)
 * [Sigma Clipping in MyriaL](https://github.com/uwescience/raco/blob/master/examples/sigma-clipping.myl)
+* [Connected Components in MyriaL](https://github.com/uwescience/raco/blob/master/examples/connected_components.myl)
