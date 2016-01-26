@@ -54,3 +54,7 @@ img.logo {
   margin: 0;
   padding-top: 0.5em;
 }
+
+.nav ul.dropdown-menu li:not(.dropdown-header) {
+  margin-left: 1em;
+}

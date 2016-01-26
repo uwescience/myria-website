@@ -1,15 +1,13 @@
 {% assign docs = (site.pages | where: "group" , "docs" | sort:"weight") %}
-{% assign section_titles = "Getting Started|Setup Myria Cluster|Myria from Python|MyriaL|Myria for developers" | split: "|" %}
+{% assign section_titles = "Getting Started|Setting Up Myria|Using Myria from Python|MyriaL Query Language|Myria for Developers" | split: "|" %}
 
 {% for title in section_titles %}
   {% assign section = forloop.index %}
-  <li><a>{{title}}</a>
-    <ul>
-      {% for page in docs %}
-        {% if page.section == section %}
-          <li><a href="{{ site.baseurl }}{{page.url}}">{{page.title}}</a></li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  </li>
+  <li class="dropdown-header">{{title}}</li>
+
+  {% for page in docs %}
+    {% if page.section == section %}
+      <li><a href="{{ site.baseurl }}{{page.url}}">{{page.title}}</a></li>
+    {% endif %}
+  {% endfor %}
 {% endfor %}
