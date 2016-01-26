@@ -1,52 +1,64 @@
 ---
 layout: default
-title: Myria EC2
-weight: 4
+title: Amazon Cloud Deployment
+group: "docs"
+weight: 1
+section: 2
 ---
 
-# Myria EC2
+# Deploying Myria on the Amazon EC2 Cloud
 
-Myria-EC2 is a tool that allows you to automatically deploy Myria to a cluster through the Amazon EC2 service. To do this, you must have an [Amazon EC2](http://aws.amazon.com/ec2/) account. You will also need the Myria-EC2 project, which is found under the Myria-Stack. Alternatively, you can directly clone the Myria-EC2 [repository](https://github.com/uwescience/myria-ec2).
+Myria supports automatically deploying Myria to a cluster through the Amazon EC2 service. To do this, you must have an [Amazon EC2](http://aws.amazon.com/ec2/) account.
 
 ## Installation
-Install and configure StarCluster (e.g., `sudo apt-get install starcluster`). To start the setup, run ```starcluster help``` and select the second option.  In the ```~/.starcluster/config``` file add your AWS credentials fill in your AWS\_ACCESS\_KEY\_ID, AWS\_SECRET\_ACCESS\_KEY and AWS\_USER\_ID. This information can be found under the [IAM Management Console](http://aws.amazon.com/iam/).
 
-To create a key, run ```starcluster createkey UNIQUE_KEYNAME -o ~/.ssh/mykey.rsa```.
+Ansible is a configuration management tool that manages machines over the SSH protocol.  Once Ansible is installed, it will not add a database, and there will be no daemons to start or keep running. You only need to install it on one machine (which could easily be a laptop) and it can manage an entire fleet of remote machines from that central point.
+For the purposes of setting up MyriaX on EC2, we assume you are using your laptop as the 'Control Machine'. You could set it up on a EC2 instance for managing your EC2 deployed cluster as well.
 
-In the ```~/.starcluster/config``` file, change the key information with the name of your unique key by updating the following parameters:
+*  __Setting up Ansible on Control Machine__
+   Ansible documentation provided details on [installation]( http://docs.ansible.com/ansible/intro_installation.html#installing-     the-control-machine, "Installation").
+   If your control machine is a Mac, the preferred way of installation is via pip. [Install via pip]( http://docs.ansible.com/ansible/intro_installation.html#latest-releases-via-pip).
 
-	```[key mykey] KEY_LOCATION=~/.ssh/mykey.rsa```
+*  __AWS account information__
+   Ansible provides a number of core modules for AWS. We use several of these modules to setup MyriaX on AWS. The requirments for this are minimal.
+   Authentication with the AWS-related modules is handled by either specifying your access and secret key as ENV variables or module arguments. You need access key ID and secret for AWS. Here is a [link to AWS documentation](http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html), on how to get the access key and secret. Once you have these values, set them up as ENV variables:
 
-	 ```KEYNAME = mykey```
+    ```
+    export AWS_ACCESS_KEY_ID='AK123'
+    export AWS_SECRET_ACCESS_KEY='abc123'
+    ```
 
-Also in the [global] section of the file, edit the INCLUDE parameter to point to the myriaccluster.config file as follows: ```INCLUDE=~/.starcluster/myriacluster.config```
+*  __AWS keypair__
+   You will need a keypair to provision EC2 instances. If you do not have a keypair, [create one now](http://docs.aws.amazon.com/gettingstarted/latest/wah/getting-started-prereq.html#create-a-key-pair).  Download the `.pem` file to your control machine. Using an SSH agent is the best way to authenticate with your end nodes, as this alleviates the need to copy your `.pem` files around. ssh-add your ec2 keypair.
 
-As a second step, clone the Myria-EC2 repository (`git clone https://github.com/uwescience/myria-ec2.git`). Install Myria-EC2 by running `sudo python setup.py install`. The cluster configuration is located under ```~/.starcluster/myriacluster.config```
+    `ssh-add ~/.ssh/keypair.pem`
 
-In the myriacluster.config file, the first few lines are most useful to modify the cluster configuration.  The most relevant options are:
+
+*  __Get the Ansible Playbook__
+   Get the ansible scripts from git by cloning `https://github.com/parmitam/myria-ec2-ansible.git`
+
+*  __Deploy__
+   Run the ansibleplaybook with the following command:
+   ```
+   ansible-playbook myria.yml "-e KEY_NAME=__<your keypair name>__"
+   ```
+
+
+#### Ansible Inventory Error
+
+In case ansible complains that there is no inventory/hosts file, follow
+these steps (tested on Linux Arch).
+* Download the two files at:
+  * https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.py
+  * https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.ini
+* Place them in the ansible configuration folder (`/etc/ansible`).
+* Make the python script executable (`chmod +x ec2.py`)
+* When deploying the ansible playbook add `-i /etc/ansible/ec2.py` to the launch command:
 
 ```
-[cluster myriacluster]
-CLUSTER_SIZE = 2                  # How many instances to deploy?
-NODE_INSTANCE_TYPE = t1.micro     # What instance type?
-SPOT_BID = 0.0035                 # Change your spot instance bid prices if requesting a larger instance type!
+ansible-playbook nmyria.yml "-e KEY_NAME=__your keypair name__" -i /etc/ansible/ec2.py
 ```
 
-## Running the Cluster on EC2
-Modify cluster settings in ~/.starcluster/myriaconfig (e.g., change instance sizes, add spot instances).
+## Terminating the cluster
 
-  a) Start a cluster:
-       ```starcluster start -c myriacluster myriacluster```
-
-  b) Alternatively, specify a cluster of size n instances:
-       ```starcluster start -c myriacluster --cluster-size n myriacluster```
-
-  c) Terminate a cluster:
-       ```starcluster terminate myriacluster```
-
-
-## Stopping and Restarting the Cluster
-Coming soon...
-
-## Automatically Uploading Datasets to the Cluster on Launch
-Coming soon...
+...

@@ -2,7 +2,7 @@
 layout: default
 title: Start Here
 group: "docs"
-weight: 0
+weight: 2
 section: 1
 ---
 
@@ -105,16 +105,16 @@ plans in JSON through a REST API and has the workers execute these query plans.
 
 There are three ways to run MyriaX:
 
-- Run MyriaX in a public cloud (_recommended_).
+#### Run MyriaX in a public cloud (_recommended_)
   If you already have an AWS account, this is the recommended way to deploy a new Myria environment. The instructions to deploy MyriaX on Amazon EC2 are here: [Running Myria on Amazon EC2](https://github.com/uwescience/myria-ec2-ansible/blob/reef/README.md). Short version: download the `myria-deploy` script [here](https://raw.githubusercontent.com/uwescience/myria-ec2-ansible/reef/myria-deploy) and run it (use the `--help` option to see all options). The script will tell you how to install any missing dependencies. It does not require root privileges to run (although some of the dependencies require root privileges to install). When the script is done, you will have a working MyriaWeb instance that you can point your browser to and start running queries.
 
-- Run MyriaX locally on a laptop or desktop.
+#### Run MyriaX locally on a laptop or desktop
   This is the easiest
 way to experiment with MyriaX if you don't want to deploy on the public cloud. This setup is not designed
 to deliver high performance. It should be thought of as an experimental
 or debug mode. Instructions are here: [Running the MyriaX engine](myriax/index.html)
 
-- Run MyriaX in an existing cluster.
+#### Run MyriaX in an existing cluster
   The instructions to run MyriaX on an existing cluster are here:  [Running the MyriaX engine](myriax/index.html).
 
 
