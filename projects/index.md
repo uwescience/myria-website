@@ -24,6 +24,6 @@ that we are making through the Myria project.
 
 <div class="container projectlist">
 {% for post in site.categories.projects limit:50 %}
-  {% include project.html %}
+  {% include project %}
 {% endfor %}
 </div>
