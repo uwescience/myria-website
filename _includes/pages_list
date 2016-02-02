@@ -3,7 +3,7 @@
 </li>
 
 <li {% if page.id == 'projects' %}class="active"{% endif %}>
-  <a href="{{ site.baseurl }}/projects.html">Papers & Projects</a>
+  <a href="{{ site.baseurl }}/projects">Papers & Projects</a>
 </li>
 
 <li {% if page.id == 'cases' %}class="active"{% endif %}>
