@@ -26,3 +26,8 @@ You can update them by running the script: `./subtree-pull.sh`.
 Please make sure you have no uncommitted changes to files before runnning the script.
 
 To add docs from a new repository, please follow the format inside `subtree.config`.
+
+### Add a project
+
+
+To add a project, add a new file in [projects/_posts](https://github.com/uwescience/myria-website/tree/gh-pages/projects/_posts) similar to the exisiting ones. Your project will be automatically added to the main projects page. 
