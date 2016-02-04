@@ -3,7 +3,10 @@
 </li>
 
 <li {% if page.id == 'projects' %}class="active"{% endif %}>
-  <a href="{{ site.baseurl }}/projects">Papers & Projects</a>
+  <a href="{{ site.baseurl }}/projects" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Papers & Projects <span class="caret"></span></a>
+  <ul class="dropdown-menu" role="menu">
+    {% include projects_list %}
+  </ul>
 </li>
 
 <li {% if page.id == 'cases' %}class="active"{% endif %}>

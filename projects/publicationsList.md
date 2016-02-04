@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "Publications"
+group: "projects"
+weight: 1
 ---
 
 #Publications

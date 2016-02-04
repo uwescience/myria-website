@@ -1,7 +1,8 @@
 ---
 layout: default
-title: "Myria Research"
-id: "projects"
+title: "Projects"
+group: "projects"
+weight: 0
 ---
 
 ## {{ page.title }}
