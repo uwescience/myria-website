@@ -33,6 +33,7 @@ id: "people"
 * [Ryan Maas](http://homes.cs.washington.edu/~maas/)
 * [Dominik Moritz](http://homes.cs.washington.edu/~domoritz/)
 * [Brandon Myers](http://homes.cs.washington.edu/~bdmyers/)
+* [Shrainik Jain](http://homes.cs.washington.edu/~shrainik/)
 * Laurel Orr
 * [Jennifer Ortiz](http://homes.cs.washington.edu/~jortiz16/)
 * [Emad Soroush](http://www.cs.washington.edu/homes/soroush/) (alum)
