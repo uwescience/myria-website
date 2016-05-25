@@ -1,0 +1,8 @@
+<article class="project">
+  <a href="{{ site.baseurl }}{{ post.url }}">
+  <div>
+    <div class="post-title">{{ post.title }}</div>
+    <div class="post-excerpt" itemprop="description">{{ post.excerpt | strip_html | truncatewords: 25 }}</div>
+  </div>
+  </a>
+</article>

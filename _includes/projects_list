@@ -1,0 +1,5 @@
+{% assign projects = (site.pages | where: "group" , "projects" | sort:"weight") %}
+
+{% for page in projects %}
+ <li><a href="{{ site.baseurl }}{{page.url}}">{{page.title}}</a></li>
+{% endfor %}

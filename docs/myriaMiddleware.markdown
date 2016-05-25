@@ -31,7 +31,7 @@ Myria is a hosted Big Data management and analytics service consisting of three 
 To register a system with MyriaMiddleware, the sytem designer provides four components by extending appropriate classes in the MyriaMiddleware Python library (currently called RACO):
 
 * An AST for the input language, API, or algebra.
-* A mapping from the MyriaQ algebra into the AST.
+* A mapping from the MyriaL algebra into the AST.
 * (optional) A set of custom optimization rules required to generate appropriate plans; we do not discourage these rules from calling specialized algorithms or UDFs to optimize particular cases.   However, if the compilation process essentially degenerates into a lookup table mapping every possible input to some special-case algorithm, then that is something we want to learn as part of this research.  Indeed, the number of rules required to support a suite of benchmark queries may be a good quantitative metric for ease of use.
 * (optional) An implementation of an Administrative API that includes methods for query execution, schema browsing, monitoring and logging, fetching data, killing queries, restarting the system, collecting statistics, and managing users.  Not all of these methods need be implemented for basic operation, but they provide a richer experience for the end user.
 
