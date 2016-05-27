@@ -150,6 +150,7 @@ select a, COUNT(*) from T group by a;
 
 
 ###unionall (Concatentation)
+
 `+` or `UNIONALL` concatenates to relations in MyriaL
 
 ```sql
