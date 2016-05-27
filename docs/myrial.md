@@ -8,13 +8,13 @@ section: 3
 
 # MyriaL
 
-MyriaL is an imperative-yet-declarative high-level data flow language based on the relational algebra that includes support for iteration, user-defined functions, multiple expression languages, and familiar language constructs such as set comprehensions.  The language is the flagship programming interface for the Myria system, and can be compiled to a number of backends.
-
-MyriaL was designed by the Database group at the University of Washington, led by Andrew Whitaker, now at Amazon.
+MyriaL is an imperative-yet-declarative high-level data flow language based on the relational algebra that includes support for SQL syntax, iteration, user-defined functions, and familiar language constructs such as set comprehensions.  The language is the flagship programming interface for the Myria big data management system, and can it also be compiled to a number of other back ends.
 
 The language began as a ``whiteboard language'' for reasoning about the semantics of Datalog programs.  At the time, we anticipated Datalog becoming our premier programming interface.  But the fact that we were using an imperative style language to reason about Datalog made us realize we should just implement the imperative language directly.
 
-MyriaL is imperative: Each program is a sequence of assignment statements.  However, it is also declarative, in two ways: First, the optimizer is free to reorder blocks of code and apply other transformations as needed prior to execution, meaning that the programmer need not write the ``perfect'' program for decent performance.  Second, the right-hand-side of each assignment statement may itself be a declarative expression; programs may mix and match SQL and set comprehensions, for example. We find this combination of features to strike a useful balance between programmer control and programmer convenience.
+MyriaL is imperative: Each program is a sequence of assignment statements.  However, it is also declarative, in two ways: First, the optimizer is free to reorder blocks of code and apply other transformations as needed prior to execution, meaning that the programmer need not write the ``perfect'' program for decent performance.  Second, the right-hand-side of each assignment statement may itself be a declarative expression: either a SQL query or a set comprehension. We find this combination of features to strike a useful balance between programmer control and programmer convenience.
+
+MyriaL was designed by the Database group at the University of Washington, led by Andrew Whitaker, now at Amazon.
 
 ##Reading Data and Storing in Myria
 
