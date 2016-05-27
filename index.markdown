@@ -16,7 +16,7 @@ id: home
 		<a class="btn btn-primary btn-lg" href="http://demo.myria.cs.washington.edu">Try the free tier Myria service</a>
 	</p>
 	<p class="text-center">
-		<a class="btn btn-primary btn-lg" href="http://myria.cs.washington.edu/docs">Deploy your own Myria cluster</a>
+		<a class="btn btn-primary btn-lg" href="http://myria.cs.washington.edu/docs/">Deploy your own Myria cluster</a>
 	</p>
 </div>
 
