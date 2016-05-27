@@ -53,36 +53,98 @@ Once a relation is stored, Myria can access use it in later queries with `SCAN`.
     STORE(T, TwitterK_part_a, [a]);
 ```
 
+###Create an empty relation
+
+```sql
+--Create an empty relation with a particular schema
+r = empty(x:int, y:float, z:string);
+STORE(r, myrelation);
+```
+
 
 ##Transforming Data
-###Comprehensions
-\*To Do*
 
-###SQL
---Create an empty relation with a particular schema
+Now for some real queries! MyriaL has two styles of syntax: SQL and comprehensions. If you've used [list comprehensions in python](https://docs.python.org/2/tutorial/datastructures.html#list-comprehensions) then MyriaL's comprehensions will look familiar. Use the style you prefer or mix and match.
 
-    newRelation = empty(x:float, y:float, z:float);
 
-###Scan a Relation
 
-    T1 = SCAN(relationName);
-     T1 = SCAN(TwitterK);
+###Select, from, where
 
-###Aggregation
+Let's find the twitter relationships where the follower and followee are the same user.
 
-    T1 = SCAN(TwitterK);
-     Groups = [FROM T1 EMIT COUNT(a) AS cnt, T1.a AS id];
-     STORE(Groups, OUTPUT, [$1]);
+```sql
+T = scan(TwitterK);
+-- SQL style syntax
+s = select * from T where a = b;
+store(s, selfloops);
+```
+
+```sql
+T = scan(TwitterK);
+-- comprehension syntax
+s = [from T where a = b emit *];
+store(s, selfloops);
+```
 
 ###Join
 
-    T1 = SCAN(TwitterK);
-     T2 = SCAN(TwitterK);
-     Joined = [FROM T1, T2
-              WHERE T1.$1 = T2.$0
-              EMIT T1.$0 AS src, T1.$1 AS link, T2.$1 AS dst];
+Joins let us match two relations on 1 or more attributes. This query finds all the friend-of-friend relationships in TwitterK.
 
-    STORE(Joined, TwoHopsInTwitter);
+```sql
+T1 = SCAN(TwitterK);
+T2 = SCAN(TwitterK);
+Joined = select T1.a, T1.b, T2.b
+              from T1, T2
+              where T1.b = T2.a;
+STORE(Joined, TwoHopsInTwitter);
+```
+
+```sql
+T1 = SCAN(TwitterK);
+T2 = SCAN(TwitterK);
+Joined = [FROM T1, T2
+          WHERE T1.b = T2.a
+          EMIT T1.a AS src, T1.b AS link, T2.b AS dst];
+
+STORE(Joined, TwoHopsInTwitter);
+```
+
+###Aggregation
+
+Aggregation lets us combine results from multiple tuples. This query counts the number of friends for user 821.
+
+```sql
+T = scan(TwitterK);
+cnt = select COUNT(*) from T where a=821;
+store(cnt, user821);
+```
+
+```sql
+T1 = scan(TwitterK);
+cnt = [from T1 where a=821 emit COUNT(*) as x];
+store(cnt, user821);
+```
+
+We can also group the aggregation by attributes. This query counts the number of friends for *each* user.
+
+```sql
+T = scan(TwitterK);
+cnt = select a, COUNT(*) from T;
+store(cnt, degrees);
+```
+
+```sql
+T1 = scan(TwitterK);
+cnt = [from T1 emit a, COUNT(*) as x];
+store(cnt, degrees);
+```
+
+Notice that MyriaL's syntax differs from SQL for group by. MyriaL groups by all attributes in the select clause without using a group by clause. For clarity, the equivalent SQL query is:
+
+```sql
+select a, COUNT(*) from T group by a;
+```
+
 
 ###Union
 -- '+' is a union operator in MyriaL
@@ -91,6 +153,7 @@ Once a relation is stored, Myria can access use it in later queries with `SCAN`.
      T3 = SCAN(TwitterK);
      result = T2+T3;
      STORE(result, union_result);
+
 
 ##Expressions
 ###Arithmetic
