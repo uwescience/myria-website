@@ -44,6 +44,25 @@ Here, Myria will create a relation `T1` with the contents of `TwitterK.csv` and 
 
 *The partition argument to STORE is actually optional. However, MyriaL needs explicit partition attribute specified for a relation created via LOAD.*
 
+**Optional - loading data from other sources** <br>
+You can also load data from other sources including your own local file system. To ingest from a local file source, you must deploy a local instance of Myria. Below is an example of loading a smallTable from a local file.
+
+```sql
+    T = LOAD("file:///path/to/smallTable/file",
+              csv(schema(x:float,
+                         y:float), skip=0));
+              STORE(T, points, [x,y]);
+```
+
+If your table is in HDFS, you can also run something like the following:
+
+```sql
+    T = LOAD("hdfs://server:port/path/to/file",
+              csv(schema(x:float,
+                         y:float), skip=0));
+              STORE(T, points, [x,y]);
+```
+
 ###Reading existing relations
 
 Once a relation is stored, Myria can access use it in later queries with `SCAN`. This example simply repartitions the `TwitterK` relation by just attribute `a`.
