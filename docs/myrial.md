@@ -46,9 +46,7 @@ Here, Myria will create a relation `T1` with the contents of `TwitterK.csv` and 
 
 ###Reading existing relations
 
-Once a relation is stored, Myria can access use it in later queries with `SCAN`.
-
-This example simply repartitions the `TwitterK` relation by just attribute `a`.
+Once a relation is stored, Myria can access use it in later queries with `SCAN`. This example simply repartitions the `TwitterK` relation by just attribute `a`.
 
 ```sql
     T = SCAN(TwitterK);
