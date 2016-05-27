@@ -10,7 +10,7 @@ section: 3
 
 MyriaL is an imperative-yet-declarative high-level data flow language based on the relational algebra that includes support for SQL syntax, iteration, user-defined functions, and familiar language constructs such as set comprehensions.  The language is the flagship programming interface for the Myria big data management system, and can it also be compiled to a number of other back ends.
 
-The language began as a ``whiteboard language'' for reasoning about the semantics of Datalog programs.  At the time, we anticipated Datalog becoming our premier programming interface.  But the fact that we were using an imperative style language to reason about Datalog made us realize we should just implement the imperative language directly.
+The language began as a "whiteboard language" for reasoning about the semantics of Datalog programs.  At the time, we anticipated Datalog becoming our premier programming interface.  But the fact that we were using an imperative style language to reason about Datalog made us realize we should just implement the imperative language directly.
 
 MyriaL is imperative: Each program is a sequence of assignment statements.  However, it is also declarative, in two ways: First, the optimizer is free to reorder blocks of code and apply other transformations as needed prior to execution, meaning that the programmer need not write the ``perfect'' program for decent performance.  Second, the right-hand-side of each assignment statement may itself be a declarative expression: either a SQL query or a set comprehension. We find this combination of features to strike a useful balance between programmer control and programmer convenience.
 
@@ -61,12 +61,33 @@ r = empty(x:int, y:float, z:string);
 STORE(r, myrelation);
 ```
 
+###Compute the result without storing it
+
+MyriaL has fairly aggressive *deadcode elimination*. That means if you do not store a relation, Myria may not bother computing anything.
+
+This program, for example,
+
+```sql
+T = SCAN(TwitterK);
+```
+
+results in the following error message
+
+`MyrialCompileException: Optimized program is empty`
+
+
+MyriaL provides the `SINK` command to get around this. We often find `SINK` useful when benchmarking Myria's performance. The following program scans `TwitterK` from disk into memory and then throws the relation away.
+
+```sql
+T = SCAN(TwitterK);
+SINK(T);
+```
 
 ##Transforming Data
 
 Now for some real queries! MyriaL has two styles of syntax: SQL and comprehensions. If you've used [list comprehensions in python](https://docs.python.org/2/tutorial/datastructures.html#list-comprehensions) then MyriaL's comprehensions will look familiar. Use the style you prefer or mix and match.
 
-Try out the examples at the [Myria demo](http://demo.myria.cs.washington.edu/).
+You can try all the examples in this section yourself by copy/pasting them into [Myria demo](http://demo.myria.cs.washington.edu/).
 
 
 ###Select, from, where
@@ -86,6 +107,8 @@ T = scan(TwitterK);
 s = [from T where a = b emit *];
 store(s, selfloops);
 ```
+
+`from T` means read tuples from relation T. `where a = b` means only keep tuples where the value of a is equal to the value of b. The `*` in `emit *` means the resulting relation should contain *all* the attributes from the relations in the `from` clause (in this case, the attributes of `T`: `a` and `b`).
 
 ###Join
 
@@ -148,6 +171,7 @@ select a, COUNT(*) from T group by a;
 
 
 ###unionall (Concatentation)
+
 `+` or `UNIONALL` concatenates to relations in MyriaL
 
 ```sql
@@ -212,7 +236,7 @@ The condition should be a relation with one tuple with one boolean attribute.
 
 ##Expressions
 
-Expressions can appear in the EMIT (comprehesions) or SELECT (SQL) or WHERE clauses.
+Expressions are any code that evaluate to scalar values in MyriaL. They can appear in the EMIT (comprehesions) or SELECT (SQL) or WHERE clauses.
 
 ###Arithmetic
  MyriaL has a number of math functions.
@@ -234,7 +258,7 @@ A constant is a *singleton relation* (a relation with a single 1-attribute tuple
 ```sql
 N = [12];
 T = scan(TwitterK);
-S = select * from T where a = *N;
+S = select a, b from T where a = *N;
 store(S, filtered);
 ```
 
@@ -297,6 +321,18 @@ STORE (T2, identified);
 
 To do a distributed counter, Myria has coordination operators like broadcast and collect, but these are not currently exposed in MyriaL.
 
+###Types
+
+MyriaL supports a number of types for attributes (and expressions) and performs type checking.
+
+- integer
+- long
+- float
+- double
+- string
+- datetime
+- *coming soon:* blob
+
 ##Gotchas
 
 The Myria Catalog is case sensitive, so please make sure to Scan the correct relation name.
@@ -309,3 +345,4 @@ The Myria Catalog is case sensitive, so please make sure to Scan the correct rel
 * [Connected Components in MyriaL](https://github.com/uwescience/raco/blob/master/examples/connected_components.myl)
 * [Coordinate Matching in MyriaL](https://github.com/uwescience/raco/blob/master/examples/crossmatch_2d.myl)
 * [Pairwise Distance Computation](https://github.com/uwescience/raco/blob/master/examples/pairwise_distances.myl)
+* [TPC-H in MyriaL](https://github.com/uwescience/tpch-radish)
