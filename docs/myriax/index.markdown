@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Local Installation
+title: Myria Local Installation
 group: "docs"
-weight: 3
+weight: 2
 section: 1
 ---
 

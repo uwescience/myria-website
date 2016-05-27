@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Amazon Cloud Deployment
+title: Myria Amazon Cloud Deployment
 group: "docs"
 weight: 2
 section: 1

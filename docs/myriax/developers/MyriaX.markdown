@@ -2,6 +2,7 @@
 layout: default
 title: Architecture
 group: "docs"
+weight: 1
 section: 4
 ---
 
