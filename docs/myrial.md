@@ -125,7 +125,7 @@ cnt = [from T1 where a=821 emit COUNT(*) as x];
 store(cnt, user821);
 ```
 
-We can also group by attributes and aggregate others. This query counts the number of friends for *each* user.
+We can also group the aggregation by attributes. This query counts the number of friends for *each* user.
 
 ```sql
 T = scan(TwitterK);
