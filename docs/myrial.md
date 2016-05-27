@@ -237,7 +237,7 @@ A constant is a *singleton relation* (a relation with a single 1-attribute tuple
 ```sql
 N = [12];
 T = scan(TwitterK);
-S = select * from T where a = *N;
+S = select a, b from T where a = *N;
 store(S, filtered);
 ```
 
