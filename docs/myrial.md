@@ -74,12 +74,14 @@ Let's find the twitter relationships where the follower and followee are the sam
 
 ```sql
 T = scan(TwitterK);
+-- SQL style syntax
 s = select * from T where a = b;
 store(s, selfloops);
 ```
 
 ```sql
 T = scan(TwitterK);
+-- comprehension syntax
 s = [from T where a = b emit *];
 store(s, selfloops);
 ```
