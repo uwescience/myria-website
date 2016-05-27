@@ -291,7 +291,7 @@ APPLY counter() {
   c;
 };
 T1 = SCAN(TwitterK);
-T2 = [FROM T1 EMIT $0, counter()];
+T2 = [FROM T1 EMIT a, counter()];
 STORE (T2, identified);
 ```
 
