@@ -5,7 +5,7 @@ group: "docs"
 weight: 2
 section: 1
 ---
-# Myria Cloud Deployment
+# Myria Amazon Cloud Deployment
 In this section, we describe how to deploy Myria on EC2.
 
 ## Setting up a Myria cluster on EC2
