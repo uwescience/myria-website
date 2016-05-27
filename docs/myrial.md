@@ -80,12 +80,33 @@ r = empty(x:int, y:float, z:string);
 STORE(r, myrelation);
 ```
 
+###Compute the result without storing it
+
+MyriaL has fairly aggressive *deadcode elimination*. That means if you do not store a relation, Myria may not bother computing anything.
+
+This program, for example,
+
+```sql
+T = SCAN(TwitterK);
+```
+
+results in the following error message
+
+`MyrialCompileException: Optimized program is empty`
+
+
+MyriaL provides the `SINK` command to get around this. We often find `SINK` useful when benchmarking Myria's performance. The following program scans `TwitterK` from disk into memory and then throws the relation away.
+
+```sql
+T = SCAN(TwitterK);
+SINK(T);
+```
 
 ##Transforming Data
 
 Now for some real queries! MyriaL has two styles of syntax: SQL and comprehensions. If you've used [list comprehensions in python](https://docs.python.org/2/tutorial/datastructures.html#list-comprehensions) then MyriaL's comprehensions will look familiar. Use the style you prefer or mix and match.
 
-Try out the examples at the [Myria demo](http://demo.myria.cs.washington.edu/).
+You can try all the examples in this section yourself by copy/pasting them into [Myria demo](http://demo.myria.cs.washington.edu/).
 
 
 ###Select, from, where

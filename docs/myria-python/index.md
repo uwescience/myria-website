@@ -179,7 +179,7 @@ print query.status
 
 ## Using Myria with IPython
 
-Myriaexposes convenience functionality when running within the Jupyter/IPython environment.  See [our sample IPython notebook](https://github.com/uwescience/myria-python/blob/master/ipnb%20examples/myria%20examples.ipynb) for a live demo.
+Myria exposes convenience functionality when running within the Jupyter/IPython environment.  See [our sample IPython notebook](https://github.com/uwescience/myria-python/blob/master/ipnb%20examples/myria%20examples.ipynb) for a live demo.
 
 #### 1. Load the Extension
 
@@ -220,3 +220,7 @@ books = load('https://raw.githubusercontent.com/uwescience/myria-python/master/i
 longerBooks = [from books where pages > @low and pages < @high emit name];
 store(longerBooks, @name);
 ```
+
+# MyriaL
+
+The above examples use MyriaL. For more information, please see [http://myria.cs.washington.edu/docs/myrial.html](http://myria.cs.washington.edu/docs/myrial.html).
