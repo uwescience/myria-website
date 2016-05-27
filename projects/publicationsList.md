@@ -20,6 +20,7 @@ weight: 1
 
 ##Big Data Systems Research
 
+* [Compiling queries for high-performance computing](http://www.cs.washington.edu/tr/2016/02/UW-CSE-16-02-02.pdf). Brandon Myers, Bill Howe, and Mark Oskin. *UW Technical Report 2016*
 * [Asynchronous and Fault-Tolerant Recursive Datalog Evaluation in Shared-Nothing Engines](https://homes.cs.washington.edu/~jwang/papers/p2317-wang.pdf). Jingjing Wang, Magdalena Balazinska, and Daniel Halperin. *VLDB 2015*
 * [From Theory to Practice: Efficient Join Query Evaluation in a Parallel Database System](https://homes.cs.washington.edu/~chushumo/files/sigmod_15_join.pdf). Shumo Chu, Magda Balazinska and Dan Suciu. *SIGMOD 2015*
 * [Gaussian Mixture Models Use-Case: In-Memory Analysis with Myria](http://homes.cs.washington.edu/~maas/papers/maas-myriagmm.pdf). Ryan Maas, Jeremy Hyrkas, Olivia Grace Telford, Magdalena Balazinska, Andrew Connolly, and Bill Howe. *IMDM 2015 (at VLDB)*
