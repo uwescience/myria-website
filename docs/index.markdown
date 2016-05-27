@@ -2,73 +2,30 @@
 layout: default
 title: Start Here
 group: "docs"
-weight: 1
+weight: 0
 section: 1
 ---
 
 # Getting Started with Myria
-In this page, we cover how to set up your own Myria service either on a local laptop or on Amazon EC2.
+There are three ways you can quickly get started using Myria. We describe each method below. You can either use our demo cluster, run a local installation or 
+launch your own Amazon cluster.
 
-## Using the Myria Demo Cluster
+### Using the Myria Demo Cluster
 
 The UW Database Group hosts a demonstration Myria service: <http://demo.myria.cs.washington.edu>.
 The demo service runs on Amazon EC2 and is a small version of Myria running on only four instances.
 The demo service is only there to make it easy to get a sense of what Myria is about, but don't use it to do any actual work
 or test anything at scale.
 
-There are two ways to access the demo service. You can either access through Myria-Web or a Jupyter Notebook. We describe how to use either in the sections below.
+### Launching a Local Installation of Myria
+If you're interested in running a local version of Myria on your own personal machine, instructions are located [here](myriax/).
 
-### Using the Myria Demo Cluster through Myria-Web
+### Launching your own Myria Amazon Cluster (EC2)
+For real data analysis, we recommend launching your own Amazon cluster. Instructions are located [here](myria-ec2).
 
-Open your browser (preferably Chrome), and point it at [http://demo.myria.cs.washington.edu](http://demo.myria.cs.washington.edu).
+<br>
+<br>
 
-You will see an editor where you can write MyriaL or SQL queries and execute them with Myria.
+#### Questions, issues, problems
 
-Here is a quick tour of the interface:
-
-- At the top of the screen, you should see three tabs: "Editor", "Queries", and "Datasets".
-Click on the "Datasets" tab. Here, you can see the list of all the datasets currently ingested
-and available in the service. You can click on the name of a dataset to see its metadata
-including the schema.  Click on "JSON", "CSV", or "TSV" to download the dataset in the
-specified format.
-
-- Now click on the "Queries" tab. This is where you can see all the queries that yourself
-and others have been running. Observe the keyword search window. After you run the example
-query below, type the word "Twitter" to see all queries executed on the `public:adhoc:Twitter` relation.
-
-- Finally, click on the "Editor" tab. This is where you can write and execute queries.
-You can start from one of the examples on the right. Click on the example and the
-query will appear in the editor window. Queries can be written in SQL or MyriaL. We
-recommend MyriaL because, in that mode, you can inter-twine SQL and MyriaL in your
-script.
-
-Try the following query, which ingests a dataset from S3, stores it in the relation `public:adhoc:Twitter`:
-
-    Twitter = LOAD("https://s3-us-west-2.amazonaws.com/myria/public-adhoc-TwitterK.csv", csv(schema(column0:int, column1:int), skip=1));
-    STORE(Twitter, public:adhoc:Twitter, [$0]);
-
-The query below computes an aggregate that it stores in a relation called `public:adhoc:Followers`:
-
-    Twitter = SCAN(public:adhoc:Twitter);
-    Followers = SELECT $0, COUNT($1) FROM Twitter;
-    STORE(Followers, public:adhoc:Followers, [$0]);
-
-(The third argument in the `STORE` statement means to hash-partition the data on the first attribute and store it hash-partitioned across all worker instances.)
-
-First click on "Parse". This will show you the query plan that Myria will
-execute. Then click on "Execute Query". This will execute the query and
-produce a link to the output.
-
-Now select  the "Profile Query" option below the query window and
-re-execute the query with the option ON.  Below the result, you will
-see the "Profiling results". Click on it. It wil show you profiling information
-about the way the query executed. Explore the output of the profiler.
-
-### Using the Myria Demo Cluster with Jupyter Notebook
-
-
-
-## Launching your own Myria Cluster (EC2)
-
-
-
+You are welcome to check our [GitHub issues page](https://github.com/uwescience/myria/issues) and post your problems there. We will take care of them!

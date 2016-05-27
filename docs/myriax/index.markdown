@@ -2,13 +2,11 @@
 layout: default
 title: Myria Local Installation
 group: "docs"
-weight: 2
+weight: 1
 section: 1
 ---
 
-# MyriaX Engine
-
-## Local Installation
+# Myria Local Installation
 
 ### 1. Preparation
 
@@ -213,12 +211,4 @@ force-quit all machines:
 
 This will go to all the nodes, find the master/worker processes under your username, and kill them.
 
-
-## Using a shared-nothing cluster
-
-To deploy a shared-nothing cluster to run MyriaX on Amazon EC2, download the `myria-deploy` script [here](https://raw.githubusercontent.com/uwescience/myria-ec2-ansible/reef/myria-deploy) and run it from a machine with the AWS CLI installed and configured to use the AWS identity you will use to deploy the cluster on EC2. (Additionally, this will install a `myria-web` instance on your cluster.) To see all options, run `myria-deploy --help`. For complete documentation of the script and the install process, see the `myria-ec2-ansible` [repository](https://github.com/uwescience/myria-ec2-ansible/blob/reef/README.md).
-
-## Questions, issues, problems
-
-You are welcome to check our [GitHub issues page](https://github.com/uwescience/myria/issues) and post your problems there. We will take care of them!
 
