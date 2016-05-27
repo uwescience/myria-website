@@ -1,5 +1,5 @@
 {% assign docs = (site.pages | where: "group" , "docs" | sort:"weight") %}
-{% assign section_titles = "Getting Started|Setting Up Myria|Using Myria from Python|MyriaL Query Language|Myria for Developers" | split: "|" %}
+{% assign section_titles = "Deploying a Cluster|Querying in Myria|MyriaL Query Language|Myria for Developers" | split: "|" %}
 
 {% for title in section_titles %}
   {% assign section = forloop.index %}

@@ -1,7 +1,9 @@
 ---
 layout: default
 title: Myria Development
-weight: 5
+group: "docs"
+weight: 4
+section: 4
 ---
 
 # Myria Development

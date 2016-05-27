@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Myria Python
+title: Myria Python/Jupyter
 group: "docs"
 weight: 4
-section: 3
+section: 2
 ---
 
 # Myria Python

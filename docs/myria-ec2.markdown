@@ -2,8 +2,8 @@
 layout: default
 title: Amazon Cloud Deployment
 group: "docs"
-weight: 0
-section: 2
+weight: 2
+section: 1
 ---
 # Myria Cloud Deployment
 In this section, we describe how to deploy Myria on EC2.

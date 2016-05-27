@@ -2,8 +2,8 @@
 layout: default
 title: Local Installation
 group: "docs"
-weight: 1
-section: 2
+weight: 3
+section: 1
 ---
 
 # MyriaX Engine

@@ -3,7 +3,7 @@ layout: default
 title: Myria Middleware
 group: "docs"
 weight: 2
-section: 1
+section: 4
 ---
 
 # Myria Middleware
