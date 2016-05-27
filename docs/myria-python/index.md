@@ -16,7 +16,7 @@ Developers interact with the Myria system using `MyriaConnection` instances to e
 
 ![Myria-Python Workflow](https://raw.githubusercontent.com/uwescience/myria-python/master/ipnb%20examples/overview.png "Myria-Python Workflow")
 
-Myria-Python is also compatible with [Jupyter (IPython) Notebooks](http://jupyter.org/). Many of the following examples are included in a sample IPython Notebook file in the `myria-python` repository [here](https://github.com/uwescience/myria-python/blob/master/ipnb%20examples/myria%20examples.ipynb).
+Myria-Python is also compatible with [Jupyter (IPython) Notebooks](http://jupyter.org/). See the section below for examples.
 
 #### Quick Start Example
 
