@@ -23,12 +23,7 @@ We also have an older [repository of Hadoop applications](http://nuage.cs.washin
 
 **Detailed description**: [Link to data and detailed description.]({{ site.baseurl}}/repository/uw-cat.html)
 
-
 ## Seaflow
-
-coming soon...
-
-## N-Body Simulation
 
 coming soon...
 

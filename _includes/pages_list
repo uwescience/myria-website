@@ -10,7 +10,7 @@
 </li>
 
 <li {% if page.id == 'cases' %}class="active"{% endif %}>
-  <a href="{{ site.baseurl }}/repository/">Use Cases</a>
+  <a href="{{ site.baseurl }}/usecases/">Use Cases</a>
 </li>
 
 <li class="{% if page.group == 'docs' %}active{% endif %} dropdown">
