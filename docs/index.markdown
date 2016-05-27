@@ -7,14 +7,12 @@ section: 1
 ---
 
 # Getting Started with Myria
-There are three ways you can quickly get started using Myria. We describe each method below. You can either use our demo cluster, run a local installation or 
-launch your own Amazon cluster.
+There are three ways you can quickly get started using Myria. We describe each method below.
 
 #### Using the Myria Demo Service
 The UW Database Group hosts a demonstration Myria service: <http://demo.myria.cs.washington.edu>.
-The demo service runs on Amazon EC2 and is a small version of Myria running on only four instances. We highly recommend this option for new Myria users. 
-The demo service is only there to make it easy to get a sense of what Myria is about, but don't use it to do any actual work
-or test anything at scale. 
+We highly recommend this option for new Myria users to get a sense of what Myria is about. 
+The demo service runs on Amazon EC2 with four instances, so it is not capable to do any heavy works. 
 
 #### Launching your own Myria Amazon Cluster (EC2)
 For real data analysis, we recommend launching your own Amazon cluster. Instructions are [here](myria-ec2).
@@ -30,7 +28,6 @@ There are two ways to interact with Myria through the browser: <br>
 If you are using the Myria Demo Service, you can access Myria-Web [here](http://demo.myria.cs.washington.edu) and the Jupyter/IPython Notebook [here]().
 
 If you launch your own Myria Amazon cluster, an instance of Myria-Web and Jupyter/IPython Notebook are created automatically for you. If the deployment is successful, you will be provided with links to each of these options.
-
 
 <br>
 <br>
