@@ -8,7 +8,7 @@ section: 4
 
 # MyriaL
 
-MyriaL is an imperative-yet-declarative high-level data flow language based on the relational algebra that includes support for SQL syntax, iteration, user-defined functions, and familiar language constructs such as set comprehensions.  The language is the flagship programming interface for the Myria system, and can be compiled to a number of backends.
+MyriaL is an imperative-yet-declarative high-level data flow language based on the relational algebra that includes support for SQL syntax, iteration, user-defined functions, and familiar language constructs such as set comprehensions.  The language is the flagship programming interface for the Myria big data management system, and can it also be compiled to a number of other back ends.
 
 The language began as a ``whiteboard language'' for reasoning about the semantics of Datalog programs.  At the time, we anticipated Datalog becoming our premier programming interface.  But the fact that we were using an imperative style language to reason about Datalog made us realize we should just implement the imperative language directly.
 
