@@ -6,23 +6,22 @@ weight: 3
 section: 2
 ---
 
-### Using Myria-Web
+# Myria-Web
 
-You will see an editor where you can write MyriaL or SQL queries and execute them with Myria.
+In Myria-Web, you will see an editor where you can write MyriaL or SQL queries and execute them with Myria. At the top of the screen, you should see three tabs: "Editor", "Queries", and "Datasets".
 
 Here is a quick tour of the interface:
 
-- At the top of the screen, you should see three tabs: "Editor", "Queries", and "Datasets".
-Click on the "Datasets" tab. Here, you can see the list of all the datasets currently ingested
+- Click on the **Datasets** tab. Here, you can see the list of all the datasets currently ingested
 and available in the service. You can click on the name of a dataset to see its metadata
 including the schema.  Click on "JSON", "CSV", or "TSV" to download the dataset in the
 specified format.
 
-- Now click on the "Queries" tab. This is where you can see all the queries that yourself
+- Now click on the **Queries** tab. This is where you can see all the queries that yourself
 and others have been running. Observe the keyword search window. After you run the example
 query below, type the word "Twitter" to see all queries executed on the `public:adhoc:Twitter` relation.
 
-- Finally, click on the "Editor" tab. This is where you can write and execute queries.
+- Finally, click on the **Editor** tab. This is where you can write and execute queries.
 You can start from one of the examples on the right. Click on the example and the
 query will appear in the editor window. Queries can be written in SQL or MyriaL. We
 recommend MyriaL because, in that mode, you can inter-twine SQL and MyriaL in your
