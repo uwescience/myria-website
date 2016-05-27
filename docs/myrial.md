@@ -24,8 +24,8 @@ Myria can read and store a CSV file from S3 via the load command:
 * Example #1: Loading and Storing "TwitterK" data
 
 ```sql
-    T1 =LOAD("https://s3-us-west-2.amazonaws.com/uwdb/sampleData/TwitterK.csv", csv(schema(a:int, b:int),skip=0));
-    STORE(T1, TwitterK, [a, b]);
+    T = LOAD("https://s3-us-west-2.amazonaws.com/uwdb/sampleData/TwitterK.csv", csv(schema(a:int, b:int),skip=0));
+    STORE(T, TwitterK, [a, b]);
 ```
 
 The `skip` option takes the number of lines at the beginning of the csv file to skip over.
@@ -34,15 +34,27 @@ Here, Myria will create a relation `T1` with the contents of `TwitterK.csv` and 
 * Example #2: Loading and Storing "Points" data
 
 ```sql
-    T2 = LOAD("https://s3-us-west-2.amazonaws.com/uwdb/sampleData/sampleCrossmatch/points.txt",
+    T = LOAD("https://s3-us-west-2.amazonaws.com/uwdb/sampleData/sampleCrossmatch/points.txt",
               csv(schema(id:int,
                          x:float,
                          y:float,
                          z:float), skip=0));
-              STORE(T2, points, [x,y,z]);
+              STORE(T, points, [x,y,z]);
 ```
 
 *The partition argument to STORE is actually optional. However, MyriaL needs explicit partition attribute specified for a relation created via LOAD.*
+
+###Reading existing relations
+
+Once a relation is stored, Myria can access use it in later queries with `SCAN`.
+
+This example simply repartitions the `TwitterK` relation by just attribute `a`.
+
+```sql
+    T = SCAN(TwitterK);
+    STORE(T, TwitterK_part_a, [a]);
+```
+
 
 ##Transforming Data
 ###Comprehensions
