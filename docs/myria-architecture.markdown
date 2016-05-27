@@ -1,12 +1,10 @@
 ---
 layout: default
-title: Myria Middleware
+title: Myria Architecture
 group: "docs"
 weight: 0
 section: 4
 ---
-
-# Myria Middleware
 
 ## Overview
 
@@ -25,8 +23,9 @@ Motivated by these ideas, we are working to expand the University of Washington 
 Myria is a hosted Big Data management and analytics service consisting of three components:
 
 * [MyriaX](https://github.com/uwescience/myria): A big-data execution engine emphasizing asynchronous iterative processing.
-* [MyriaMiddleware](https://github.com/uwescience/raco): A language translation layer, shared optimizer, and query execution coordinator supporting a) multiple input languages and b) multiple back-end systems, of which MyriaX is one.   We emphasize a new imperative, iterative,  language called [MyriaL](myrial.html).
-* [MyriaWeb](https://github.com/uwescience/myria-web): A web-based editor and IDE designed for direct use by analysts, with support for collaborative editing through a shared workspace, visual performance analysis and debugging, and interactive algorithms.
+* [RACO](https://github.com/uwescience/raco): A language translation layer, shared optimizer, and query execution coordinator supporting a) multiple input languages and b) multiple back-end systems, of which MyriaX is one. We emphasize a new imperative, iterative, language called [MyriaL](myrial.html).
+* [Myria-Python](https://github.com/uwescience/myria-python): A Python interface to the Myria project.
+* [Myria-Web](https://github.com/uwescience/myria-web): A web-based editor and IDE designed for direct use by analysts, with support for collaborative editing through a shared workspace, visual performance analysis and debugging, and interactive algorithms.
 
 To register a system with MyriaMiddleware, the sytem designer provides four components by extending appropriate classes in the MyriaMiddleware Python library (currently called RACO):
 
@@ -36,7 +35,3 @@ To register a system with MyriaMiddleware, the sytem designer provides four comp
 * (optional) An implementation of an Administrative API that includes methods for query execution, schema browsing, monitoring and logging, fetching data, killing queries, restarting the system, collecting statistics, and managing users.  Not all of these methods need be implemented for basic operation, but they provide a richer experience for the end user.
 
 Data scientists need to be insulated from the complexity and uncertainty that is dominating the systems research in big data today; we can't ask them to learn and re-learn a new API every month, along with the algorithmic tricks and configuration practices needed for decent performance.  But a shared interface to big data systems will not only make things easier for end users --- it is critical to advance the science.  To do big data systems research today takes a phenomenal effort: N systems must be installed and maintained, and M applications must be implemented and tuned on each of them.  As a result, corners are cut: experiments compare just two systems, focus on only simple, narrow use cases, or both.  As a field, we must make it significantly easier to do good science, evaluate realistically complex applications, and compare a variety of state of the art systems.  We hypothesize that a middleware layer that provides ``write once, run anywhere'' capabilities would be a significant step towards solving this problem.
-
-## Installation and Use
-
-[See the instructions in the RACO repository](https://github.com/uwescience/raco/blob/master/README.md)
