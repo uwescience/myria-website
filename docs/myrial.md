@@ -324,3 +324,4 @@ The Myria Catalog is case sensitive, so please make sure to Scan the correct rel
 * [Connected Components in MyriaL](https://github.com/uwescience/raco/blob/master/examples/connected_components.myl)
 * [Coordinate Matching in MyriaL](https://github.com/uwescience/raco/blob/master/examples/crossmatch_2d.myl)
 * [Pairwise Distance Computation](https://github.com/uwescience/raco/blob/master/examples/pairwise_distances.myl)
+* [TPC-H in MyriaL](https://github.com/uwescience/tpch-radish)
