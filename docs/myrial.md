@@ -87,7 +87,7 @@ SINK(T);
 
 Now for some real queries! MyriaL has two styles of syntax: SQL and comprehensions. If you've used [list comprehensions in python](https://docs.python.org/2/tutorial/datastructures.html#list-comprehensions) then MyriaL's comprehensions will look familiar. Use the style you prefer or mix and match.
 
-Try out the examples at the [Myria demo](http://demo.myria.cs.washington.edu/).
+You can try all the examples in this section yourself by copy/pasting them into [Myria demo](http://demo.myria.cs.washington.edu/).
 
 
 ###Select, from, where
