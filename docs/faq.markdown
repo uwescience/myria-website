@@ -1,9 +1,12 @@
 ---
 layout: default
-title: Myria FAQ
+title: FAQ
+group: "docs"
 weight: 4
+section: 4
 ---
 
-# Myria FAQ
+### How to participate in Myria development
 
-Please have a look at the [known issues with the Myria stack](https://github.com/issues?q=is%3Aopen+user%3Auwescience+sort%3Aupdated-desc+myria). If you have a question that is not listed, [create a new issue](https://github.com/uwescience/myria-stack/issues/new).
+Myria is open-source on GitHub. You would need to set up a GitHub account to participate.
+Here are [instructions](https://help.github.com/articles/set-up-git/) on how to set up git, GitHub ssh keys, and [fork](https://github.com/uwescience/myria/fork) a repository.
