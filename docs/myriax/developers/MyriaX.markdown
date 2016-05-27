@@ -1,11 +1,10 @@
 ---
 layout: default
-title: Architecture
+title: MyriaX Internals
 group: "docs"
 weight: 1
 section: 4
 ---
-
 
 # Overview of the architecture
 
@@ -14,8 +13,6 @@ section: 4
 The MyriaX execution layer is modeled after the [Actor Model](http://en.wikipedia.org/wiki/Actor_model). But it is not a general purpose Actor Model implementation. It does not allow creation of new actors by existing actors. It allows only relational data as messages. And it restricts the processing of the messages by only using the Operator interface.
 
 # Components
-
-* MyriaX REST API
 
 * MyriaX Query Plans
 
