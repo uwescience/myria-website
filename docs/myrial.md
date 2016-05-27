@@ -215,7 +215,7 @@ The condition should be a relation with one tuple with one boolean attribute.
 
 ##Expressions
 
-Expressions can appear in the EMIT (comprehesions) or SELECT (SQL) or WHERE clauses.
+Expressions are any code that evaluate to scalar values in MyriaL. They can appear in the EMIT (comprehesions) or SELECT (SQL) or WHERE clauses.
 
 ###Arithmetic
  MyriaL has a number of math functions.
@@ -299,6 +299,18 @@ STORE (T2, identified);
 ```
 
 To do a distributed counter, Myria has coordination operators like broadcast and collect, but these are not currently exposed in MyriaL.
+
+###Types
+
+MyriaL supports a number of types for attributes (and expressions) and performs type checking.
+
+- integer
+- long
+- float
+- double
+- string
+- datetime
+- *coming soon:* blob
 
 ##Gotchas
 
