@@ -11,8 +11,8 @@ There are three ways you can quickly get started using Myria. We describe each m
 
 #### Using the Myria Demo Service
 The UW Database Group hosts a demonstration Myria service: <http://demo.myria.cs.washington.edu>.
-We highly recommend this option for new Myria users to get a sense of what Myria is about. 
-The demo service runs on Amazon EC2 with four instances, so it is not capable to do any heavy works. 
+We highly recommend this option for new Myria users to get a sense of Myria. 
+The demo service runs on Amazon EC2 with four instances, so it is not capable of doing any heavy work. 
 
 #### Launching your own Myria Amazon Cluster (EC2)
 For real data analysis, we recommend launching your own Amazon cluster. Instructions are [here](myria-ec2).
