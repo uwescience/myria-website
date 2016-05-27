@@ -61,6 +61,27 @@ r = empty(x:int, y:float, z:string);
 STORE(r, myrelation);
 ```
 
+###Compute the result without storing it
+
+MyriaL has fairly aggressive *deadcode elimination*. That means if you do not store a relation, Myria may not bother computing anything.
+
+This program, for example,
+
+```sql
+T = SCAN(TwitterK);
+```
+
+results in the following error message
+
+`MyrialCompileException: Optimized program is empty`
+
+
+MyriaL provides the `SINK` command to get around this. We often find `SINK` useful when benchmarking Myria's performance. The following program scans `TwitterK` from disk into memory and then throws the relation away.
+
+```sql
+T = SCAN(TwitterK);
+SINK(T);
+```
 
 ##Transforming Data
 
