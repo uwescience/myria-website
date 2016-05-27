@@ -91,22 +91,22 @@ store(s, selfloops);
 Joins let us match two relations on 1 or more attributes. This query finds all the friend-of-friend relationships in TwitterK.
 
 ```sql
-    T1 = SCAN(TwitterK);
-     T2 = SCAN(TwitterK);
-     Joined = select T1.a, T1.b, T2.b
-                  from T1, T2
-                  where T1.b = T2.a;
-    STORE(Joined, TwoHopsInTwitter);
+T1 = SCAN(TwitterK);
+T2 = SCAN(TwitterK);
+Joined = select T1.a, T1.b, T2.b
+              from T1, T2
+              where T1.b = T2.a;
+STORE(Joined, TwoHopsInTwitter);
 ```
 
 ```sql
-    T1 = SCAN(TwitterK);
-     T2 = SCAN(TwitterK);
-     Joined = [FROM T1, T2
-              WHERE T1.b = T2.a
-              EMIT T1.a AS src, T1.b AS link, T2.b AS dst];
+T1 = SCAN(TwitterK);
+T2 = SCAN(TwitterK);
+Joined = [FROM T1, T2
+          WHERE T1.b = T2.a
+          EMIT T1.a AS src, T1.b AS link, T2.b AS dst];
 
-    STORE(Joined, TwoHopsInTwitter);
+STORE(Joined, TwoHopsInTwitter);
 ```
 
 ###Aggregation
