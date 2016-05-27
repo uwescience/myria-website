@@ -25,6 +25,7 @@ weight: 1
 * [From Theory to Practice: Efficient Join Query Evaluation in a Parallel Database System](https://homes.cs.washington.edu/~chushumo/files/sigmod_15_join.pdf). Shumo Chu, Magda Balazinska and Dan Suciu. *SIGMOD 2015*
 * [Gaussian Mixture Models Use-Case: In-Memory Analysis with Myria](http://homes.cs.washington.edu/~maas/papers/maas-myriagmm.pdf). Ryan Maas, Jeremy Hyrkas, Olivia Grace Telford, Magdalena Balazinska, Andrew Connolly, and Bill Howe. *IMDM 2015 (at VLDB)*
 * [Big-Data Management Use-Case: A Cloud Service for Creating and Analyzing Galactic Merger Trees]({{site.baseurl}}/publications/MyMergerTree_DanaC_2014.pdf). Sarah Loebman, Jennifer Ortiz, Lee Lee Choo, Laurel Orr, Lauren Anderson, Daniel Halperin, Magdalena Balazinska, Thomas Quinn, and Fabio Governato. *SIGMOD Workshop on Data Analytics in the Cloud (DanaC) 2014*.
+* [Compiled Plans for In-Memory Path-Counting Queries](http://sampa.cs.washington.edu/papers/myers-imdm13.pdf). Brandon Myers, Jeremy Hykas, Daniel Halperin, and Bill Howe. *IMDM 2013 (at VLDB)*
 
 ##Profiling and Visualization
 
