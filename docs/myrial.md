@@ -87,6 +87,8 @@ s = [from T where a = b emit *];
 store(s, selfloops);
 ```
 
+`from T` means read tuples from relation T. `where a = b` means only keep tuples where the value of a is equal to the value of b. `emit *` means the resulting relation should contain all the attributes from the `from` clause (in this case `a` and `b`).
+
 ###Join
 
 Joins let us match two relations on 1 or more attributes. This query finds all the friend-of-friend relationships in TwitterK.
