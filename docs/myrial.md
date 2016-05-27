@@ -66,6 +66,7 @@ STORE(r, myrelation);
 
 Now for some real queries! MyriaL has two styles of syntax: SQL and comprehensions. If you've used [list comprehensions in python](https://docs.python.org/2/tutorial/datastructures.html#list-comprehensions) then MyriaL's comprehensions will look familiar. Use the style you prefer or mix and match.
 
+Try out the examples at the [Myria demo](http://demo.myria.cs.washington.edu/).
 
 
 ###Select, from, where
@@ -146,78 +147,158 @@ select a, COUNT(*) from T group by a;
 ```
 
 
-###Union
--- '+' is a union operator in MyriaL
+###unionall (Concatentation)
+`+` or `UNIONALL` concatenates to relations in MyriaL
 
-    T2 =  SCAN(TwitterK);
-     T3 = SCAN(TwitterK);
-     result = T2+T3;
-     STORE(result, union_result);
+```sql
+T1 = SCAN(TwitterK);
+result = T1+T1;
+result = UNIONALL(result, T1);
+STORE(result, threeTimes);
+```
 
+###Set operations
+
+Most operations in MyriaL treat the relation [like a bag rather than a set](https://courses.cs.washington.edu/courses/cse444/10sp/lectures/lecture16.pdf), like SQL. However, MyriaL also has set operations like union, difference, and distinct.
+
+List all unique users.
+
+```sql
+Edges = scan(TwitterK);
+Left = select a as v from Edges;
+Right = select b as v from Edges;
+Dups = Left + Right;
+Vertices = select distinct v from Dups;
+store(Vertices, users);
+```
+
+Find the users that only appear as the source of an edge.
+```sql
+Edges = scan(TwitterK);
+Left = select a as v from Edges;
+Right = select b as v from Edges;
+onlyleft = diff(Left, Right);
+store(onlyleft, onlyleft);
+```
+
+##Loops
+
+MyriaL supports Do-While loops. The loop can be terminated on a condition about the data, so you can write iterative programs.
+
+Find the vertices reachable from user 821.
+
+```sql
+Edge = scan(TwitterK);
+-- special syntax for a scalar constant in MyriaL.
+Source = [821 AS addr];
+Reachable = Source;
+Delta = Source;
+
+DO
+    -- join to follow the horizon
+    NewlyReachable = DISTINCT([FROM Delta, Edge
+                              WHERE Delta.addr == Edge.src
+                              EMIT Edge.dst AS addr]);
+    -- which users are discovered for the first time?
+    Delta = DIFF(NewlyReachable, Reachable);
+    -- add them to our set of reachable users
+    Reachable = UNIONALL(Delta, Reachable);
+WHILE [FROM COUNTALL(Delta) AS size EMIT *size > 0];
+
+STORE(Reachable, OUTPUT);
+```
+
+The condition should be a relation with one tuple with one boolean attribute.
 
 ##Expressions
-###Arithmetic
 
+Expressions can appear in the EMIT (comprehesions) or SELECT (SQL) or WHERE clauses.
+
+###Arithmetic
+ MyriaL has a number of math functions.
+
+```sql
     T3 = [FROM SCAN(TwitterK) as t EMIT sin(a)/4 + b AS x];
     STORE(T3, ArithmeticExample);
 
     --Unicode math operators ≤, ≥, ≠
 
-    T4 = [FROM SCAN(TwitterK) as t WHERE $0 ≤ $1 and $0 ≠ $1 and $1 ≥ $0 EMIT *];
+    T4 = [FROM SCAN(TwitterK) as t WHERE a ≤ b and a ≠ b and b ≥ a EMIT *];
     STORE(T4,  ArithmeticExample2);
+```
 
 ###Constants
---A constant as a singleton relation
 
-    N = [2];
+A constant is a *singleton relation* (a relation with a single 1-attribute tuple). You can use the relation as a scalar in an expression by preceding the name with `*` (we saw this in the loop example above).
 
-###Literals
-\*To Do*
-##Loops
+```sql
+N = [12];
+T = scan(TwitterK);
+S = select * from T where a = *N;
+store(S, filtered);
+```
 
-    DO
-      stats = [FROM scan(points) as points EMIT avg(x) AS mean, stdev(x) AS std];
-      NewBad = [FROM scan(points) as points, stats WHERE abs(x - mean) > 10 * std EMIT points.*];
-      points = diff(scan(points), NewBad);
-      continue = [FROM NewBad EMIT count(NewBad.x) > 0];
-    WHILE continue;
+###User-defined functions
 
+MyriaL supports writing User-defined Functions (UDFs) and User-defined Aggregates (UDAs) in the MyriaL syntax.
+*Coming soon: Python UDFs!!*.
 
+User-defined function to calculate modulo.
 
-##Functions
-__User-defined function to calculate modulo operation__
+```sql
+def mod(x, n): x - int(x/n)*n;
+T1 = [from scan(TwitterK) as t emit mod(a, b)];
+STORE(T1, udf_result);
+```
 
-    def mod(x, n): x - int(x/n)*n;
-    T1 = [from scan(TwitterK) as t emit mod($0, $1)];
-    STORE(T1, udf_result);
+User-defined aggregate function to calculate an arg max. We'll use it to find the vertex with the largest degree.
 
+```sql
+-- break ties by picking the first value
+def pickval(value, arg, _value, _arg):
+    case when value >= _value then arg
+        else _arg end;
 
- __User-defined aggregate function__
+-- Every UDA has three statements: *init* to specify the state attributes and set initial values, *update* run for each tuple, and *output* to calculate the final result.
 
-    apply RunningMean(value) {
-      -- initialize the custom state, set cnt = 0 and summ = 0
-      [0 as cnt, 0 as running_sum];
-      -- for each record, add one one to the count (cnt) and add the record value to the sum (summ)
-      [cnt + 1, running_sum + value];
-      -- on each record, produce the running sum divided by the running count
-      running_sum / cnt;
-    };
-    T1 = [from scan(TwitterK) as t emit RunningMean($0)];
-    STORE(T1, twitter_running_mean);
+uda ArgMax(arg, val) {
+   -- init
+   [0 as _arg, 0 as _val];
 
-##Stateful Apply
--- Applying a counter for each partition of the TwitterK relation
+   -- update
+   [pickval(val, arg, _val, _arg),
+    pickval(val, val, _val, _val)];
 
-    APPLY counter() {
-      [0 AS c];
-      [c + 1];
-      c;
-    };
-    T1 = SCAN(TwitterK);
-    T2 = [FROM T1 EMIT $0, counter()];
-    STORE (T2, K);
+   -- output
+   [_val, _arg];
+};
 
-##Comments
+cnt = [from scan(TwitterK) as t emit t.a as v, count(*) as degree];
+T1 = [from cnt emit ArgMax(v, degree)];
+STORE(T1, max_degree);
+```
+
+###Stateful Apply
+
+Stateful apply provides a way to define functions that keep mutable state.
+
+This program assigns a sequential id to each tuple. **Important**: stateful apply is partition-local. That means every partition keeps its own state. The following program produces 0,1,2... for the tuples on every partition.
+
+```sql
+APPLY counter() {
+  [0 AS c];
+  [c + 1];
+  c;
+};
+T1 = SCAN(TwitterK);
+T2 = [FROM T1 EMIT $0, counter()];
+STORE (T2, identified);
+```
+
+To do a distributed counter, Myria has coordination operators like broadcast and collect, but these are not currently exposed in MyriaL.
+
+##Gotchas
+
 The Myria Catalog is case sensitive, so please make sure to Scan the correct relation name.
 
 ## Advanced Examples
