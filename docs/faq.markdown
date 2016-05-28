@@ -2,7 +2,7 @@
 layout: default
 title: FAQ
 group: "docs"
-weight: 4
+weight: 5
 section: 4
 ---
 
