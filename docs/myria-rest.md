@@ -1,6 +1,6 @@
 ---
 layout: default
-title: REST API
+title: REST APIs
 group: "docs"
 weight: 3
 section: 4
