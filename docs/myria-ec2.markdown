@@ -1,25 +1,26 @@
 ---
 layout: default
-title: Myria Amazon Cloud Deployment
+title: Myria Cloud Deployment
 group: "docs"
 weight: 2
 section: 1
+
 ---
-# Myria Amazon Cloud Deployment
-In this section, we describe how to deploy Myria on EC2.
+# Myria Cloud Deployment
+In this section, we describe how to deploy Myria on the [Amazon EC2](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html) cloud computing service.
 
 ## Setting up a Myria cluster on EC2
 
-For the purpose of setting up Myria on EC2, we assume you are using your own computer as the "control machine". (You could also use an EC2 instance as a control machine.) Any modern Unix should work as the control machine, although only Ubuntu and Mac OS X have been tested. Windows is not supported, since our configuration management system, Ansible, does not support it.
+For the purpose of setting up Myria on EC2, we assume you are using your own computer as the "control machine". (You could also use an EC2 instance as a control machine.) Any modern Unix should work as the control machine, although only Ubuntu Linux and Mac OS X have been tested. Windows is not supported, since our configuration management system, Ansible, does not support it.
 
 ### __Configure AWS account information__
-Before launching instances on EC2, you will need to collect information about your AWS account. Here is the [AWS documentation](http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) on how to obtain AWS security credentials. Once you have these credentials, you can use them to configure the AWS CLI, as described in the next step. If you are using an IAM user account, you must have the following permissions to successfully install Myria: `ec2:CreateKeyPair`, `ec2:DescribeKeyPairs`, `ec2:RunInstances`, `ec2:DescribeInstances`, `ec2:DescribeInstanceStatus`.
+Before launching instances on EC2, you will need to collect information about your Amazon Web Services (AWS) account. Here is the [AWS documentation](http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) on how to obtain AWS security credentials. Once you have these credentials, in the next step you will configure them for deploying your Myria cluster. If you are using an IAM user account, you must have the following permissions to successfully install Myria: `ec2:CreateKeyPair`, `ec2:DescribeKeyPairs`, `ec2:RunInstances`, `ec2:DescribeInstances`, `ec2:DescribeInstanceStatus`.
 
 ### __Install and Configure the AWS CLI__
-Follow the instructions in the [AWS CLI documentation](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) to install the AWS CLI and configure it with the AWS credentials you obtained from the previous step.
+Follow the instructions in the [AWS documentation](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) to install the AWS Command-Line Interface (CLI) and configure it with the AWS credentials you obtained in the previous step. If you [configure named profiles](http://docs.aws.amazon.com/cli/latest/reference/configure/) with different credentials, you can refer to them with the `--profile` option to `myria-cluster`.
 
 ### __Install System Dependencies__
-The `myria-cluster` Python package has some non-Python dependencies that you'll need to install before you can install `myria-cluster`. On Mac OS X, you should only need to install the Xcode command line tools:
+The `myria-cluster` Python package has some non-Python dependencies that you'll need to install before you can install `myria-cluster`. On Mac OS X, you should only need to install the Xcode command-line tools:
 ```
 xcode-select --install
 ```
@@ -29,7 +30,7 @@ sudo apt-get install git build-essential libssl-dev libffi-dev python-dev python
 ```
 
 ### __Install the `myria-cluster` package__
-`myria-cluster` is a Python package (installable via `pip` or `conda`) that provides a command-line interface to manage Myria clusters on EC2. When `myria-cluster` is published to PyPI, you should be able to type
+[`myria-cluster`](https://github.com/uwescience/myria-ec2-ansible/tree/python-cli) is a Python package (installable via `pip` or `conda`) that provides a command-line interface to manage Myria clusters on EC2. When `myria-cluster` is published to [PyPI](https://pypi.python.org/pypi), you should be able to just type
 ```
 pip install myria-cluster
 ```
@@ -114,19 +115,19 @@ Options:
 You can launch a new Myria cluster using `myria-cluster create`:
 
 ```
-myria-cluster create test-cluster
+myria-cluster create test-cluster --region us-west-2
 ```
 
 ```
 Your new Myria cluster 'test-cluster' has been launched on Amazon EC2 in the 'us-west-2' region.
 
-View Myria worker IDs and public hostnames of all nodes in this cluster:
+View Myria worker IDs and public hostnames of all nodes in this cluster (the coordinator has worker ID 0):
 myria-cluster list test-cluster --region us-west-2
 
 Stop this cluster:
 myria-cluster stop test-cluster --region us-west-2
 
-Restart this cluster:
+Start this cluster after stopping it:
 myria-cluster start test-cluster --region us-west-2
 
 Destroy this cluster:
@@ -150,13 +151,13 @@ http://ec2-54-200-61-76.us-west-2.compute.amazonaws.com:8888
 
 Note that when running `myria-cluster create`, if at any time you decide to abort the deployment by pressing `Ctrl-C`, any EC2 resources that may have been created for this deployment will be automatically terminated (provided you don’t interrupt the script again). Also, if errors occur during host provisioning, provisioning will be retried up to 5 times on all hosts that failed. This will resolve most transient errors.
 
-When `myria-cluster create` has successfully deployed a Myria cluster, it will display the URL of the `myria-web` instance running on the cluster. You can point your browser to this URL in order to compose and execute queries in the query editor, view query plans in graphical and JSON form, profile running queries, and browse datasets and historical queries. You can read more about `myria-web` [here](http://myria.cs.washington.edu/docs/myria-web/index.html).
+When `myria-cluster create` has successfully deployed a Myria cluster, it will display the URL of the `myria-web` instance running on the cluster. You can point your browser to this URL to compose and execute queries in the query editor, view query plans in graphical and JSON form, profile running queries, and browse datasets and historical queries. You can read more about `myria-web` [here](http://myria.cs.washington.edu/docs/myria-web/index.html).
 
-You can also point your browser to the Jupyter (IPython) notebook server URL to upload and run your own notebooks on the cluster.
+You can also point your browser to the [Jupyter](http://jupyter.org/) (IPython) notebook server URL to upload and run your own Jupyter notebooks on the cluster.
 
 You can monitor the performance of your cluster by pointing your browser to the Ganglia URL. This will allow you to monitor memory, CPU, I/O, disk space usage, and other metrics in real time as you execute your queries.
 
-Finally, the script will display an SSH command to remotely log into the Myria coordinator to control the `myria` and `myria-web` services, view logs, or further configure the Myria system. The services running on the coordinator can be controlled with the usual Ubuntu commands for Upstart services:
+Finally, the script will display an [SSH](https://en.wikipedia.org/wiki/Secure_Shell) command to remotely log into the Myria coordinator to control the `myria` and `myria-web` services, view logs, or further configure the Myria system. The services running on the coordinator can be controlled with the usual Ubuntu commands for [Upstart](http://upstart.ubuntu.com/) services:
 
 ```
 sudo stop myria
@@ -167,12 +168,12 @@ sudo start myria-web
 sudo restart myria-web
 ```
 
-Logs for the `myria` and `myria-web` services can be viewed at `/var/log/upstart/myria.log` and `/var/log/upstart/myria-web.log`. Logs for the Hadoop and YARN daemons can be viewed at `/opt/hadoop/logs`, and YARN container logs (for the Myria driver, coordinator, and workers) can be viewed at `/opt/hadoop/logs/userlogs`.
+Logs for the `myria` and `myria-web` services can be viewed at `/var/log/upstart/myria.log` and `/var/log/upstart/myria-web.log`. Logs for the Hadoop and YARN daemons can be viewed at `/mnt/hadoop/logs`, and YARN container logs (for the Myria driver, coordinator, and workers) can be viewed at `/mnt/hadoop/logs/userlogs`.
 
-You can save considerable costs (up to 90%) for large clusters by using EC2 spot instances. You configure your maximum bid price with the `--spot-price` parameter to `myria-cluster create`. (Note that you only ever actually pay the current spot price, not your maximum bid price.) If the current spot price exceeds your maximum bid price, or if the instance type you specify is not available in the quantity you specify, your instances will be terminated. In general, it’s best to use an older instance family for spot instances (for cost and availability reasons), and to specify an Availability Zone (and maximum bid price) based on the “Pricing History” graphs in the EC2 console. With older instance types, you’ll sometimes need to specify an AMI (Amazon Machine Image) compatible with the instance type. Here’s an example:
+You can save considerable costs (up to 90%) for large clusters by using [EC2 spot instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html). You configure your maximum bid price with the `--spot-price` parameter to `myria-cluster create`. (Note that you only ever actually pay the current spot price, not your maximum bid price.) If the current spot price exceeds your maximum bid price, or if the instance type you specify is not available in the quantity you specify, your instances will be terminated. In general, it’s best to use an older instance family for spot instances (for cost and availability reasons), and to specify `--zone` ([EC2 Availability Zone](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html)) and `--spot-price` options to `myria-cluster create` based on [spot instance pricing history](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html). With older instance types, you’ll sometimes need to specify an AMI ([Amazon Machine Image](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html)) compatible with the instance type. Here’s an example:
 
 ```
-myria-cluster create test-cluster -vvv --profile myria --region us-west-2 --zone us-west-2a --spot-price 0.08 --role myria-cluster --name spot-test --cluster-size 80 --instance-type m2.2xlarge --ami-id ami-9dbea4fc --data-volume-size-gb 80 --worker-mem-gb 24 --worker-vcores 3 --node-mem-gb 30 --node-vcores 4
+myria-cluster create spot-test --profile myria --region us-west-2 --zone us-west-2a --spot-price 0.08 --role myria-cluster --cluster-size 80 --instance-type m2.2xlarge --ami-id ami-9dbea4fc --data-volume-size-gb 80 --worker-mem-gb 24 --worker-vcores 3 --node-mem-gb 30 --node-vcores 4
 ```
 
 If you decide not to use spot instances, you can still save considerable cost by stopping your cluster when not in use and restarting it on demand. This avoids all compute costs, and only incurs the EBS storage cost of $0.10/GB/month. The `myria-cluster stop` and `myria-cluster start` commands leverage EC2’s ability to stop and start EBS-backed instances (essentially equivalent to a reboot but possibly on different hardware).
@@ -186,8 +187,8 @@ myria-cluster list test-cluster --region us-west-2
 WORKER_ID HOST
 --------- ----
 0         ec2-54-200-61-76.us-west-2.compute.amazonaws.com
-2         ec2-54-201-149-17.us-west-2.compute.amazonaws.com
 1         ec2-54-186-124-132.us-west-2.compute.amazonaws.com
+2         ec2-54-201-149-17.us-west-2.compute.amazonaws.com
 
 ```
 
@@ -208,7 +209,7 @@ Starting instances i-7e2cd2a5, i-7d2cd2a6, i-7c2cd2a7
 Instance i-7e2cd2a5 not started, retrying in 30 seconds...
 
 Your Myria cluster 'test-cluster' in the AWS 'us-west-2' region has been successfully restarted.
-The public hostnames of all nodes in this cluster have changed. You can view the new values by running `myria-cluster list test-cluster --region us-west-2`.
+The public hostnames of all nodes in this cluster have changed. You can view the new values by running `myria-cluster list test-cluster --region us-west-2` (note that the new coordinator has worker ID 0).
 ```
 
 ```
