@@ -218,8 +218,8 @@ myria-cluster list test-cluster --region us-west-2
 WORKER_ID HOST
 --------- ----
 0         ec2-54-201-192-111.us-west-2.compute.amazonaws.com
-2         ec2-54-213-90-178.us-west-2.compute.amazonaws.com
 1         ec2-54-187-52-118.us-west-2.compute.amazonaws.com
+2         ec2-54-213-90-178.us-west-2.compute.amazonaws.com
 ```
 
 When you're finished using your cluster, terminate the cluster using the `myria-cluster destroy` command:
