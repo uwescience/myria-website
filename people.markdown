@@ -17,6 +17,7 @@ id: "people"
 ## Postdocs
 
 * Victor Almeida (alum)
+* Babak Salimi
 
 ## Staff
 
@@ -26,20 +27,24 @@ id: "people"
 ## PhD Students
 
 * [Shumo Chu](http://homes.cs.washington.edu/~chushumo/)
-* [Eric Gribkoff](http://homes.cs.washington.edu/~eagribko/)
 * Brandon Haynes
 * Jeremy Hyrkas
-* [Paris Koutris](http://homes.cs.washington.edu/~pkoutris/)
+* [Bas Ketsman](http://www.basketsman.com/)
 * [Ryan Maas](http://homes.cs.washington.edu/~maas/)
 * [Dominik Moritz](http://homes.cs.washington.edu/~domoritz/)
 * [Brandon Myers](http://homes.cs.washington.edu/~bdmyers/)
 * [Shrainik Jain](http://homes.cs.washington.edu/~shrainik/)
 * Laurel Orr
 * [Jennifer Ortiz](http://homes.cs.washington.edu/~jortiz16/)
-* [Emad Soroush](http://www.cs.washington.edu/homes/soroush/) (alum)
 * Jingjing Wang
 * [Shengliang Xu](http://homes.cs.washington.edu/~slxu/)
 * [Dylan Hutchison](https://www.linkedin.com/in/dylanhutchison)
+
+## Alumni
+
+* [Eric Gribkoff](http://homes.cs.washington.edu/~eagribko/)
+* [Paris Koutris](http://homes.cs.washington.edu/~pkoutris/)
+* [Emad Soroush](http://www.cs.washington.edu/homes/soroush/)
 
 ## Undergraduate Students
 
