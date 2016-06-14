@@ -30,17 +30,19 @@ sudo apt-get install git build-essential libssl-dev libffi-dev python-dev python
 ```
 
 ### __Install the `myria-cluster` package__
-[`myria-cluster`](https://github.com/uwescience/myria-ec2-ansible/tree/python-cli) is a Python package (installable via `pip` or `conda`) that provides a command-line interface to manage Myria clusters on EC2. When `myria-cluster` is published to [PyPI](https://pypi.python.org/pypi), you should be able to just type
+[`myria-cluster`](https://github.com/uwescience/myria-ec2-ansible) is a Python package (installable via `pip`) that provides a command-line interface to manage Myria clusters on EC2. To install, just type
 ```
 pip install myria-cluster
 ```
 
-For now, you can type
+If you're an Anaconda user, you may need to install `pip` first:
 ```
-pip install --upgrade  'git+git://github.com/uwescience/myria-ec2-ansible.git@python-cli'
+conda create -n myria pip
+source activate myria
+pip install myria-cluster
 ```
 
-If you are not installing from within a Python virtual environment (`virtualenv` or `conda create`), you may need to run the preceding commands under `sudo`.
+If you're not installing from within a Python virtual environment (`virtualenv` or `conda create`), you may need to run the preceding commands under `sudo`.
 
 After the `myria-cluster` package has been installed, you can simply type
 ```
@@ -108,6 +110,11 @@ Options:
                                  available for Myria processes  [default: 6.0]
   --node-vcores INTEGER          Number of virtual CPUs on each EC2 instance
                                  available for Myria processes  [default: 2]
+  --workers-per-node INTEGER     Number of Myria workers per cluster node
+                                 [default: 1]
+  --cluster-log-level TEXT       One of OFF, FATAL, ERROR, WARN, DEBUG, TRACE,
+                                 ALL, from lowest to highest level of detail
+                                 [default: WARN]
   -h, --help                     Show this message and exit.
 ```
 
@@ -208,8 +215,13 @@ myria-cluster start test-cluster --region us-west-2
 Starting instances i-7e2cd2a5, i-7d2cd2a6, i-7c2cd2a7
 Instance i-7e2cd2a5 not started, retrying in 30 seconds...
 
-Your Myria cluster 'test-cluster' in the AWS 'us-west-2' region has been successfully restarted.
-The public hostnames of all nodes in this cluster have changed. You can view the new values by running `myria-cluster list test-cluster --region us-west-2` (note that the new coordinator has worker ID 0).
+Your Myria cluster 'test-cluster' in the AWS 'us-west-2' region has been successfully started.
+The public hostnames of all nodes in this cluster have changed.
+You can view the new values by running
+
+myria-cluster list test-cluster --region us-west-2
+
+(note that the new coordinator has worker ID 0).
 ```
 
 ```
