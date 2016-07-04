@@ -21,21 +21,25 @@ Follow the instructions in the [AWS documentation](http://docs.aws.amazon.com/cl
 
 ### __Install System Dependencies__
 The `myria-cluster` Python package has some non-Python dependencies that you'll need to install before you can install `myria-cluster`. On Mac OS X, you should only need to install the Xcode command-line tools:
+
 ```
 xcode-select --install
 ```
 On Ubuntu, you should install the following packages:
+
 ```
 sudo apt-get install git build-essential libssl-dev libffi-dev python-dev python-pip
 ```
 
 ### __Install the `myria-cluster` package__
 [`myria-cluster`](https://github.com/uwescience/myria-ec2-ansible) is a Python package (installable via `pip`) that provides a command-line interface to manage Myria clusters on EC2. To install, just type
+
 ```
 pip install myria-cluster
 ```
 
 If you're an Anaconda user, you may need to install `pip` first:
+
 ```
 conda create -n myria pip
 source activate myria
@@ -45,6 +49,7 @@ pip install myria-cluster
 If you're not installing from within a Python virtual environment (`virtualenv` or `conda create`), you may need to run the preceding commands under `sudo`.
 
 After the `myria-cluster` package has been installed, you can simply type
+
 ```
 myria-cluster --help
 ```
