@@ -18,6 +18,7 @@ Before launching instances on EC2, you will need to collect information about yo
 
 ### __Configure AWS security credentials__
 You can configure your AWS security credentials for access by `myria-cluster` in any of several ways: by installing and configuring the AWS Command-Line Interface (CLI), by installing one of the AWS SDKs (such as the `boto` Python package), or just by setting some environment variables. Follow the instructions in the [AWS documentation](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) to install the AWS Command-Line Interface (CLI) and configure it with the AWS credentials you obtained in the previous step. If you [configure named profiles](http://docs.aws.amazon.com/cli/latest/reference/configure/) with different credentials, you can refer to them with the `--profile` option to `myria-cluster`. If you don't want to install any AWS software, you can export the following environment variables from your shell:
+
 - `AWS_ACCESS_KEY_ID`
   The access key for your AWS account.
 - `AWS_SECRET_ACCESS_KEY`
