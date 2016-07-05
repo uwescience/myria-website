@@ -13,11 +13,17 @@ In this section, we describe how to deploy Myria on the [Amazon EC2](http://docs
 
 For the purpose of setting up Myria on EC2, we assume you are using your own computer as the "control machine". (You could also use an EC2 instance as a control machine.) Any modern Unix should work as the control machine, although only Ubuntu Linux and Mac OS X have been tested. Windows is not supported, since our configuration management system, Ansible, does not support it.
 
-### __Configure AWS account information__
+### __Verify AWS permissions and retrieve AWS security credentials__
 Before launching instances on EC2, you will need to collect information about your Amazon Web Services (AWS) account. Here is the [AWS documentation](http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) on how to obtain AWS security credentials. Once you have these credentials, in the next step you will configure them for deploying your Myria cluster. If you are using an IAM user account, you must have the following permissions to successfully install Myria: `ec2:CreateKeyPair`, `ec2:DescribeKeyPairs`, `ec2:RunInstances`, `ec2:DescribeInstances`, `ec2:DescribeInstanceStatus`.
 
-### __Install and Configure the AWS CLI__
-Follow the instructions in the [AWS documentation](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) to install the AWS Command-Line Interface (CLI) and configure it with the AWS credentials you obtained in the previous step. If you [configure named profiles](http://docs.aws.amazon.com/cli/latest/reference/configure/) with different credentials, you can refer to them with the `--profile` option to `myria-cluster`.
+### __Configure AWS security credentials__
+You can configure your AWS security credentials for access by `myria-cluster` in any of several ways: by installing and configuring the AWS Command-Line Interface (CLI), by installing one of the AWS SDKs (such as the `boto` Python package), or just by setting some environment variables. Follow the instructions in the [AWS documentation](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) to install the AWS Command-Line Interface (CLI) and configure it with the AWS credentials you obtained in the previous step. If you [configure named profiles](http://docs.aws.amazon.com/cli/latest/reference/configure/) with different credentials, you can refer to them with the `--profile` option to `myria-cluster`. If you don't want to install any AWS software, you can export the following environment variables from your shell:
+- `AWS_ACCESS_KEY_ID`
+  The access key for your AWS account.
+- `AWS_SECRET_ACCESS_KEY`
+  The secret key for your AWS account.
+
+For more information on configuring AWS security credentials, see the [`boto` documentation](http://boto3.readthedocs.io/en/latest/guide/configuration.html).
 
 ### __Install System Dependencies__
 The `myria-cluster` Python package has some non-Python dependencies that you'll need to install before you can install `myria-cluster`. On Mac OS X, you should only need to install the Xcode command-line tools:
