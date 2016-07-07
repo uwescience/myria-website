@@ -44,7 +44,7 @@ sudo apt-get install git build-essential libssl-dev libffi-dev python-dev python
 ```
 pip install myria-cluster
 ```
-
+Installing `myria-cluster` from within a Python virtual environment (`virtualenv` or `conda create`), is _strongly_ recommended to avoid unpredictable dependency conflicts! 
 If you're an Anaconda user, you may need to install `pip` first:
 
 ```
@@ -53,7 +53,7 @@ source activate myria
 pip install myria-cluster
 ```
 
-If you're not installing from within a Python virtual environment (`virtualenv` or `conda create`), you may need to run the preceding commands under `sudo`.
+If you're not installing from within a Python virtual environment, you may need to run the preceding commands under `sudo`.
 
 After the `myria-cluster` package has been installed, you can simply type
 
