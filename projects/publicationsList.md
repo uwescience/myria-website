@@ -36,6 +36,7 @@ weight: 1
 
 * [A Vision for Personalized Service Level Agreements in the Cloud](publications/Ortiz_PSLA_2013.pdf). Jennifer Ortiz, Victor T. Almeida, Magda Balazinska. *SIGMOD Workshop on Data Analytics in the Cloud (DanaC) 2013*.
 * [Changing the Face of Database Cloud Services with Personalized Service Level Agreements](publications/Ortiz_PSLA_CIDR_2015.pdf). Jennifer Ortiz, Victor T. Almeida, Magda Balazinska. *CIDR 2015*.
+* [PerfEnforce Demonstration: Data Analytics with Performance Guarantees](publications/Ortiz-perfenforceDemo-sigmod16.pdf). Jennifer Ortiz, Brendan Lee, Magda Balazinska. *SIGMOD 2016*.
 
 ## SQLShare: Interactive DB-as-a-Service
 * [SQLShare: Results from a Multi-Year SQL-as-a-Service Experiment](https://www.dropbox.com/s/835qvwhbclfuacw/paper.pdf?dl=0). Shrainik Jain, Dominik Moritz, Daniel Halperin, Bill Howe, Ed Lazowska. *SIGMOD 2016*.
