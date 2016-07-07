@@ -13,4 +13,4 @@ The components of the Myria stack are intergrated in an online service used in p
 We presented a demo of Myria at SIGMOD 2014:
 
 *D. Halperin, V. T. Almeida, L. L. Choo, S. Chu, P. Koutris, D. Moritz, J. Ortiz, V. Ruamviboonsuk, J. Wang, A. Whitaker, S. Xu, M. Balazinska, B. Howe, and D. Suciu.*
-[Demonstration of the Myria Big Data Management Service](publications/Halperin_Myria_demo_SIGMOD_2014.pdf), SIGMOD 2014.
+[Demonstration of the Myria Big Data Management Service]({{site.baseurl}}/publications/Halperin_Myria_demo_SIGMOD_2014.pdf), SIGMOD 2014.
