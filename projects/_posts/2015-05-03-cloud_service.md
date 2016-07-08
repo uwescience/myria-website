@@ -31,7 +31,7 @@ The source code for PSLAManager can be found [here](https://github.com/uwdb/PSLA
 
 ### Elastic Container Memory Management
 
-* [Toward Elastic Memory Management for Cloud Data Analytics](https://homes.cs.washington.edu/~jwang/publications/elastic-memory.pdf). Jingjing Wang and Magdalena Balazinska. *BeyondMR 2016*.  [slides](https://homes.cs.washington.edu/~jwang/publications/elastic-memory-beyondmr2016-slides.pdf)
+* [Toward Elastic Memory Management for Cloud Data Analytics](https://homes.cs.washington.edu/~jwang/publications/elastic-memory.pdf). Jingjing Wang and Magdalena Balazinska. *BeyondMR 2016*.  [(slides)](https://homes.cs.washington.edu/~jwang/publications/elastic-memory-beyondmr2016-slides.pdf)
 
 
 
