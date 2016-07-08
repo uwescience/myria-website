@@ -34,6 +34,7 @@ weight: 1
 
 ##Big Data Management as a Cloud Service
 
+* [Toward Elastic Memory Management for Cloud Data Analytics](https://homes.cs.washington.edu/~jwang/publications/elastic-memory.pdf). Jingjing Wang and Magdalena Balazinska. *BeyondMR 2016*.  [(slides)](https://homes.cs.washington.edu/~jwang/publications/elastic-memory-beyondmr2016-slides.pdf)
 * [A Vision for Personalized Service Level Agreements in the Cloud](../publications/Ortiz_PSLA_2013.pdf). Jennifer Ortiz, Victor T. Almeida, Magda Balazinska. *SIGMOD Workshop on Data Analytics in the Cloud (DanaC) 2013*.
 * [Changing the Face of Database Cloud Services with Personalized Service Level Agreements](../publications/Ortiz_PSLA_CIDR_2015.pdf). Jennifer Ortiz, Victor T. Almeida, Magda Balazinska. *CIDR 2015*.
 * [PerfEnforce Demonstration: Data Analytics with Performance Guarantees](../publications/Ortiz-perfenforceDemo-sigmod16.pdf). Jennifer Ortiz, Brendan Lee, Magda Balazinska. *SIGMOD 2016*.
