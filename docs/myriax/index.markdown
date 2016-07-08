@@ -158,13 +158,13 @@ $ which dev_appserver.py
 
 #### Download and install `myria-web`
 
-- Clone the `myria-web` repository:
+Clone the `myria-web` repository:
 
 ```
 git clone https://github.com/uwescience/myria-web
 ```
 
-- Set up the `myria-web` application:
+Set up the `myria-web` application:
 
 ```
 cd myria-web
@@ -173,7 +173,7 @@ pushd submodules/raco
 python setup.py install
 popd
 ```
-- Launch the `myria-web` application:
+Launch the `myria-web` application:
 
 ```
 $ dev_appserver.py ./appengine                                                                                                                                                        
