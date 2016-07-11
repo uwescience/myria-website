@@ -182,6 +182,12 @@ INFO     2016-07-08 22:57:28,892 dispatcher.py:197] Starting module "default" ru
 INFO     2016-07-08 22:57:28,895 admin_server.py:118] Starting admin server at: http://localhost:8000
 ```
 
+If you have a port conflict with the default port `8080`, you can specify an alternative port:
+
+```
+dev_appserver.py --port <MY_CUSTOM_PORT> ./appengine
+```
+
 ####  Launch the MyriaWeb interface
 
 Point your browser to <http://localhost:8080>. Try running the sample queries in the "Examples" tab of the right-hand pane. Click on the "Datasets" menu of the navigation bar and try downloading a dataset.
