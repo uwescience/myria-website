@@ -28,6 +28,7 @@ The source code for PSLAManager can be found [here](https://github.com/uwdb/PSLA
 
 * [PerfEnforce Demonstration: Data Analytics with Performance Guarantees]({{site.baseurl}}/publications/Ortiz-perfenforceDemo-sigmod16.pdf). Jennifer Ortiz, Brendan Lee, Magda Balazinska. *SIGMOD 2016*.
 
+<iframe width="500" height="281" src="//www.youtube.com/embed/H68HHOkDTU4" frameborder="0" allowfullscreen></iframe>
 
 ### Elastic Container Memory Management
 
