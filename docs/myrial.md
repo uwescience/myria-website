@@ -19,17 +19,24 @@ MyriaL was designed by the Database group at the University of Washington, led b
 ##Reading Data and Storing in Myria
 
 ###Ingesting data
-Myria can read and store a CSV file from S3 via the load command:
+Myria can read and store a CSV file from S3 via the `load` command:
 
 * Example #1: Loading and Storing "TwitterK" data
 
 ```sql
-    T = LOAD("https://s3-us-west-2.amazonaws.com/uwdb/sampleData/TwitterK.csv", csv(schema(a:int, b:int),skip=0));
+    T = LOAD("https://s3-us-west-2.amazonaws.com/uwdb/sampleData/TwitterK.csv", csv(schema(a:int, b:int), skip=0));
     STORE(T, TwitterK, [a, b]);
 ```
 
-The `skip` option takes the number of lines at the beginning of the csv file to skip over.
+The `skip` option takes the number of lines at the beginning of the CSV file to skip over (such as column headers).
 Here, Myria will create a relation `T1` with the contents of `TwitterK.csv` and store it in a table called `TwitterK`. The third argument, `[a, b]`, is a list of attributes to partition the rows by.
+
+Note that the `load` command can also handle TSV data:
+
+```sql
+    T = LOAD("https://s3-us-west-2.amazonaws.com/uwdb/sampleData/TwitterK.tsv", csv(schema(a:int, b:int), skip=0, delimiter="\t"));
+    STORE(T, TwitterK, [a, b]);
+```
 
 * Example #2: Loading and Storing "Points" data
 
