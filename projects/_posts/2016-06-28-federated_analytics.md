@@ -1,6 +1,6 @@
 ---
 layout: default
-title: PipeGen
+title: Federated Analytics
 date: 2016-06-28
 excerpt: Efficient inter-system analytical queries across heterogeneous database systems
 id: "cloudservice"
