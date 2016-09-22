@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Federated Analytics
+title: PipeGen
 date: 2016-06-28
 excerpt: Efficient inter-system analytical queries across heterogeneous database systems
 id: "cloudservice"
@@ -18,5 +18,5 @@ PipeGen allows users to automatically create an efficient connection between pai
 <p style="text-align: center">
 	<a class="btn btn-primary btn-md  label-primary" href="http://db.cs.washington.edu/projects/pipegen/" role="button" style="width: 180px;"><span style="position: relative; top:10px">Project Website</span><br/><small>&nbsp;</small></a>
 	<a class="btn btn-primary btn-md label-primary" href="https://arxiv.org/pdf/1605.01664v2.pdf" role="button" style="width: 180px;"><span style="position: relative; top:10px">Read the Paper</span><br/><small>&nbsp;</small></a>
-	<a class="btn btn-primary btn-md label-default" href="#" role="button" style="width: 180px">Downloads<br /><small>(coming soon!)</small></a>
+	<a class="btn btn-primary btn-md label-primary" href="https://github.com/uwdb/pipegen" role="button" style="width: 180px;"><span style="position: relative; top:10px">Get the Code</span><br/><small>&nbsp;</small></a>
 </p>
