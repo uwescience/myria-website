@@ -13,6 +13,12 @@ This effort is brought to you by the University of Washington [database group](h
 
 We also have an older [repository of Hadoop applications](http://nuage.cs.washington.edu/repository.php) as part of our earlier [Nuage project](http://nuage.cs.washington.edu).
 
+## Twitter Dataset and Queries
+
+**Short Description**: This set of use-cases contains graph queries on a Twitter follower-followee graph. 
+
+**Original dataset and detailed description**: [Link to data and detailed description.](https://an.kaist.ac.kr/traces/WWW2010.html)
+
 ## UW-CAT: University of Washington CoAddition Testing Use-Case
 
 * **Name**: Please refer to this dataset/use-case as the **UW-CAT** dataset/use-case.
