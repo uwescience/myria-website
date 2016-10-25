@@ -15,9 +15,11 @@ We also have an older [repository of Hadoop applications](http://nuage.cs.washin
 
 ## Twitter Dataset and Queries
 
-**Short Description**: This set of use-cases contains graph queries on a Twitter follower-followee graph. 
+* **Data** : [The Original Dataset and Detailed Description.](https://an.kaist.ac.kr/traces/WWW2010.html)
+* **Acknowledgment and citation** : [The Original Paper](https://an.kaist.ac.kr/~haewoon/papers/2010-www-twitter.pdf)
+* **Tags**: Why is this use-case interesting? It is: (1) Iterative (2) High Volume and (3) Graph Queries
 
-**Original dataset and detailed description**: [Link to data and detailed description.](https://an.kaist.ac.kr/traces/WWW2010.html)
+**Short Description**: This set of use-cases contains graph queries on a Twitter follower-followee graph. 
 
 ## UW-CAT: University of Washington CoAddition Testing Use-Case
 
