@@ -51,7 +51,7 @@ Note that the `load` command can also handle TSV data:
 
 *The partition argument to STORE is actually optional. However, MyriaL needs explicit partition attribute specified for a relation created via LOAD.*
 
-*Note: if your data contains non-Latin characters, please convert it to UTF-8 before loading.*
+**Note: if your data contains non-Latin characters, please convert it to UTF-8 before loading.**
 
 **Optional - loading data from other sources** <br>
 You can also load data from other sources including your own local file system. To ingest from a local file source, you must deploy a local instance of Myria. Below is an example of loading a smallTable from a local file.
