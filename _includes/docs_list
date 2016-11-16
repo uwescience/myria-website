@@ -10,4 +10,8 @@
       <li><a href="{{ site.baseurl }}{{page.url}}">{{page.title}}</a></li>
     {% endif %}
   {% endfor %}
+
+  {% if forloop.first %}
+  	<li><a href="https://docs.google.com/document/d/1OFw0W1EsqDzha9_mura3WMmBfY2f1__MA3TbrlMkFwY/edit?usp=sharing">Myria Private Cluster Deployment</a></li>
+  {% endif %}
 {% endfor %}
