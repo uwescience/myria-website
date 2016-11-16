@@ -18,6 +18,8 @@ See the site in action at [myria.cs.washington.edu](http://myria.cs.washington.e
 
 If jekyll throws a version error, you may need to `gem install json` before serving.
 
+If you receive a weird "Load Error", try `sudo -H gem install jekyll jekyll-paginate`.
+
 
 ### Updating subfolders of `docs/`
 
