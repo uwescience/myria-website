@@ -228,10 +228,43 @@ sudo restart myria-web
 
 Logs for the `myria` and `myria-web` services can be viewed at `/var/log/upstart/myria.log` and `/var/log/upstart/myria-web.log`. Logs for the Hadoop and YARN daemons can be viewed at `/data/hadoop/logs`, and YARN container logs (for the Myria driver, coordinator, and workers) can be viewed at `/data/hadoop/logs/userlogs`.
 
+You can view the configuration options you used to create your cluster at any time by running `myria-cluster list --metadata`:
+
+```
+myria-cluster list test-cluster --metadata --region us-west-2
+
+{
+    "ami_id": "ami-f5973b95",
+    "cluster_log_level": "WARN",
+    "cluster_size": 5,
+    "coordinator_mem_gb": 5.4,
+    "coordinator_vcores": 1,
+    "data_volume_count": 1,
+    "data_volume_iops": null,
+    "data_volume_size_gb": 20,
+    "data_volume_type": "gp2",
+    "driver_mem_gb": 0.5,
+    "heap_mem_fraction": 0.9,
+    "instance_type": "t2.large",
+    "node_mem_gb": 6.0,
+    "node_vcores": 2,
+    "role": null,
+    "spot_price": null,
+    "state": "running",
+    "storage_type": "ebs",
+    "subnet_id": null,
+    "unprovisioned": false,
+    "worker_mem_gb": 5.4,
+    "worker_vcores": 1,
+    "workers_per_node": 1,
+    "zone": null
+}
+```
+
 You can save considerable costs (up to 90%) for large clusters by using [EC2 spot instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html). You configure your maximum bid price with the `--spot-price` parameter to `myria-cluster create`. (Note that you only ever actually pay the current spot price, not your maximum bid price.) If the current spot price exceeds your maximum bid price, or if the instance type you specify is not available in the quantity you specify, your instances will be terminated. In general, it’s best to use [previous generation instance types](https://aws.amazon.com/ec2/previous-generation/) for spot instances (for cost and availability reasons), and to specify the `--zone` ([EC2 Availability Zone](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html)) and `--spot-price` options to `myria-cluster create` based on [spot instance pricing history](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html). Here’s an example:
 
 ```
-myria-cluster create spot-test --profile myria --region us-west-2 --zone us-west-2a --spot-price 0.08 --cluster-size 80 --instance-type m2.2xlarge
+myria-cluster create spot-test-cluster --region us-west-2 --zone us-west-2a --spot-price 0.08 --cluster-size 80 --instance-type m2.2xlarge
 ```
 
 If you decide not to use spot instances, you can still save considerable cost by stopping your cluster when not in use and restarting it on demand. This avoids all compute costs, and only incurs the EBS storage cost of $0.10/GB/month. The `myria-cluster stop` and `myria-cluster start` commands leverage EC2’s ability to stop and start EBS-backed instances (essentially equivalent to a reboot but possibly on different hardware). (Note that if you choose the `--storage-type local` option, you will be unable to stop your cluster, since data on local storage devices is lost when you stop an EC2 instance.)
@@ -312,6 +345,7 @@ When you're finished using your cluster, terminate the cluster using the `myria-
 ```
 myria-cluster destroy test-cluster --region us-west-2
 
+Are you sure you want to destroy the cluster 'test-cluster' in the 'us-west-2' region? [y/N]: y
 Terminating instances i-7e2cd2a5, i-7d2cd2a6, i-7c2cd2a7
 Deleting security group test-cluster (sg-5605f630).
 Security group test-cluster (sg-5605f630) successfully deleted
@@ -364,7 +398,7 @@ us-west-1            ami-42461122         hvm                  myria-hvm-test   
 And finally, you can delete an image in specified regions using the `myria-cluster delete-image` command:
 
 ```
-myria-cluster delete-image myria-hvm-test --region us-west-2 --region us-east-1 --region  us-west-1
+myria-cluster delete-image myria-hvm-test --region us-west-2 --region us-east-1 --region us-west-1
 
 Are you sure you want to delete the AMI 'myria-hvm-test' in the us-west-2, us-east-1, us-west-1 regions? [y/N]: y
 Deregistering AMI with name 'myria-hvm-test' (ID: ami-1f278e7f) in region 'us-west-2'...
