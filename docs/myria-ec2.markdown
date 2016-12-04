@@ -261,11 +261,15 @@ myria-cluster list test-cluster --metadata --region us-west-2
 }
 ```
 
+#### A note on EC2 Spot instances
+
 You can save considerable costs (up to 90%) for large clusters by using [EC2 spot instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html). You configure your maximum bid price with the `--spot-price` parameter to `myria-cluster create`. (Note that you only ever actually pay the current spot price, not your maximum bid price.) If the current spot price exceeds your maximum bid price, or if the instance type you specify is not available in the quantity you specify, your instances will be terminated. In general, it’s best to use [previous generation instance types](https://aws.amazon.com/ec2/previous-generation/) for spot instances (for cost and availability reasons), and to specify the `--zone` ([EC2 Availability Zone](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html)) and `--spot-price` options to `myria-cluster create` based on [spot instance pricing history](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html). Here’s an example:
 
 ```
 myria-cluster create spot-test-cluster --region us-west-2 --zone us-west-2a --spot-price 0.08 --cluster-size 80 --instance-type m2.2xlarge
 ```
+
+### Stop and start your Myria cluster
 
 If you decide not to use spot instances, you can still save considerable cost by stopping your cluster when not in use and restarting it on demand. This avoids all compute costs, and only incurs the EBS storage cost of $0.10/GB/month. The `myria-cluster stop` and `myria-cluster start` commands leverage EC2’s ability to stop and start EBS-backed instances (essentially equivalent to a reboot but possibly on different hardware). (Note that if you choose the `--storage-type local` option, you will be unable to stop your cluster, since data on local storage devices is lost when you stop an EC2 instance.)
 
@@ -319,6 +323,8 @@ WORKER_ID HOST
 2         ec2-54-213-90-178.us-west-2.compute.amazonaws.com
 ```
 
+### Resize your Myria cluster
+
 If you find you need more nodes in your cluster, you can increase (but not decrease!) your cluster's size by using the `myria-cluster resize` command:
 
 ```
@@ -338,6 +344,8 @@ R = SCAN(MyOldRelation);
 STORE(R, MyOldRelation, [col_1, col_2, col_3]);
 ```
 
+### Update your Myria cluster
+
 It may be that you need to deploy changes made to the Myria software since you created your cluster, and you don't want to destroy that cluster and create a new one. You can use the `myria-cluster update` command to update the Myria software on a running cluster:
 
 ```
@@ -346,6 +354,8 @@ myria-cluster update test-cluster --region us-west-2
 Updating Myria software on cluster...
 Myria software successfully updated.
 ```
+
+### Destroy your Myria cluster
 
 When you're finished using your cluster, terminate the cluster using the `myria-cluster destroy` command:
 
