@@ -261,6 +261,14 @@ myria-cluster list test-cluster --metadata --region us-west-2
 }
 ```
 
+#### A note on EC2 instance types
+
+The default instance type for your Myria cluster is [`t2.large`](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/t2-instances.html), which strikes a good balance between cost and performance for less demanding applications. You can specify any EC2 instance type to `myria-cluster create` using the `--instance-type` option, and with the exception of a few unsupported instance types, the options `--coordinator-mem-gb`, `--coordinator-vcores`, `--driver-mem-gb`, `--node-mem-gb`, `--node-vcores`, `--worker-mem-gb`, `--worker-vcores`, `--workers-per-node` will default to appropriate values for that instance type. (You can always override these defaults by setting the corresponding options on the command line.)
+
+When choosing an appropriate instance type, you should consider the limiting resource for your application: memory, CPU, or I/O. In general, we find that memory tends to be the bottleneck in Myria applications, since most operators process all data in-memory (except for operations that can be pushed into PostgreSQL, which is able to spill data to disk). The [R3](https://aws.amazon.com/about-aws/whats-new/2014/04/10/r3-announcing-the-next-generation-of-amazon-ec2-memory-optimized-instances/) and [R4](https://aws.amazon.com/blogs/aws/new-next-generation-r4-memory-optimized-ec2-instances/) EC2 instance type families are optimized for memory-intensive applications, and should be your first choice in most Myria applications. (For spot instances, the previous-generation [M2](https://aws.amazon.com/ec2/previous-generation/) instance type family, also optimized for memory-intensive applications, is often an economical choice.)
+
+It can be confusing to try to compare the various instance types available using the AWS documentation; the [EC2Instances.info page](http://www.ec2instances.info/) makes it much easier to compare instance type features and pricing.
+
 #### A note on EC2 Spot instances
 
 You can save considerable costs (up to 90%) for large clusters by using [EC2 spot instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html). You configure your maximum bid price with the `--spot-price` parameter to `myria-cluster create`. (Note that you only ever actually pay the current spot price, not your maximum bid price.) If the current spot price exceeds your maximum bid price, or if the instance type you specify is not available in the quantity you specify, your instances will be terminated. In general, it’s best to use [previous generation instance types](https://aws.amazon.com/ec2/previous-generation/) for spot instances (for cost and availability reasons), and to specify the `--zone` ([EC2 Availability Zone](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html)) and `--spot-price` options to `myria-cluster create` based on [spot instance pricing history](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html). Here’s an example:
@@ -268,6 +276,8 @@ You can save considerable costs (up to 90%) for large clusters by using [EC2 spo
 ```
 myria-cluster create spot-test-cluster --region us-west-2 --zone us-west-2a --spot-price 0.08 --cluster-size 80 --instance-type m2.2xlarge
 ```
+
+Note that clusters using spot instances cannot be stopped and started.
 
 ### Stop and start your Myria cluster
 
@@ -337,7 +347,7 @@ Waiting for Myria service to become available...
 1 new nodes successfully added to cluster 'test-cluster'.
 ```
 
-Note that any relations you created before running the `myria-cluster resize` command will still be partitioned only on the workers that existed before the command was run. This will not produce any incorrect results, but may cause your queries to be less efficient than they could be. If you want to partition existing relations on all workers after issuing a `resize` command, you will need to overwrite those relations with the result of a `SCAN`/`STORE` query that repartitions across all workers:
+Note that any relations you created before running the `myria-cluster resize` command will still be partitioned only on the workers that existed before the command was run. This will not affect the correctness of your queries, but may cause them to be less efficient than they could be. If you want to partition existing relations on all workers after issuing a `resize` command, you will need to overwrite those relations using a `SCAN`/`STORE` query that repartitions across all workers:
 
 ```
 R = SCAN(MyOldRelation);
