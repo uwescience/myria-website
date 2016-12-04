@@ -331,6 +331,13 @@ Waiting for Myria service to become available...
 1 new nodes successfully added to cluster 'test-cluster'.
 ```
 
+Note that any relations you created before running the `myria-cluster resize` command will still be partitioned only on the workers that existed before the command was run. This will not produce any incorrect results, but may cause your queries to be less efficient than they could be. If you want to partition existing relations on all workers after issuing a `resize` command, you will need to overwrite those relations with the result of a `SCAN`/`STORE` query that repartitions across all workers:
+
+```
+R = SCAN(MyOldRelation);
+STORE(R, MyOldRelation, [col_1, col_2, col_3]);
+```
+
 It may be that you need to deploy changes made to the Myria software since you created your cluster, and you don't want to destroy that cluster and create a new one. You can use the `myria-cluster update` command to update the Myria software on a running cluster:
 
 ```
