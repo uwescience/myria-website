@@ -190,7 +190,7 @@ Destroy this cluster:
 myria-cluster destroy test-cluster --region us-west-2
 
 Log into the coordinator node:
-ssh -i /Users/me/.ssh/me-myria_us-west-2.pem ubuntu@ec2-54-202-211-221.us-west-2.compute.amazonaws.com
+myria-cluster login test-cluster --region us-west-2
 
 MyriaWeb interface:
 http://ec2-54-202-211-221.us-west-2.compute.amazonaws.com:8080
@@ -215,7 +215,7 @@ You can also point your browser to the [Jupyter](http://jupyter.org/) (IPython) 
 
 You can monitor the performance of your cluster by pointing your browser to the Ganglia URL. This will allow you to monitor memory, CPU, I/O, disk space usage, and other metrics in real time as you execute your queries.
 
-Finally, the script will display an [SSH](https://en.wikipedia.org/wiki/Secure_Shell) command to remotely log into the Myria coordinator to control the `myria` and `myria-web` services, view logs, or further configure the Myria system. The services running on the coordinator can be controlled with the usual Ubuntu commands for [Upstart](http://upstart.ubuntu.com/) services:
+You can use the `myria-cluster login` command to remotely log into the Myria coordinator to control the `myria` and `myria-web` services, view logs, or further configure the Myria system. (Note that unlike other `myria-cluster` commands, which only require AWS credentials, the `login` command requires you to have the private key file that was used to create the cluster!) The services running on the coordinator can be controlled with the usual Ubuntu commands for [Upstart](http://upstart.ubuntu.com/) services:
 
 ```
 sudo stop myria
@@ -269,7 +269,7 @@ When choosing an appropriate instance type, you should consider the limiting res
 
 It can be confusing to try to compare the various instance types available using the AWS documentation; the [EC2Instances.info page](http://www.ec2instances.info/) makes it much easier to compare instance type features and pricing.
 
-#### A note on EC2 Spot instances
+#### A note on EC2 spot instances
 
 You can save considerable costs (up to 90%) for large clusters by using [EC2 spot instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html). You configure your maximum bid price with the `--spot-price` parameter to `myria-cluster create`. (Note that you only ever actually pay the current spot price, not your maximum bid price.) If the current spot price exceeds your maximum bid price, or if the instance type you specify is not available in the quantity you specify, your instances will be terminated. In general, it’s best to use [previous generation instance types](https://aws.amazon.com/ec2/previous-generation/) for spot instances (for cost and availability reasons), and to specify the `--zone` ([EC2 Availability Zone](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html)) and `--spot-price` options to `myria-cluster create` based on [spot instance pricing history](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html). Here’s an example:
 
