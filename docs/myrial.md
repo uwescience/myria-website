@@ -16,20 +16,27 @@ MyriaL is imperative: Each program is a sequence of assignment statements.  Howe
 
 MyriaL was designed by the Database group at the University of Washington, led by Andrew Whitaker, now at Amazon.
 
-##Reading Data and Storing in Myria
+## Reading Data and Storing in Myria
 
-###Ingesting data
-Myria can read and store a CSV file from S3 via the load command:
+### Ingesting data
+Myria can read and store a CSV file from S3 via the `load` command:
 
 * Example #1: Loading and Storing "TwitterK" data
 
 ```sql
-    T = LOAD("https://s3-us-west-2.amazonaws.com/uwdb/sampleData/TwitterK.csv", csv(schema(a:int, b:int),skip=0));
+    T = LOAD("https://s3-us-west-2.amazonaws.com/uwdb/sampleData/TwitterK.csv", csv(schema(a:int, b:int), skip=0));
     STORE(T, TwitterK, [a, b]);
 ```
 
-The `skip` option takes the number of lines at the beginning of the csv file to skip over.
+The `skip` option takes the number of lines at the beginning of the CSV file to skip over (such as column headers).
 Here, Myria will create a relation `T1` with the contents of `TwitterK.csv` and store it in a table called `TwitterK`. The third argument, `[a, b]`, is a list of attributes to partition the rows by.
+
+Note that the `load` command can also handle TSV data:
+
+```sql
+    T = LOAD("https://s3-us-west-2.amazonaws.com/uwdb/sampleData/TwitterK.tsv", csv(schema(a:int, b:int), skip=0, delimiter="\t"));
+    STORE(T, TwitterK, [a, b]);
+```
 
 * Example #2: Loading and Storing "Points" data
 
@@ -43,6 +50,8 @@ Here, Myria will create a relation `T1` with the contents of `TwitterK.csv` and 
 ```
 
 *The partition argument to STORE is actually optional. However, MyriaL needs explicit partition attribute specified for a relation created via LOAD.*
+
+**Note: if your data contains non-Latin characters, please convert it to use UTF-8 encoding before loading.**
 
 **Optional - loading data from other sources** <br>
 You can also load data from other sources including your own local file system. To ingest from a local file source, you must deploy a local instance of Myria. Below is an example of loading a smallTable from a local file.
@@ -63,7 +72,7 @@ If your table is in HDFS, you can also run something like the following:
               STORE(T, points, [x,y]);
 ```
 
-###Reading existing relations
+### Reading existing relations
 
 Once a relation is stored, Myria can access use it in later queries with `SCAN`. This example simply repartitions the `TwitterK` relation by just attribute `a`.
 
@@ -72,7 +81,7 @@ Once a relation is stored, Myria can access use it in later queries with `SCAN`.
     STORE(T, TwitterK_part_a, [a]);
 ```
 
-###Create an empty relation
+### Create an empty relation
 
 ```sql
 --Create an empty relation with a particular schema
@@ -80,7 +89,7 @@ r = empty(x:int, y:float, z:string);
 STORE(r, myrelation);
 ```
 
-###Compute the result without storing it
+### Compute the result without storing it
 
 MyriaL has fairly aggressive *deadcode elimination*. That means if you do not store a relation, Myria may not bother computing anything.
 
@@ -102,14 +111,14 @@ T = SCAN(TwitterK);
 SINK(T);
 ```
 
-##Transforming Data
+## Transforming Data
 
 Now for some real queries! MyriaL has two styles of syntax: SQL and comprehensions. If you've used [list comprehensions in python](https://docs.python.org/2/tutorial/datastructures.html#list-comprehensions) then MyriaL's comprehensions will look familiar. Use the style you prefer or mix and match.
 
 You can try all the examples in this section yourself by copy/pasting them into [Myria demo](http://demo.myria.cs.washington.edu/).
 
 
-###Select, from, where
+### Select, from, where
 
 Let's find the twitter relationships where the follower and followee are the same user.
 
@@ -129,7 +138,7 @@ store(s, selfloops);
 
 `from T` means read tuples from relation T. `where a = b` means only keep tuples where the value of a is equal to the value of b. The `*` in `emit *` means the resulting relation should contain *all* the attributes from the relations in the `from` clause (in this case, the attributes of `T`: `a` and `b`).
 
-###Join
+### Join
 
 Joins let us match two relations on 1 or more attributes. This query finds all the friend-of-friend relationships in TwitterK.
 
@@ -152,7 +161,7 @@ Joined = [FROM T1, T2
 STORE(Joined, TwoHopsInTwitter);
 ```
 
-###Aggregation
+### Aggregation
 
 Aggregation lets us combine results from multiple tuples. This query counts the number of friends for user 821.
 
@@ -189,7 +198,7 @@ select a, COUNT(*) from T group by a;
 ```
 
 
-###unionall (Concatentation)
+### `unionall` (Concatentation)
 
 `+` or `UNIONALL` concatenates to relations in MyriaL
 
@@ -200,7 +209,7 @@ result = UNIONALL(result, T1);
 STORE(result, threeTimes);
 ```
 
-###Set operations
+### Set operations
 
 Most operations in MyriaL treat the relation [like a bag rather than a set](https://courses.cs.washington.edu/courses/cse444/10sp/lectures/lecture16.pdf), like SQL. However, MyriaL also has set operations like union, difference, and distinct.
 
@@ -224,7 +233,7 @@ onlyleft = diff(Left, Right);
 store(onlyleft, onlyleft);
 ```
 
-##Loops
+## Loops
 
 MyriaL supports Do-While loops. The loop can be terminated on a condition about the data, so you can write iterative programs.
 
@@ -253,11 +262,11 @@ STORE(Reachable, OUTPUT);
 
 The condition should be a relation with one tuple with one boolean attribute.
 
-##Expressions
+## Expressions
 
 Expressions are any code that evaluate to scalar values in MyriaL. They can appear in the EMIT (comprehesions) or SELECT (SQL) or WHERE clauses.
 
-###Arithmetic
+### Arithmetic
  MyriaL has a number of math functions.
 
 ```sql
@@ -270,7 +279,7 @@ Expressions are any code that evaluate to scalar values in MyriaL. They can appe
     STORE(T4,  ArithmeticExample2);
 ```
 
-###Constants
+### Constants
 
 A constant is a *singleton relation* (a relation with a single 1-attribute tuple). You can use the relation as a scalar in an expression by preceding the name with `*` (we saw this in the loop example above).
 
@@ -281,7 +290,7 @@ S = select a, b from T where a = *N;
 store(S, filtered);
 ```
 
-###User-defined functions
+### User-defined functions
 
 MyriaL supports writing User-defined Functions (UDFs) and User-defined Aggregates (UDAs) in the MyriaL syntax.
 *Coming soon: Python UDFs!!*.
@@ -321,7 +330,7 @@ T1 = [from cnt emit ArgMax(v, degree)];
 STORE(T1, max_degree);
 ```
 
-###Stateful Apply
+### Stateful Apply
 
 Stateful apply provides a way to define functions that keep mutable state.
 
@@ -340,7 +349,7 @@ STORE (T2, identified);
 
 To do a distributed counter, Myria has coordination operators like broadcast and collect, but these are not currently exposed in MyriaL.
 
-###Types
+### Types
 
 MyriaL supports a number of types for attributes (and expressions) and performs type checking.
 
@@ -352,7 +361,7 @@ MyriaL supports a number of types for attributes (and expressions) and performs 
 - datetime
 - *coming soon:* blob
 
-##Gotchas
+## Gotchas
 
 The Myria Catalog is case sensitive, so please make sure to Scan the correct relation name.
 

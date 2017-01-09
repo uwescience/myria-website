@@ -5,7 +5,7 @@ group: "projects"
 weight: 2
 ---
 
-#Source Code
+# Source Code
 
 ## Myria 
 
@@ -18,6 +18,10 @@ Developers, please see our [Myria Developer](http://myria.cs.washington.edu/docs
 Source code used to deploy Myria on Amazon can be found [here](https://github.com/uwescience/myria-ec2-ansible).
 
 ## PipeGen
+
+PipeGen allows users to automatically create an efficient connection between pairs of database systems. PipeGen targets data analytics workloads on shared-nothing engines, and supports scenarios where users seek to perform different parts of an analysis in different DBMSs or want to combine and analyze data stored in different systems. The systems may be colocated in the same cluster or may be in different clusters.
+
+The PipeGen source code is located [here](https://github.com/uwdb/pipegen).
 
 ## PSLAManager
 
