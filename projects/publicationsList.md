@@ -8,6 +8,7 @@ weight: 1
 #Publications
 
 ## The Myria System
+* [The Myria Big Data Management and Analytics System and Cloud Services](../publications/myria-overview.pdf). Jingjing Wang, Tobin Baker, Magdalena Balazinska, Daniel Halperin, Brandon Hayes, Bill Howe, Dylan Hutchinson, Shrainik Jain, Ryan Maas, Parmita Mehta, Dominik Moritz, Brandon Myers, Jennifer Ortiz, Dan Suciu, Andrew Whittaker, and Shengliang Xu. *CIDR 2017*.
 * [Demonstration of the Myria Big Data Management Service](../publications/Halperin_Myria_demo_SIGMOD_2014.pdf). D. Halperin, V. T. Almeida, L. L. Choo, S. Chu, P. Koutris, D. Moritz, J. Ortiz, V. Ruamviboonsuk, J. Wang, A. Whitaker, S. Xu, M. Balazinska, B. Howe, and D. Suciu. *SIGMOD 2014*.
 
 ##Big Data Management Theory
