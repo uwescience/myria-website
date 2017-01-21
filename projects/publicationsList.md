@@ -22,6 +22,7 @@ weight: 1
 ## Big Data Systems Research
 
 * [PipeGen: Data Pipe Generator for Hybrid Analytics](../publications/PipeGen-Haynes-socc16.pdf).  Brandon Haynes, Alvin Cheung, and Magdalena Balazinska. *SOCC 2016*.
+* [High-performance parallel systems for data-intensive computing](https://digital.lib.washington.edu/researchworks/bitstream/handle/1773/37076/Myers_washington_0250E_16369.pdf?sequence=1&isAllowed=y). Brandon Myers. *Ph.D. Dissertation, 2016*
 * [Compiling queries for high-performance computing](http://www.cs.washington.edu/tr/2016/02/UW-CSE-16-02-02.pdf). Brandon Myers, Bill Howe, and Mark Oskin. *UW Technical Report 2016*
 * [Asynchronous and Fault-Tolerant Recursive Datalog Evaluation in Shared-Nothing Engines](https://homes.cs.washington.edu/~jwang/papers/p2317-wang.pdf). Jingjing Wang, Magdalena Balazinska, and Daniel Halperin. *VLDB 2015*
 * [From Theory to Practice: Efficient Join Query Evaluation in a Parallel Database System](https://homes.cs.washington.edu/~chushumo/files/sigmod_15_join.pdf). Shumo Chu, Magda Balazinska and Dan Suciu. *SIGMOD 2015*
