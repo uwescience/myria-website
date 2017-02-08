@@ -43,7 +43,6 @@ weight: 1
 ## Big Data Management as a Cloud Service
 
 * [Toward Elastic Memory Management for Cloud Data Analytics](https://homes.cs.washington.edu/~jwang/publications/elastic-memory.pdf). Jingjing Wang and Magdalena Balazinska. *BeyondMR 2016*.  [(slides)](https://homes.cs.washington.edu/~jwang/publications/elastic-memory-beyondmr2016-slides.pdf). 
-* Sqlshare:Results from a multi-year sql-as-a-service experiment. S Jain, D Moritz, D Halperin, B Howe, E Lazowska. *Proceedings of the 2016 International Conference on Management of Data.*
 * High-variety cloud databases. S Jain, D Moritz, B Howe. *Data Engineering Workshops (ICDEW) 2016*
 * [A Vision for Personalized Service Level Agreements in the Cloud](../publications/Ortiz_PSLA_2013.pdf). Jennifer Ortiz, Victor T. Almeida, Magda Balazinska. *SIGMOD Workshop on Data Analytics in the Cloud (DanaC) 2013*.
 * [Changing the Face of Database Cloud Services with Personalized Service Level Agreements](../publications/Ortiz_PSLA_CIDR_2015.pdf). Jennifer Ortiz, Victor T. Almeida, Magda Balazinska. *CIDR 2015*.
