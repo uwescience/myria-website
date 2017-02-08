@@ -13,6 +13,8 @@ weight: 1
 
 ## Big Data Management Theory
 
+* A Worst-Case Optimal Multi-Round Algorithm for Parallel Computation of Conjunctive Queries. Bas Ketsman, Dan Suciu.  *PODS'2017*
+* What do Shannon-type inequalities, submodular width, and disjunctive datalog have to do with one another? Mahmoud Abo Khamis, Hung Ngo, Dan Suciu(2017). *(under review)*
 * [Worst-Case Optimal Algorithms for Parallel Query Processing]({{site.baseurl}}/publications/worstcase-beame.pdf). Paul Beame, Paraschos Koutris, Dan Suciu. *ICDT 2016*.
 * [Query Processing for Massively Parallel Systems]({{site.baseurl}}/publications/thesis-koutris.pdf). Paraschos Koutris. *Ph.D. Dissertation, 2015*
 * [Skew in Parallel Query Processing]({{site.baseurl}}/publications/skew-beame.pdf). Paul Beame, Paraschos Koutris, Dan Suciu. *PODS 2014*.
@@ -20,8 +22,8 @@ weight: 1
 * [Parallel Evaluation of Conjunctive Queries]({{site.baseurl}}/publications/parallel-koutris.pdf). Paraschos Koutris, Dan Suciu. *PODS 2011*.
 
 ## Big Data Systems Research
-
 * [PipeGen: Data Pipe Generator for Hybrid Analytics](../publications/PipeGen-Haynes-socc16.pdf).  Brandon Haynes, Alvin Cheung, and Magdalena Balazinska. *SOCC 2016*.
+* Comparative Evaluation of Big-Data Systems on Scientific Image Analytics Workloads. Parmita Mehta, Sven Dorkenwald, Dongfang Zhao, Tomer Kaftan, Alvin Cheung, Magdalena Balazinska, Ariel Rokem, Andrew J. Connolly, Jacob VanderPlas, Yusra AlSayyad. *CoRR abs/1612.02485 (2016)*
 * [High-performance parallel systems for data-intensive computing](https://digital.lib.washington.edu/researchworks/bitstream/handle/1773/37076/Myers_washington_0250E_16369.pdf?sequence=1&isAllowed=y). Brandon Myers. *Ph.D. Dissertation, 2016*
 * [Compiling queries for high-performance computing](http://www.cs.washington.edu/tr/2016/02/UW-CSE-16-02-02.pdf). Brandon Myers, Bill Howe, and Mark Oskin. *UW Technical Report 2016*
 * [Asynchronous and Fault-Tolerant Recursive Datalog Evaluation in Shared-Nothing Engines](https://homes.cs.washington.edu/~jwang/papers/p2317-wang.pdf). Jingjing Wang, Magdalena Balazinska, and Daniel Halperin. *VLDB 2015*
@@ -32,12 +34,17 @@ weight: 1
 
 ## Profiling and Visualization
 
+* Viziometrics: Analyzing Visual Patterns in the Scientific Literature. Poshen Lee, Jevin West, Bill Howe (2017). *(under review)*
+* Voyager: Exploratory analysis via faceted browsing of visualization recommendations. K Wongsuphasawat, D Moritz, A Anand, J Mackinlay, B Howe, J Heer (2016). *IEEE transactions on visualization and computer graphics.*
+* Viziometrix: A platform for analyzing the visual information in big scholarly data. P Lee, JD West, B Howe (2016). *Proceedings of the 25thInternational Conference Companion on World Wide Web.*
 * [Perfopticon: Visual Query Analysis for Distributed Databases](https://idl.cs.washington.edu/files/2015-Perfopticon-EuroVis.pdf).Dominik Moritz, Jeffrey Heer, and Bill Howe.
 * [Dynamic Client-Server Optimization for Scalable Interactive Visualization on the Web](http://www.interactive-analysis.org/papers/2015/moritz.pdf). Dominik Moritz, Jeffrey Heer, and Bill Howe. Dominik Moritz, Daniel Halperin, Bill Howe, Jeffrey Heer *Computer Graphics Forum (Proc. EuroVis) 2015*.
 
 ## Big Data Management as a Cloud Service
 
-* [Toward Elastic Memory Management for Cloud Data Analytics](https://homes.cs.washington.edu/~jwang/publications/elastic-memory.pdf). Jingjing Wang and Magdalena Balazinska. *BeyondMR 2016*.  [(slides)](https://homes.cs.washington.edu/~jwang/publications/elastic-memory-beyondmr2016-slides.pdf)
+* [Toward Elastic Memory Management for Cloud Data Analytics](https://homes.cs.washington.edu/~jwang/publications/elastic-memory.pdf). Jingjing Wang and Magdalena Balazinska. *BeyondMR 2016*.  [(slides)](https://homes.cs.washington.edu/~jwang/publications/elastic-memory-beyondmr2016-slides.pdf). 
+* Sqlshare:Results from a multi-year sql-as-a-service experiment. S Jain, D Moritz, D Halperin, B Howe, E Lazowska. *Proceedings of the 2016 International Conference on Management of Data.*
+* High-variety cloud databases. S Jain, D Moritz, B Howe. *Data Engineering Workshops (ICDEW) 2016*
 * [A Vision for Personalized Service Level Agreements in the Cloud](../publications/Ortiz_PSLA_2013.pdf). Jennifer Ortiz, Victor T. Almeida, Magda Balazinska. *SIGMOD Workshop on Data Analytics in the Cloud (DanaC) 2013*.
 * [Changing the Face of Database Cloud Services with Personalized Service Level Agreements](../publications/Ortiz_PSLA_CIDR_2015.pdf). Jennifer Ortiz, Victor T. Almeida, Magda Balazinska. *CIDR 2015*.
 * [PerfEnforce Demonstration: Data Analytics with Performance Guarantees](../publications/Ortiz-perfenforceDemo-sigmod16.pdf). Jennifer Ortiz, Brendan Lee, Magda Balazinska. *SIGMOD 2016*.
