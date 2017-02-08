@@ -17,6 +17,6 @@ PipeGen allows users to automatically create an efficient connection between pai
 
 <p style="text-align: center">
 	<a class="btn btn-primary btn-md  label-primary" href="http://db.cs.washington.edu/projects/pipegen/" role="button" style="width: 180px;"><span style="position: relative; top:10px">Project Website</span><br/><small>&nbsp;</small></a>
-	<a class="btn btn-primary btn-md label-primary" href="https://arxiv.org/pdf/1605.01664v2.pdf" role="button" style="width: 180px;"><span style="position: relative; top:10px">Read the Paper</span><br/><small>&nbsp;</small></a>
+	<a class="btn btn-primary btn-md label-primary" href="http://db.cs.washington.edu/projects/pipegen/PipeGen-Haynes-socc16.pdf" role="button" style="width: 180px;"><span style="position: relative; top:10px">Read the Paper</span><br/><small>&nbsp;</small></a>
 	<a class="btn btn-primary btn-md label-primary" href="https://github.com/uwdb/pipegen" role="button" style="width: 180px;"><span style="position: relative; top:10px">Get the Code</span><br/><small>&nbsp;</small></a>
 </p>
