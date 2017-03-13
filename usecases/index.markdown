@@ -44,3 +44,10 @@ coming soon...
 **Short description**: This use-case involves making the Million Song Dataset available in an easily queryable form, and implementing some common methods used in Music Information Retrieval so domain experts can conveniently analyze the data set. Many of these methods are drawn from a 2012 Nature paper analyzing the data set, linked above. We plan to reproduce many of the results in that paper by implementing new features in the underlying database and adding language features to MyriaL.
 
 **Long description** : [Link to data and detailed description.]({{ site.baseurl}}/usecases/msd.html)
+
+## Flights
+
+* **Data** : [Bureau of Transportation Statistics](https://www.transtats.bts.gov/)
+* **Tags**: Why is this use-case interesting? It has multiple GB of data, allows for interesting aggregate queries, and contains a variety of correlations between the attributes.
+
+**Short description**: This use-case involves all flights in the United States from 1987 to present day. There are numerous categorical and continuous attributes for each flight. To download an entire month's worth of data by url, use http://www.transtats.bts.gov/Download/On_Time_On_Time_Performance_[year]_[month].zip.
