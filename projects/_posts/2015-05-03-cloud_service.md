@@ -34,9 +34,11 @@ You can try out the PSLAManager and PerfEnforce systems when launching Myria on 
 <iframe width="500" height="281" src="//www.youtube.com/embed/H68HHOkDTU4" frameborder="0" allowfullscreen></iframe>
 
 
-### Elastic Container Memory Management
+### Elastic Memory Management for Cloud Data Analytics
 
 * [Toward Elastic Memory Management for Cloud Data Analytics](https://homes.cs.washington.edu/~jwang/publications/elastic-memory.pdf). Jingjing Wang and Magdalena Balazinska. *BeyondMR 2016*.  [(slides)](https://homes.cs.washington.edu/~jwang/publications/elastic-memory-beyondmr2016-slides.pdf)
+
+* [Elastic Memory Management for Cloud Data Analytics](). Jingjing Wang and Magdalena Balazinska. *USENIX ATC 2017*. (To appear)
 
 
 
