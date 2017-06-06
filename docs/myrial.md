@@ -18,354 +18,343 @@ MyriaL was designed by the Database group at the University of Washington, led b
 
 ## Reading Data and Storing in Myria
 
-### Ingesting data
+## 1. Ingesting data
 Myria can read and store a CSV file from S3 via the `load` command:
 
-* Example #1: Loading and Storing "TwitterK" data
+### 1.1. Loading and storing "TwitterK" dataset
 
 ```sql
-    T = LOAD("https://s3-us-west-2.amazonaws.com/uwdb/sampleData/TwitterK.csv", csv(schema(a:int, b:int), skip=0));
-    STORE(T, TwitterK, [a, b]);
+    T = load("s3://uwdb/sampleData/TwitterK.csv", csv(schema(src:int, dst:int), skip=0));
+    store(T, TwitterK, [src, dst]);
 ```
 
 The `skip` option takes the number of lines at the beginning of the CSV file to skip over (such as column headers).
-Here, Myria will create a relation `T1` with the contents of `TwitterK.csv` and store it in a table called `TwitterK`. The third argument, `[a, b]`, is a list of attributes to partition the rows by.
+Here, Myria will create a relation `T1` with the contents of `TwitterK.csv` and store it in a table called `TwitterK`. The third argument, `[src, dst]`, is a list of attributes to partition the rows by.
 
 Note that the `load` command can also handle TSV data:
 
 ```sql
-    T = LOAD("https://s3-us-west-2.amazonaws.com/uwdb/sampleData/TwitterK.tsv", csv(schema(a:int, b:int), skip=0, delimiter="\t"));
-    STORE(T, TwitterK, [a, b]);
+    T = load("path/to/your/file.tsv", csv(schema(src:int, dst:int), skip=0, delimiter="\t"));
+    store(T, TwitterK, [src, dst]);
 ```
 
-* Example #2: Loading and Storing "Points" data
+### 1.2. Loading and storing "Points" dataset
 
 ```sql
-    T = LOAD("https://s3-us-west-2.amazonaws.com/uwdb/sampleData/sampleCrossmatch/points.txt",
+    T = load("s3://uwdb/sampleData/sampleCrossmatch/points.txt",
               csv(schema(id:int,
                          x:float,
                          y:float,
                          z:float), skip=0));
-              STORE(T, points, [x,y,z]);
+        store(T, points, [x,y,z]);
 ```
 
-*The partition argument to STORE is actually optional. However, MyriaL needs explicit partition attribute specified for a relation created via LOAD.*
-
-**Note: if your data contains non-Latin characters, please convert it to use UTF-8 encoding before loading.**
-
-**Optional - loading data from other sources** <br>
+### 1.3. Loading data from other sources (optional)
 You can also load data from other sources including your own local file system. To ingest from a local file source, you must deploy a local instance of Myria. Below is an example of loading a smallTable from a local file.
 
 ```sql
-    T = LOAD("file:///path/to/smallTable/file",
+    T = load("file:///path/to/smallTable/file",
               csv(schema(x:float,
                          y:float), skip=0));
-              STORE(T, points, [x,y]);
+    store(T, points, [x,y]);
 ```
 
 If your table is in HDFS, you can also run something like the following:
 
 ```sql
-    T = LOAD("hdfs://server:port/path/to/file",
+    T = load("hdfs://server:port/path/to/file",
               csv(schema(x:float,
                          y:float), skip=0));
-              STORE(T, points, [x,y]);
+    store(T, points, [x,y]);
 ```
 
-### Reading existing relations
+### 1.4. Reading existing relations
 
-Once a relation is stored, Myria can access use it in later queries with `SCAN`. This example simply repartitions the `TwitterK` relation by just attribute `a`.
+Once a relation is stored, Myria can access use it in later queries with `scan`. This example simply repartitions the `TwitterK` relation by just attribute `src`.
 
 ```sql
-    T = SCAN(TwitterK);
-    STORE(T, TwitterK_part_a, [a]);
+    T = scan(TwitterK);
+    store(T, TwitterK_Src, [src]);
 ```
 
-### Create an empty relation
+### 1.5. Create an empty relation
 
 ```sql
 --Create an empty relation with a particular schema
 r = empty(x:int, y:float, z:string);
-STORE(r, myrelation);
+store(r, myrelation);
 ```
 
-### Compute the result without storing it
+### 1.6. Compute the result without storing it
 
 MyriaL has fairly aggressive *deadcode elimination*. That means if you do not store a relation, Myria may not bother computing anything.
 
 This program, for example,
 
 ```sql
-T = SCAN(TwitterK);
+T = scan(TwitterK);
 ```
 
-results in the following error message
+results in the following error message:
 
 `MyrialCompileException: Optimized program is empty`
 
 
-MyriaL provides the `SINK` command to get around this. We often find `SINK` useful when benchmarking Myria's performance. The following program scans `TwitterK` from disk into memory and then throws the relation away.
+MyriaL provides the `sink` command to get around this. We often find `sink` useful when benchmarking Myria's performance. The following program scans `TwitterK` from disk into memory and then throws the relation away.
 
 ```sql
-T = SCAN(TwitterK);
-SINK(T);
+T = scan(TwitterK);
+sink(T);
 ```
 
-## Transforming Data
+## 2. Transforming Data
 
-Now for some real queries! MyriaL has two styles of syntax: SQL and comprehensions. If you've used [list comprehensions in python](https://docs.python.org/2/tutorial/datastructures.html#list-comprehensions) then MyriaL's comprehensions will look familiar. Use the style you prefer or mix and match.
+Now for some real queries! MyriaL has two styles of syntax: **SQL** and **comprehensions**. If you've used [list comprehensions in python](https://docs.python.org/2/tutorial/datastructures.html#list-comprehensions) then MyriaL's comprehensions will look familiar. Use the style you prefer or mix and match.
 
-You can try all the examples in this section yourself by copy/pasting them into [Myria demo](http://demo.myria.cs.washington.edu/).
+You can try all the examples in this section yourself by copy/pasting them into your allotted demo cluster. 
 
 
-### Select, from, where
+### 2.1. select, from, where
 
 Let's find the twitter relationships where the follower and followee are the same user.
 
 ```sql
 T = scan(TwitterK);
 -- SQL style syntax
-s = select * from T where a = b;
+s = select * from T where src = dst;
 store(s, selfloops);
 ```
 
 ```sql
 T = scan(TwitterK);
 -- comprehension syntax
-s = [from T where a = b emit *];
+s = [from T where src = dst emit *];
 store(s, selfloops);
 ```
 
-`from T` means read tuples from relation T. `where a = b` means only keep tuples where the value of a is equal to the value of b. The `*` in `emit *` means the resulting relation should contain *all* the attributes from the relations in the `from` clause (in this case, the attributes of `T`: `a` and `b`).
+`from T` means read tuples from relation T. `where src = dst` means only keep tuples where the value of `src` is equal to the value of `dst`. The `*` in `emit *` means the resulting relation should contain *all* the attributes from the relations in the `from` clause (in this case, the attributes of `T`: `src` and `dst`).
 
-### Join
+### 2.2. join
 
 Joins let us match two relations on 1 or more attributes. This query finds all the friend-of-friend relationships in TwitterK.
 
 ```sql
-T1 = SCAN(TwitterK);
-T2 = SCAN(TwitterK);
-Joined = select T1.a, T1.b, T2.b
-              from T1, T2
-              where T1.b = T2.a;
-STORE(Joined, TwoHopsInTwitter);
+T1 = scan(TwitterK);
+T2 = scan(TwitterK);
+joined = select T1.src as src, T1.dst as link, T2.dst as dst
+         from T1, T2
+         where T1.dst = T2.src;
+store(joined, TwoHopsInTwitter);
 ```
 
 ```sql
-T1 = SCAN(TwitterK);
-T2 = SCAN(TwitterK);
-Joined = [FROM T1, T2
-          WHERE T1.b = T2.a
-          EMIT T1.a AS src, T1.b AS link, T2.b AS dst];
-
-STORE(Joined, TwoHopsInTwitter);
+T1 = scan(TwitterK);
+T2 = scan(TwitterK);
+joined = [from T1, T2
+          where T1.dst = T2.src
+          emit T1.src AS src, T1.dst AS link, T2.dst AS dst];     
+store(joined, TwoHopsInTwitter);
 ```
 
-### Aggregation
+### 2.3. aggregation
 
 Aggregation lets us combine results from multiple tuples. This query counts the number of friends for user 821.
 
 ```sql
 T = scan(TwitterK);
-cnt = select COUNT(*) from T where a=821;
+cnt = select count(*) from T where src=821;
 store(cnt, user821);
 ```
 
 ```sql
 T1 = scan(TwitterK);
-cnt = [from T1 where a=821 emit COUNT(*) as x];
+cnt = [from T1 where src=821 emit count(*) as x];
 store(cnt, user821);
 ```
 
+### 2.4. group-by aggregates
 We can also group the aggregation by attributes. This query counts the number of friends for *each* user.
 
 ```sql
 T = scan(TwitterK);
-cnt = select a, COUNT(*) from T;
-store(cnt, degrees);
+T1 = select src as user, count(*) as degree from T;
+store(T1, user_degrees);
 ```
 
 ```sql
-T1 = scan(TwitterK);
-cnt = [from T1 emit a, COUNT(*) as x];
-store(cnt, degrees);
+T = scan(TwitterK);
+T1 = [from T emit src as user, count(*) as degree];
+store(T1, user_degrees);
 ```
 
 Notice that MyriaL's syntax differs from SQL for group by. MyriaL groups by all attributes in the select clause without using a group by clause. For clarity, the equivalent SQL query is:
 
 ```sql
-select a, COUNT(*) from T group by a;
+select src as user, count(*) as degree from T group by src;
 ```
 
 
-### `unionall` (Concatentation)
-
-`+` or `UNIONALL` concatenates to relations in MyriaL
+### 2.4. unionall
+`+` or `unionall` concatenates two relations in MyriaL using the bag semantics.
 
 ```sql
-T1 = SCAN(TwitterK);
+T1 = scan(TwitterK);
 result = T1+T1;
-result = UNIONALL(result, T1);
-STORE(result, threeTimes);
+result = unionall(result, T1);
+store(result, threeTimes);
 ```
 
-### Set operations
+## 3. Set operations
 
-Most operations in MyriaL treat the relation [like a bag rather than a set](https://courses.cs.washington.edu/courses/cse444/10sp/lectures/lecture16.pdf), like SQL. However, MyriaL also has set operations like union, difference, and distinct.
+Most operations in MyriaL treat the relation [like a bag rather than a set](https://courses.cs.washington.edu/courses/cse444/10sp/lectures/lecture16.pdf), like SQL. However, MyriaL also has set operators: `diff`, and `distinct`. `intersect` and `union` (set-semantics) are not implemented but can be composed using `diff`, `unionall` and `distinct`. 
 
-List all unique users.
+### 3.1. List all unique users
 
 ```sql
-Edges = scan(TwitterK);
-Left = select a as v from Edges;
-Right = select b as v from Edges;
-Dups = Left + Right;
-Vertices = select distinct v from Dups;
-store(Vertices, users);
+edges = scan(TwitterK);
+left = select src as vertex from edges;
+right = select dst as vertex from edges;
+dups = left + right; 
+vertices = select distinct vertex from dups;
+store(vertices, users);
 ```
+Note the query plan created by MyriaX for the above query! It computes `left` and `right` in parallel.
 
-Find the users that only appear as the source of an edge.
+### 3.2. Find the users that only appear as the source of an edge
 ```sql
-Edges = scan(TwitterK);
-Left = select a as v from Edges;
-Right = select b as v from Edges;
-onlyleft = diff(Left, Right);
-store(onlyleft, onlyleft);
+edges = scan(TwitterK);
+left = select src as vertex from edges;
+right = select dst as vertex from edges;
+onlyleft = diff(left, right);
+store(onlyleft, onlyAsSource);
 ```
+Also, notice how the query plans for the union, distinct operation is different from that of just diff!
 
-## Loops
+*Exercise: Find all users who follow someone and are followed by someone.*
 
-MyriaL supports Do-While loops. The loop can be terminated on a condition about the data, so you can write iterative programs.
+## 4. User-defined functions
 
-Find the vertices reachable from user 821.
-
-```sql
-Edge = scan(TwitterK);
--- special syntax for a scalar constant in MyriaL.
-Source = [821 AS addr];
-Reachable = Source;
-Delta = Source;
-
-DO
-    -- join to follow the horizon
-    NewlyReachable = DISTINCT([FROM Delta, Edge
-                              WHERE Delta.addr == Edge.src
-                              EMIT Edge.dst AS addr]);
-    -- which users are discovered for the first time?
-    Delta = DIFF(NewlyReachable, Reachable);
-    -- add them to our set of reachable users
-    Reachable = UNIONALL(Delta, Reachable);
-WHILE [FROM COUNTALL(Delta) AS size EMIT *size > 0];
-
-STORE(Reachable, OUTPUT);
-```
-
-The condition should be a relation with one tuple with one boolean attribute.
-
-## Expressions
-
-Expressions are any code that evaluate to scalar values in MyriaL. They can appear in the EMIT (comprehesions) or SELECT (SQL) or WHERE clauses.
-
-### Arithmetic
- MyriaL has a number of math functions.
+MyriaL allows users to define two kinds of functions: UDF and UDA. A *user-defined function (UDF)* takes one or more parameters to produce an output. The function `foo` below is a UDF and it can be directly invoked in any of the expressions.
 
 ```sql
-    T3 = [FROM SCAN(TwitterK) as t EMIT sin(a)/4 + b AS x];
-    STORE(T3, ArithmeticExample);
-
-    --Unicode math operators ≤, ≥, ≠
-
-    T4 = [FROM SCAN(TwitterK) as t WHERE a ≤ b and a ≠ b and b ≥ a EMIT *];
-    STORE(T4,  ArithmeticExample2);
+def foo(a, b): a - int(a/(b+1))*b;
+T1 = [from scan(TwitterK) as t emit foo(src, dst)];
+store(T1, udf_result);
 ```
-
-### Constants
-
-A constant is a *singleton relation* (a relation with a single 1-attribute tuple). You can use the relation as a scalar in an expression by preceding the name with `*` (we saw this in the loop example above).
-
-```sql
-N = [12];
-T = scan(TwitterK);
-S = select a, b from T where a = *N;
-store(S, filtered);
+A *user-defined aggregate function*, which is sometimes called an UDAF or UDA takes in a series of inputs and produces a single output for the series. The syntax for defining a UDA is as follows:
 ```
-
-### User-defined functions
-
-MyriaL supports writing User-defined Functions (UDFs) and User-defined Aggregates (UDAs) in the MyriaL syntax.
-*Coming soon: Python UDFs!!*.
-
-User-defined function to calculate modulo.
-
-```sql
-def mod(x, n): x - int(x/n)*n;
-T1 = [from scan(TwitterK) as t emit mod(a, b)];
-STORE(T1, udf_result);
+uda func-name(args) {
+ initialization-expr(s);
+ update-expr(s);
+ result-expr(s);
+};
 ```
-
 User-defined aggregate function to calculate an arg max. We'll use it to find the vertex with the largest degree.
 
 ```sql
 -- break ties by picking the first value
-def pickval(value, arg, _value, _arg):
-    case when value >= _value then arg
-        else _arg end;
+def pickBasedOnValue(value1, arg1, value2, arg2):
+    case
+    	when value1 >= value2
+    	then arg1
+    	else arg2
+    end;
 
--- Every UDA has three statements: *init* to specify the state attributes and set initial values, *update* run for each tuple, and *output* to calculate the final result.
-
-uda ArgMax(arg, val) {
+-- User defined aggregate that finds the argmax and max
+uda argMaxAndMax(arg, val) {
    -- init
-   [0 as _arg, 0 as _val];
+   [-1 as _arg, -1 as _val];
 
    -- update
-   [pickval(val, arg, _val, _arg),
-    pickval(val, val, _val, _val)];
+   [pickBasedOnValue(val, arg, _val, _arg),
+    pickBasedOnValue(val, val, _val, _val)];
 
    -- output
-   [_val, _arg];
+   [_arg, _val];
 };
 
-cnt = [from scan(TwitterK) as t emit t.a as v, count(*) as degree];
-T1 = [from cnt emit ArgMax(v, degree)];
-STORE(T1, max_degree);
+T = scan(TwitterK);
+degrees = select dst as vertex, count(*) as followers
+	  from T;
+most_followed_follower = select T.dst, argMaxAndMax(D.followers, D.vertex)
+			 from T, degrees as D
+                         where T.src = D.vertex;
+store(most_followed_follower, MostFollowedFollower);
 ```
 
-### Stateful Apply
+### 5. Stateful Apply
 
-Stateful apply provides a way to define functions that keep mutable state.
+General SQL syntax only allows pure functions in expression. Even UDFs described above does not allow you to do more complicated map functions such as those that require an internal state. 
 
-This program assigns a sequential id to each tuple. **Important**: stateful apply is partition-local. That means every partition keeps its own state. The following program produces 0,1,2... for the tuples on every partition.
+A very good example is to assign session ids to clickstreams based on the interval between two clicks. You need to record the last time a click was received in order to decide whether to assign the next session id or the same session id to a clickstream. 
+
+The following program assigns a sequential id to each tuple. **Important**: stateful apply is partition-local. That means every partition keeps its own state. The following program produces 0,1,2... for the tuples on every partition.
 
 ```sql
-APPLY counter() {
+apply counter() {
   [0 AS c];
   [c + 1];
   c;
 };
-T1 = SCAN(TwitterK);
-T2 = [FROM T1 EMIT a, counter()];
-STORE (T2, identified);
+T1 = scan(TwitterK);
+T2 = [from T1 emit src, counter()];
+store(T2, identified);
 ```
 
 To do a distributed counter, Myria has coordination operators like broadcast and collect, but these are not currently exposed in MyriaL.
 
-### Types
+## 6. Synchronous iterations
 
-MyriaL supports a number of types for attributes (and expressions) and performs type checking.
+MyriaL supports `do...while` loops. The loop condition must be an expression that evaluates to a singleton relation with one boolean attribute ie. either `[true]` or `[false]`. Here are a few examples:
 
-- integer
-- long
-- float
-- double
-- string
-- datetime
-- *coming soon:* blob
+### 6.1. Reachability test
+In this example, we will find the set of nodes that are reachable from a given node in the Twitter dataset. Note that there is a special syntax for a scalar constant in MyriaL. 
 
-## Gotchas
+```sql
+edges = scan(TwitterK);
+-- special syntax for scalar constants
+source = [2 AS addr];
+reachable = source;
+do
+    before_size = select count(*) as B
+                  from reachable;
+    new_reachable = select edges.dst as addr
+    		    from reachable, edges
+             	    where reachable.addr = edges.src;
+    reachable = new_reachable + reachable;
+    reachable = select distinct addr
+    		from reachable;
+    after_size = select count(*) as A
+    		 from reachable;
+while [from before_size, after_size emit A - B > 0];
+store(reachable, Reachable);
+```
 
-The Myria Catalog is case sensitive, so please make sure to Scan the correct relation name.
+### 6.2. Connected components
+Here is another example of a `do...while` loop used to find the connected components in the Twitter dataset.
 
-## Advanced Examples
+```sql
+edges = scan(TwitterK);
+con_comp = select src as nid, src as cid
+	   from edges;
+do
+  before_size = select count(*) as B
+  		from con_comp;
+  new_con_comp = select edges.dst as nid, con_comp.cid as cid
+		 from edges, con_comp
+                 where edges.src = con_comp.nid;
+  new_con_comp = new_con_comp + con_comp;
+  new_con_comp = select nid, min(cid) as cid
+  		 from new_con_comp;
+  con_comp = new_con_comp;
+  after_size = select count(*) as A
+	       from con_comp;
+while [from before_size, after_size emit A - B > 0];
+comp_count = [from con_comp emit cid as id, count(*) as cnt];
+store(comp_count, TwitterCC);
+```
+
+## 7. Advanced Examples
 
 * [PageRank in MyriaL](https://github.com/uwescience/raco/blob/master/examples/pagerank.myl)
 * [K-Means in MyriaL](https://github.com/uwescience/raco/blob/master/examples/kmeans.myl)
