@@ -178,6 +178,89 @@ query = MyriaQuery.parallel_import(relation=relation, work=work)
 print query.status
 ```
 
+### Part 4. Python Expressions
+
+Myria allows arbitrary Python Functions as expressions which can be used in transformations like map, flatmap and aggregates.
+#### Registering a Python Function
+Python function needs to be registered before it can be used. Myria-python can be used to register python functions, list registered python functions as well as get details of the registered function.
+```python
+from myria.udf import MyriaPythonFunction
+from raco.types import LONG_TYPE
+
+#create connection
+connection = MyriaConnection(rest_url='http://localhost:8753',execution_url='http://localhost:8080')
+
+#register Python functions
+outType= "LONG_TYPE"
+def pyIsPrime(dt):
+    import math
+    n = dt[0][0]
+    if n % 2 == 0 and n > 2: 
+        return False
+    for i in range(3, int(math.sqrt(n)) + 1, 2):
+        if n % i == 0:
+            return 0
+    return 1
+
+MyriaPythonFunction(pyIsPrime, outType).register()
+
+#List registered functions
+connection.get_functions()
+```
+#### Invoking Python Expression in MyriaL
+A registered Python function can then be used in a MyriaL  query as an operator as:
+```python
+q = MyriaQuery.submit(""" 
+T1 = scan(TwitterK);
+isPrime = [from T1 emit pyIsPrime(T1.src) as isPrime, T1.src, T1.dst];
+store( isPrime, TwitterK_isPrime);
+""", connection=connection)
+q.status
+
+```
+#### Python Expressions in UDAs
+Python functions call also be used in User Defined Aggregates in MyriaL.
+
+```python
+#register a UDA
+def udfSum(dt):
+    import numpy as np
+    tuplist = dt
+    state = None
+    for i in tuplist:
+        imgid = i12]
+        subjid = i[0]
+        img = np.asarray(i[2])
+        shape = img.shape + (5,)
+        if state is None:
+            state = np.empty(shape)
+            state[:,:,:,imgid] = img
+        else:
+            state[:,:,:,imgid] = img
+    return (state)
+
+MyriaPythonFunction(udfAgg, outType).register()
+
+#define a UDA
+
+q = MyriaQuery.submit("""
+uda foo(subjid,imgid, img) {
+    --init
+    [ b'' as tm];
+    --update
+    [udfSum(subjid ,imgid, img )];
+    --emit
+    [tm];
+};
+t = scan(public:adhoc:raw);
+results = [from t emit t.subjid, t.imgid, foo(t.subjid, t.imgid,t.img) as vox];
+STORE(results, results);
+""", connection=connection)
+
+q.status
+```
+
+
 ## Using Myria with IPython
 
 Myria exposes convenience functionality when running within the Jupyter/IPython environment.  See [our sample IPython notebook](https://github.com/uwescience/myria-python/blob/master/ipnb%20examples/myria.ipynb) for a live demo.
