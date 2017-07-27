@@ -181,8 +181,12 @@ print query.status
 ### Part 4. Python Expressions
 
 Myria allows arbitrary Python Functions as expressions which can be used in transformations like map, flatmap and aggregates.
+
 #### Registering a Python Function
-Python function needs to be registered before it can be used. Myria-python can be used to register python functions, list registered python functions as well as get details of the registered function.
+Python function needs to be registered before it can be used.
+Myria-Python can be used to register new Python functions, list existing registered Python functions,
+and to retrieve details about existing registered functions.
+
 ```python
 from myria.udf import MyriaPythonFunction
 from raco.types import LONG_TYPE
@@ -206,9 +210,14 @@ MyriaPythonFunction(pyIsPrime, outType).register()
 
 #List registered functions
 connection.get_functions()
+
+#List details of a registered function
+connection.get_function('pyIsPrime')
+
 ```
 #### Invoking Python Expression in MyriaL
-A registered Python function can then be used in a MyriaL  query as an operator as:
+A registered Python function can then be used in a MyriaL query anywhere an expression
+ can be used.
 ```python
 q = MyriaQuery.submit(""" 
 T1 = scan(TwitterK);
@@ -219,7 +228,7 @@ q.status
 
 ```
 #### Python Expressions in UDAs
-Python functions call also be used in User Defined Aggregates in MyriaL.
+Python functions can also be used in User Defined Aggregates in MyriaL.
 
 ```python
 #register a UDA
