@@ -231,13 +231,13 @@ q.status
 Python functions can also be used in User Defined Aggregates in MyriaL.
 
 ```python
-#register a UDA
+#register a python function
 def udfSum(dt):
     import numpy as np
     tuplist = dt
     state = None
     for i in tuplist:
-        imgid = i12]
+        imgid = i[1]
         subjid = i[0]
         img = np.asarray(i[2])
         shape = img.shape + (5,)
@@ -248,7 +248,7 @@ def udfSum(dt):
             state[:,:,:,imgid] = img
     return (state)
 
-MyriaPythonFunction(udfAgg, outType).register()
+MyriaPythonFunction(udfSum, BLOB_TYPE).register()
 
 #define a UDA
 
