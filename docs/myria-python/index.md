@@ -250,17 +250,17 @@ def udfSum(dt):
 #define a UDA
 
 q = MyriaQuery.submit("""
-uda aggregate(subjid,imgid, img) {
+  uda aggregate(subjid,imgid, img) {
     --init
     [ b'' as tm];
     --update
     [udfSum(subjid ,imgid, img )];
     --emit
     [tm];
-};
-t = scan(public:adhoc:raw);
-results = [from t emit t.subjid, t.imgid, aggregate(t.subjid, t.imgid,t.img) as vox];
-STORE(results, results);
+  };
+  t = scan(public:adhoc:raw);
+  results = [from t emit t.subjid, t.imgid, aggregate(t.subjid, t.imgid,t.img) as vox];
+  store(results, results);
 """, connection=connection)
 
 q.status
