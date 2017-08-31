@@ -65,13 +65,13 @@ In this Python example, we query the smallTable relation by creating a `count(*)
 
 ```python
 from myria import *
-connection = MyriaConnection(rest_url='http://demo.myria.cs.washington.edu:8753')
+MyriaRelation.DefaultConnection = MyriaConnection(rest_url='http://demo.myria.cs.washington.edu:8753')
 
 query = MyriaQuery.submit("""
   data = load('https://raw.githubusercontent.com/uwescience/myria/master/jsonQueries/getting_started/smallTable',
               csv(schema(left:int, right:int)));
   q = [from data emit count(*)];
-  store(q, dataCount);""", connection=connection)
+  store(q, dataCount);""")
 
 print query.to_dict()
 ```
@@ -82,16 +82,16 @@ In the previous example we downloaded the result of a query.  We can also downlo
 
 ```python
 from myria import *
-connection = MyriaConnection(rest_url='http://demo.myria.cs.washington.edu:8753')
+MyriaRelation.DefaultConnection = MyriaConnection(rest_url='http://demo.myria.cs.washington.edu:8753')
 
 # Load some data and store it in Myria
 query = MyriaQuery.submit("""
   data = load('https://raw.githubusercontent.com/uwescience/myria/master/jsonQueries/getting_started/smallTable',
               csv(schema(left:int, right:int)));
-  store(data, data);""", connection=connection)
+  store(data, data);""")
 
 # Now access previously-stored data
-relation = MyriaRelation('data', connection=connection)
+relation = MyriaRelation('data')
 
 print relation.to_dict()[:5]
 ```
@@ -163,10 +163,10 @@ Myria can upload a relation in parallel. Each worker must point to a partition o
 
 ```python
 from myria import *
+MyriaRelation.DefaultConnection = MyriaConnection(rest_url='http://demo.myria.cs.washington.edu:8753')
 
-connection = MyriaConnection(rest_url='http://demo.myria.cs.washington.edu:8753')
 schema = MyriaSchema({"columnTypes" : ["LONG_TYPE", "LONG_TYPE"], "columnNames" : ["follower", "followee"]})
-relation = MyriaRelation('parallelLoad', connection=connection, schema=schema)
+relation = MyriaRelation('parallelLoad', schema=schema)
 
 # A list of worker-URL pairs -- must be one for each worker
 work = [(1, 'https://s3-us-west-2.amazonaws.com/uwdb/sampleData/TwitterK-part1.csv'),
@@ -207,10 +207,10 @@ def pyIsPrime(dt):
     return 1
 
 #List registered functions
-print MyriaFunction.get_all(connection=MyriaRelation.DefaultConnection)
+print MyriaFunction.get_all()
 
 #List details of a registered function
-print MyriaFunction.get('pyIsPrime', connection=MyriaRelation.DefaultConnection)
+print MyriaFunction.get('pyIsPrime')
 
 ```
 #### Invoking Python Expression in MyriaL
@@ -221,7 +221,7 @@ q = MyriaQuery.submit("""
   T1 = scan(TwitterK);
   isPrime = [from T1 emit pyIsPrime(T1.src) as isPrime, T1.src, T1.dst];
   store( isPrime, TwitterK_isPrime);
-""", connection=connection)
+""")
 q.status
 
 ```
@@ -261,7 +261,7 @@ q = MyriaQuery.submit("""
   t = scan(public:adhoc:raw);
   results = [from t emit t.subjid, t.imgid, aggregate(t.subjid, t.imgid,t.img) as vox];
   store(results, results);
-""", connection=connection)
+""")
 
 q.status
 ```
