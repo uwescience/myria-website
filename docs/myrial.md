@@ -198,8 +198,8 @@ We can also sort results with an `order by` clause:
 
 ```sql
 T = scan(TwitterK);
-T1 = select a as user, count(*) as degree from T order by user asc, degree desc limit 2;
-store(T1, user_degrees);
+T1 = select t1.a as src, t2.b as dst, count(*) as numLinks from T as t1, T as t2 where t1.b = t2.a order by src asc, numLinks desc limit 10;
+store(T1, countLinksTwoHops);
 ```
 
 Note: `order by` clauses must be accompanied by a `limit` clause.
