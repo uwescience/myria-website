@@ -193,8 +193,18 @@ Notice that MyriaL's syntax differs from SQL for group by. MyriaL groups by all 
 select src as user, count(*) as degree from T group by src;
 ```
 
+### 2.5. sorting
+We can also sort results with an `order by` clause:
 
-### 2.4. unionall
+```sql
+T = scan(TwitterK);
+T1 = select a as user, count(*) as degree from T order by user asc, degree desc limit 2;
+store(T1, user_degrees);
+```
+
+Note: `order by` clauses must be accompanied by a `limit` clause.
+
+### 2.6. unionall
 `+` or `unionall` concatenates two relations in MyriaL using the bag semantics.
 
 ```sql
