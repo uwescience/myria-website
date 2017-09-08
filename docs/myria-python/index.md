@@ -230,38 +230,28 @@ Python functions can also be used in User Defined Aggregates in MyriaL.
 
 ```python
 #register a python function
-@myria_function(output_type="BLOB_TYPE")
+@myria_function(output_type="LONG_TYPE")
 def udfSum(dt):
-    import numpy as np
     tuplist = dt
-    state = None
+    state = 0   
     for i in tuplist:
-        imgid = i[1]
-        subjid = i[0]
-        img = np.asarray(i[2])
-        shape = img.shape + (5,)
-        if state is None:
-            state = np.empty(shape)
-            state[:,:,:,imgid] = img
-        else:
-            state[:,:,:,imgid] = img
-    return (state)
+        state +=1
+    return state
 
 #define a UDA
-
 q = MyriaQuery.submit("""
-  uda aggregate(subjid,imgid, img) {
+uda aggregate(a) {
     --init
-    [ b'' as tm];
+    [ 0 as total];
     --update
-    [udfSum(subjid ,imgid, img )];
+    [udfSum(a)];
     --emit
-    [tm];
+    [total];
   };
-  t = scan(public:adhoc:raw);
-  results = [from t emit t.subjid, t.imgid, aggregate(t.subjid, t.imgid,t.img) as vox];
+  t = scan(public:adhoc:TwitterK);
+  results = [from t emit t.a,  aggregate(t.b) as total];
   store(results, results);
-""")
+""", connection=connection)
 
 q.status
 ```
