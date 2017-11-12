@@ -13,7 +13,7 @@ Myria is our novel cloud service for big data management and analytics designed 
 
 To get Myria up and running, you can view the source [here](https://github.com/uwescience/myria).
 
-Developers, please see our [Myria Developer](http://myria.cs.washington.edu/docs/developer.html) page for more information.
+Developers, please see our [Myria Developer](http://myria.cs.washington.edu/docs/myriax/developers/MyriaX.html) page for more information.
 
 Source code used to deploy Myria on Amazon can be found [here](https://github.com/uwescience/myria-ec2-ansible).
 
