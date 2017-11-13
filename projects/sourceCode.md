@@ -11,11 +11,9 @@ weight: 2
 
 Myria is our novel cloud service for big data management and analytics designed to improve productivity. Myria’s goal is for users to simply upload their data and for the system to help them be self-sufficient data science experts on their data. Myria queries are executed on a scalable, parallel cluster that uses both state-of-the-art and novel methods for distributed query processing.
 
-To get Myria up and running, you can view the source [here](https://github.com/uwescience/myria).
+To get Myria up and running, you can view the source [here](https://github.com/uwescience/myria). The source code used to deploy Myria on Amazon can be found [here](https://github.com/uwescience/myria-ec2-ansible).
 
-Developers, please see our [Myria Developer](http://myria.cs.washington.edu/docs/myriax/developers/MyriaX.html) page for more information.
-
-Source code used to deploy Myria on Amazon can be found [here](https://github.com/uwescience/myria-ec2-ansible).
+Developers, please see our "Myria for Developers" sections under the 'Documentation' menu.
 
 ## PipeGen
 
