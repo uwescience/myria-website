@@ -22,10 +22,10 @@ If you're interested in running a local version of Myria on your own personal ma
 
 ## How to Use Myria
 There are two ways to interact with Myria through the browser: <br>
-1. [Myria-Web](myria-web-page). <br>
+1. [Myria-Web](myria-web/). <br>
 2. [Jupyter/IPython Notebook](myria-python). 
 
-If you are using the Myria Demo Service, you can access Myria-Web [here](http://demo.myria.cs.washington.edu) and the Jupyter/IPyton Notebook [here]().
+If you are using the Myria Demo Service, you can access Myria-Web [here](http://demo.myria.cs.washington.edu) and the Jupyter/IPyton Notebook by clicking on the Jupyter Notebook tab.
 
 If you launch your own Myria Amazon cluster, an instance of Myria-Web and Jupyter/IPython Notebook are created automatically for you. If the deployment is successful, you will be provided with links to each of these options.
 
