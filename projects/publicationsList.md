@@ -49,6 +49,7 @@ weight: 1
 * [Changing the Face of Database Cloud Services with Personalized Service Level Agreements](../publications/Ortiz_PSLA_CIDR_2015.pdf). Jennifer Ortiz, Victor T. Almeida, Magda Balazinska. *CIDR 2015*.
 * [PerfEnforce Demonstration: Data Analytics with Performance Guarantees](../publications/Ortiz-perfenforceDemo-sigmod16.pdf). Jennifer Ortiz, Brendan Lee, Magda Balazinska. *SIGMOD 2016*.
 * [PerfEnforce: A Dynamic Scaling Engine for Analytics with Performance Guarantees](https://arxiv.org/abs/1605.09753). Jennifer Ortiz, Brendan Lee, Magda Balazinska, Joseph L. Hellerstein. *arXiv 2016*
+* [SLAOrchestrator: Reducing the Cost of Performance SLAs for Cloud Data Analytics](../publications/Ortiz-SLAOrchestrator-2018.pdf). Jennifer Ortiz, Brendan Lee, Magda Balazinska Johannes Gehrke, Joseph L. Hellerstein. *USENIX ATC 2018*.
 
 ## SQLShare: Interactive DB-as-a-Service
 * [SQLShare: Results from a Multi-Year SQL-as-a-Service Experiment](https://www.dropbox.com/s/835qvwhbclfuacw/paper.pdf?dl=0). Shrainik Jain, Dominik Moritz, Daniel Halperin, Bill Howe, Ed Lazowska. *SIGMOD 2016*.
