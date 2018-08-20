@@ -12,9 +12,11 @@ id: home
 		Myria is a distributed, shared-nothing Big Data management system and Cloud service from the <a href="http://www.cs.washington.edu/">University of Washington</a>. We derive requirements from real users and complex workflows, especially in science.
 	</p>
 
-	<p class="text-center">
-		<a class="btn btn-primary btn-lg" href="http://demo.myria.cs.washington.edu">Try the free tier Myria service</a>
-	</p>
+        <p class="bg-success">
+            As of August 2018, the Myria project has officially concluded.  
+            While resources are minimal, we will work to continue answering questions and support the public codebase.
+        </p>
+
 	<p class="text-center">
 		<a class="btn btn-primary btn-lg" href="http://myria.cs.washington.edu/docs/">Deploy your own Myria cluster</a>
 	</p>

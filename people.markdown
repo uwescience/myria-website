@@ -27,7 +27,7 @@ id: "people"
 ## PhD Students
 
 * [Shumo Chu](http://homes.cs.washington.edu/~chushumo/)
-* Brandon Haynes
+* [Brandon Haynes](https://homes.cs.washington.edu/~bhaynes)
 * Jeremy Hyrkas
 * [Bas Ketsman](http://www.basketsman.com/)
 * [Ryan Maas](http://homes.cs.washington.edu/~maas/)
